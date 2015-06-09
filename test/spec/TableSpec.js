@@ -72,7 +72,7 @@ describe('table', function() {
         var table = new Table({
           sheet: {
             container: container,
-            width: 700,
+            width: 300,
             height: 500
           }
         });

@@ -41,6 +41,7 @@
     "time-grunt": "^0.3.0"
   },
   "dependencies": {
+    "diagram-js": "^0.10.2",
     "didi": "^0.0.4",
     "lodash": "^3.0.1",
     "min-dom": "^0.2.0"
