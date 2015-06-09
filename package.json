@@ -1,0 +1,48 @@
+{
+  "name": "table-js",
+  "version": "0.1.0",
+  "description": "A table editing framework for the web",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmn-io/table-js"
+  },
+  "keywords": [
+    "modeler",
+    "modeling",
+    "office",
+    "table-js"
+  ],
+  "author": "dmn.io",
+  "license": "MIT",
+  "devDependencies": {
+    "brfs": "~1.2.0",
+    "chai": "~2.2.0",
+    "grunt": "~0.4.4",
+    "grunt-contrib-jshint": "^0.7.2",
+    "grunt-jsdoc": "^0.5.1",
+    "grunt-karma": "^0.8.0",
+    "grunt-release": "^0.7.0",
+    "karma": "^0.12.8",
+    "karma-browserify": "^4.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.2",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-ie-launcher": "^0.1.4",
+    "karma-mocha": "~0.1.10",
+    "karma-phantomjs-launcher": "^0.1.2",
+    "karma-sinon-chai": "~0.3.0",
+    "load-grunt-tasks": "^0.3.0",
+    "mocha-test-container-support": "~0.1.0",
+    "sinon": "~1.14.1",
+    "sinon-chai": "~2.7.0",
+    "time-grunt": "^0.3.0"
+  },
+  "dependencies": {
+    "didi": "^0.0.4",
+    "lodash": "^3.0.1",
+    "min-dom": "^0.2.0"
+  }
+}
