@@ -7,7 +7,7 @@ var unique = require('lodash/array/unique'),
 
 var TestContainer = require('mocha-test-container-support');
 
-var Diagram = require('../../lib/Table'),
+var Table = require('../../lib/Table'),
     domEvent = require('min-dom/lib/event');
 
 var OPTIONS, TABLE;
@@ -22,7 +22,7 @@ var OPTIONS, TABLE;
  *
  *   var mockEvents;
  *
- *   beforeEach(bootstrapDiagram(function() {
+ *   beforeEach(bootstrapTable(function() {
  *     mockEvents = new Events();
  *
  *     return {
@@ -36,7 +36,7 @@ var OPTIONS, TABLE;
  * @param  {Object|Function} locals  the local overrides to be used by the table or a function that produces them
  * @return {Function}         a function to be passed to beforeEach
  */
-function bootstrapDiagram(options, locals) {
+function bootstrapTable(options, locals) {
 
   return function() {
 
@@ -74,7 +74,7 @@ function bootstrapDiagram(options, locals) {
       _locals = _locals();
     }
 
-    _options = assign({ canvas: { container: testContainer } }, OPTIONS || {}, _options || {});
+    _options = assign({ sheet: { container: testContainer } }, OPTIONS || {}, _options || {});
 
     var mockModule = {};
 
@@ -84,14 +84,14 @@ function bootstrapDiagram(options, locals) {
 
     _options.modules = unique([].concat(_options.modules || [], [ mockModule ]));
 
-    DIAGRAM = new Diagram(_options);
+    TABLE = new Table(_options);
   };
 }
 
 /**
- * Injects services of an instantiated diagram into the argument.
+ * Injects services of an instantiated table into the argument.
  *
- * Use it in conjunction with {@link #bootstrapDiagram}.
+ * Use it in conjunction with {@link #bootstrapTable}.
  *
  * @example
  *
@@ -99,7 +99,7 @@ function bootstrapDiagram(options, locals) {
  *
  *   var mockEvents;
  *
- *   beforeEach(bootstrapDiagram(...));
+ *   beforeEach(bootstrapTable(...));
  *
  *   it('should provide mocked events', inject(function(events) {
  *     expect(events).toBe(mockEvents);
@@ -113,16 +113,16 @@ function bootstrapDiagram(options, locals) {
 function inject(fn) {
   return function() {
 
-    if (!DIAGRAM) {
-      throw new Error('no bootstraped diagram, ensure you created it via #bootstrapDiagram');
+    if (!TABLE) {
+      throw new Error('no bootstraped table, ensure you created it via #bootstrapTable');
     }
 
-    DIAGRAM.invoke(fn);
+    TABLE.invoke(fn);
   };
 }
 
 
-module.exports.bootstrapDiagram = (window || global).bootstrapDiagram = bootstrapDiagram;
+module.exports.bootstrapTable = (window || global).bootstrapTable = bootstrapTable;
 module.exports.inject = (window || global).inject = inject;
 
 
@@ -147,8 +147,8 @@ function insertCSS(name, css) {
 
 module.exports.insertCSS = insertCSS;
 
-module.exports.getDiagramJS = function() {
-  return DIAGRAM;
+module.exports.getTableJS = function() {
+  return TABLE;
 };
 
 function DomEventTracker() {

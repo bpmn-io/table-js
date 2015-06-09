@@ -89,7 +89,6 @@ describe('table', function() {
             row: 'r1',
             content: 'foobar'
           });
-
         }]);
       });
     });

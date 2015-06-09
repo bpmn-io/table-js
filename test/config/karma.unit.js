@@ -9,9 +9,7 @@ module.exports = function(karma) {
                   'sinon-chai'],
 
     files: [
-      //'test/spec/**/*Spec.js'
-      'test/spec/TableSpec.js',
-      'test/spec/core/SheetSpec.js'
+      'test/spec/**/*Spec.js'
     ],
 
     preprocessors: {

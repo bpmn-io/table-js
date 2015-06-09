@@ -1,3 +1,3 @@
-var TestHelper = module.exports = require('./helper');
+'use strict';
 
-var fs = require('fs');
+module.exports = require('./helper');
