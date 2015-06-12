@@ -335,7 +335,7 @@ describe('Sheet', function() {
       var root = sheet.getRootElement();
 
       // then
-      expect(a.parent).to.equal(root);
+      expect(a.parent.parentNode).to.equal(root);
     }));
 
   });
