@@ -17,6 +17,7 @@ describe('features/interaction-events', function() {
     sheet.addColumn({id: 'col1'});
     sheet.addColumn({id: 'col2'});
     sheet.addRow({id: 'row1'});
+    sheet.setCellContent({row: 'row1', column: 'col1', content:'test'});
 
   }));
 
