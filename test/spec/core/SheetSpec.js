@@ -216,6 +216,28 @@ describe('Sheet', function() {
     }));
 
 
+    it('should add rows in a specified order', inject(function(sheet) {
+      // given
+      var column = {id: 'c'},
+          row1 = {id: 'r1'},
+          row2 = {id: 'r2', next: row1},
+          row3 = {id: 'r3', previous: row2};
+
+      sheet.addColumn(column);
+
+      // when
+      sheet.addRow(row1);
+      sheet.addRow(row2);
+      sheet.addRow(row3);
+
+      // then
+      expect(row1.previous).to.equal(row3);
+      expect(row3.next).to.equal(row1);
+      expect(row3.previous).to.equal(row2);
+      expect(row2.next).to.equal(row3);
+    }));
+
+
   });
 
 
@@ -259,6 +281,27 @@ describe('Sheet', function() {
       expect(elementRegistry.get('cell_c_r1')).to.be.defined;
       expect(elementRegistry.get('cell_c_r2')).to.be.defined;
 
+    }));
+
+    it('should add columns in a specified order', inject(function(sheet) {
+      // given
+      var row = {id: 'r'},
+          column1 = {id: 'c1'},
+          column2 = {id: 'c2', next: column1},
+          column3 = {id: 'c3', previous: column2};
+
+      sheet.addRow(row);
+
+      // when
+      sheet.addColumn(column1);
+      sheet.addColumn(column2);
+      sheet.addColumn(column3);
+
+      // then
+      expect(column1.previous).to.equal(column3);
+      expect(column3.next).to.equal(column1);
+      expect(column3.previous).to.equal(column2);
+      expect(column2.next).to.equal(column3);
     }));
   });
 
