@@ -64,7 +64,7 @@ describe('features/popup', function() {
 
       // then
       var container = popupMenu._current.container;
-      expect(domClasses(container).has('tjs-popup')).to.be.true;
+      expect(domClasses(container).has('dmn-context-menu')).to.be.true;
       expect(domClasses(container).has('test-popup')).to.be.true;
     }));
 
@@ -75,9 +75,14 @@ describe('features/popup', function() {
       popupMenu.open({
         position: { x: 100, y: 100 },
         entries: [
-          { id: 'id1', label: 'Entry 1', className:'firstEntry' },
-          { id: 'id2', label: 'Entry 2' },
-          { id: 'id3', label: 'Entry 3' }
+          { id: 'id1', content: {label: 'Entry 1', className:'firstEntry' }},
+          { id: 'id2', content: {label: 'Entry 2' }},
+          { id: 'id3', content: {label: 'Entry 3' }},
+          { id: 'id4', content: [
+          { id: 'id5', content: {label: 'Entry 4', className:'firstEntry' }},
+          { id: 'id6', content: {label: 'Entry 5' }},
+          { id: 'id7', content: {label: 'Entry 6' }}
+        ]}
         ]
       });
 
@@ -93,9 +98,9 @@ describe('features/popup', function() {
       popupMenu.open({
         position: { x: 100, y: 100 },
         entries: [
-          {id: 'save', label: 'SAVE' },
-          {id: 'load', label: 'LOAD' },
-          {id: 'undo', label: 'UNDO' }
+          {id: 'save', content: {label: 'SAVE' }},
+          {id: 'load', content: {label: 'LOAD' }},
+          {id: 'undo', content: {label: 'UNDO' }}
         ]
       });
 
@@ -163,17 +168,21 @@ describe('features/popup', function() {
         entries: [
           {
             id: '1',
-            label: 'Entry 1',
-            className: 'Entry_1',
-            action: function(event, entry) {
-              return 'Entry 1';
+            content: {
+              label: 'Entry 1',
+              className: 'Entry_1',
+              action: function(event, entry) {
+                return 'Entry 1';
+              }
             }
           }, {
             id: '2',
-            label: 'Entry 2',
-            className: 'Entry_2',
-            action: function(event, entry) {
-              return 'Entry 2';
+            content: {
+              label: 'Entry 2',
+              className: 'Entry_2',
+              action: function(event, entry) {
+                return 'Entry 2';
+              }
             }
           }
         ]
@@ -244,8 +253,8 @@ describe('features/popup', function() {
         {
           position: { x: 100, y: 100, },
           entries: [
-            { id: '1', label: 'Entry 1' },
-            { id: '2', label: 'Entry 2' }
+            { id: '1', content: {label: 'Entry 1' }},
+            { id: '2', content: {label: 'Entry 2' }}
           ]
         }
       );
@@ -262,8 +271,8 @@ describe('features/popup', function() {
         {
           position: { x: 100, y: 100, },
           entries: [
-            { id: '1', label: 'Entry 1' },
-            { id: '2', label: 'Entry 2 - special', className: 'special-entry' }
+            { id: '1', content: {label: 'Entry 1' }},
+            { id: '2', content: {label: 'Entry 2 - special', className: 'special-entry' }}
           ]
         }
       );
@@ -286,8 +295,8 @@ describe('features/popup', function() {
           className: 'popup-menu1',
           position: { x: 100, y: 100, },
           entries: [
-            { id: '1', label: 'Entry 1' },
-            { id: '2', label: 'Entry 2' }
+            { id: '1', content: {label: 'Entry 1' }},
+            { id: '2', content: {label: 'Entry 2' }}
           ]
         }
       );
@@ -297,8 +306,8 @@ describe('features/popup', function() {
           className: 'popup-menu2',
           position: { x: 200, y: 200, },
           entries: [
-            { id: '1', label: 'Entry A' },
-            { id: '2', label: 'Entry B' }
+            { id: '1', content: {label: 'Entry A' }},
+            { id: '2', content: {label: 'Entry B' }}
           ]
         }
       );
@@ -362,7 +371,7 @@ describe('features/popup', function() {
         entries: [
           {
             id: 'my-entry',
-            label: 'foo'
+            content: {label: 'foo'}
           }
         ],
         position: { x: 100, y: 100 }
@@ -383,7 +392,7 @@ describe('features/popup', function() {
         entries: [
           {
             id: 'my-entry',
-            label: 'foo'
+            content: {label: 'foo'}
           }
         ],
         position: { x: 100, y: 100 }
