@@ -31,7 +31,9 @@ describe('features/add-row', function() {
   describe('interface', function() {
 
     it('should add a row with the interface controls', inject(function(elementRegistry) {
-      //TODO: implement me
+      var gfx = elementRegistry.getGraphics('cell_utilityColumn_tjs-controls');
+
+      expect(gfx).to.be.defined;
     }));
 
   });
