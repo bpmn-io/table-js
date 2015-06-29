@@ -105,7 +105,7 @@ describe('features/popup', function() {
       });
 
       // then
-      var parent = queryPopup(popupMenu, '.tjs-popup-body');
+      var parent = queryPopup(popupMenu, '.dropdown-menu');
       var entry1 = parent.childNodes[0];
       var entry2 = parent.childNodes[1];
       var entry3 = parent.childNodes[2];
@@ -313,7 +313,7 @@ describe('features/popup', function() {
       );
 
       var container = popupMenu._current.container,
-          entriesContainer = domQuery('.tjs-popup-body', container);
+          entriesContainer = domQuery('.dropdown-menu', container);
 
       // then
       expect(domClasses(container).has('popup-menu2')).to.be.true;
