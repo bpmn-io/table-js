@@ -8,7 +8,7 @@ var TestHelper = require('../../../TestHelper');
 
 var domQuery = require('min-dom/lib/query'),
     domClasses = require('min-dom/lib/classes'),
-    //Events = require('../../../util/Events'),
+    Events = require('diagram-js/test/util/Events'),
     popupMenuModule = require('../../../../lib/features/popup-menu');
 
 
@@ -158,7 +158,7 @@ describe('features/popup', function() {
 
   describe('#trigger', function () {
 
-    it.skip('should trigger the right action handler', inject(function(popupMenu) {
+    it('should trigger the right action handler', inject(function(popupMenu) {
 
       var entry, evt, trigger;
 
@@ -168,28 +168,28 @@ describe('features/popup', function() {
         entries: [
           {
             id: '1',
+            action: function(event, entry) {
+              return 'Entry 1';
+            },
             content: {
               label: 'Entry 1',
-              className: 'Entry_1',
-              action: function(event, entry) {
-                return 'Entry 1';
-              }
+              className: 'Entry_1'
             }
           }, {
             id: '2',
+            action: function(event, entry) {
+              return 'Entry 2';
+            },
             content: {
               label: 'Entry 2',
-              className: 'Entry_2',
-              action: function(event, entry) {
-                return 'Entry 2';
-              }
+              className: 'Entry_2'
             }
           }
         ]
       });
 
       entry = queryPopup(popupMenu, '.Entry_2');
-      evt = null;//Events.create(entry, { x: 0, y: 0 });
+      evt = Events.create(entry, { x: 0, y: 0 });
 
       // when
       trigger = popupMenu.trigger(evt);
@@ -197,49 +197,6 @@ describe('features/popup', function() {
       // then
       expect(trigger).to.eql('Entry 2');
     }));
-
-  });
-
-
-  describe('integration', function() {
-
-    describe.skip('events', function() {
-
-
-      it('should close menu (contextPad.close)', inject(function(popupMenu, eventBus) {
-
-        // given
-        popupMenu.open({
-          position: { x: 100, y: 100, },
-          entries: []
-        });
-
-        // when
-        eventBus.fire('contextPad.close');
-
-        // then
-        var open = popupMenu.isOpen();
-        expect(open).to.be.false;
-      }));
-
-
-      it('should close menu (contextPad.close)', inject(function(popupMenu, eventBus) {
-
-        // given
-        popupMenu.open({
-          position: { x: 100, y: 100, },
-          entries: []
-        });
-
-        // when
-        eventBus.fire('canvas.viewbox.changed');
-
-        // then
-        var open = popupMenu.isOpen();
-        expect(open).to.be.false;
-      }));
-
-    });
 
   });
 
