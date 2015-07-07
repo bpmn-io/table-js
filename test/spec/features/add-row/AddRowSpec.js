@@ -6,11 +6,11 @@ var TestHelper = require('../../../TestHelper');
 
 
 var addRowModule = require('../../../../lib/features/add-row');
-
+var tableNameModule = require('../../../../lib/features/table-name');
 
 describe('features/add-row', function() {
 
-  beforeEach(bootstrapTable({ modules: [ addRowModule ] }));
+  beforeEach(bootstrapTable({ modules: [ addRowModule, tableNameModule ] }));
 
   beforeEach(inject(function(sheet) {
 

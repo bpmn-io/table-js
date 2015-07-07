@@ -6,11 +6,11 @@ var TestHelper = require('../../../TestHelper');
 
 
 var editingModule = require('../../../../lib/features/editing');
-
+var tableNameModule = require('../../../../lib/features/table-name');
 
 describe('features/editing', function() {
 
-  beforeEach(bootstrapTable({ modules: [ editingModule ] }));
+  beforeEach(bootstrapTable({ modules: [ editingModule, tableNameModule ] }));
 
   beforeEach(inject(function(sheet) {
 

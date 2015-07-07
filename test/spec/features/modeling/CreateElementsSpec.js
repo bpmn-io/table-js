@@ -5,12 +5,13 @@ var TestHelper = require('../../../TestHelper');
 /* global bootstrapTable, inject */
 
 var modelingModule = require('../../../../lib/features/modeling');
+var tableNameModule = require('../../../../lib/features/table-name');
 
 
 describe('features/modeling - create Row', function() {
 
 
-  beforeEach(bootstrapTable({ modules: [ modelingModule ] }));
+  beforeEach(bootstrapTable({ modules: [ modelingModule, tableNameModule ] }));
 
   beforeEach(inject(function(sheet) {
     sheet.addColumn({id: 'col'});
@@ -83,7 +84,7 @@ describe('features/modeling - create Row', function() {
 describe('features/modeling - create Column', function() {
 
 
-  beforeEach(bootstrapTable({ modules: [ modelingModule ] }));
+  beforeEach(bootstrapTable({ modules: [ modelingModule, tableNameModule ] }));
 
   beforeEach(inject(function(sheet) {
     sheet.addRow({id: 'row'});

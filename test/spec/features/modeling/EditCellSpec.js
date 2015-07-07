@@ -5,12 +5,12 @@ var TestHelper = require('../../../TestHelper');
 /* global bootstrapTable, inject */
 
 var modelingModule = require('../../../../lib/features/modeling');
-
+var tableNameModule = require('../../../../lib/features/table-name');
 
 describe('features/modeling - edit cell', function() {
 
 
-  before(bootstrapTable({ modules: [ modelingModule ] }));
+  before(bootstrapTable({ modules: [ modelingModule, tableNameModule ] }));
 
   before(inject(function(sheet) {
     sheet.addColumn({id: 'col'});
