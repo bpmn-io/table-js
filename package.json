@@ -41,7 +41,7 @@
     "time-grunt": "^0.3.0"
   },
   "dependencies": {
-    "diagram-js": "^0.10.2",
+    "diagram-js": "bpmn-io/diagram-js",
     "didi": "^0.0.4",
     "inherits": "^2.0.1",
     "lodash": "^3.0.1",
