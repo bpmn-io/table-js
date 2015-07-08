@@ -453,4 +453,75 @@ describe('Sheet', function() {
 
   });
 
+  describe('rowspan', function() {
+
+    beforeEach(function() {
+      container = TestContainer.get(this);
+    });
+    beforeEach(createTable());
+
+
+    it('should set the rowspan attribute', inject(function(sheet, elementRegistry, graphicsFactory) {
+      // given
+      var row1 = {id: 'r1'},
+          row2 = {id: 'r2'},
+          column = {id: 'c'};
+
+      sheet.addRow(row1);
+      sheet.addRow(row2);
+      sheet.addColumn(column);
+
+      // when
+      elementRegistry.get('cell_c_r1').rowspan = 2;
+      graphicsFactory.update('cell', elementRegistry.get('cell_c_r1'), elementRegistry.getGraphics('cell_c_r1'));
+
+      // then
+      expect(elementRegistry.getGraphics('cell_c_r1').getAttribute('rowspan')).to.eql('2');
+    }));
+
+    it('should hide subsequent cells', inject(function(sheet, elementRegistry, graphicsFactory) {
+      // given
+      var column = {id: 'c'},
+          row1 = {id: 'r1'},
+          row2 = {id: 'r2'},
+          row3 = {id: 'r3'};
+
+      sheet.addColumn(column);
+      sheet.addRow(row1);
+      sheet.addRow(row2);
+      sheet.addRow(row3);
+
+      // when
+      elementRegistry.get('cell_c_r1').rowspan = 2;
+      graphicsFactory.update('column', elementRegistry.get('c'), elementRegistry.getGraphics('c'));
+
+      // then
+      expect(elementRegistry.getGraphics('cell_c_r2').getAttribute('style')).to.contain('display: none;');
+      expect(elementRegistry.getGraphics('cell_c_r3').getAttribute('style')).to.not.contain('display: none;');
+    }));
+
+    it('should not affect cells to the left', inject(function(sheet, elementRegistry, graphicsFactory) {
+      // given
+      var column = {id: 'c'},
+          row1 = {id: 'r1'},
+          row2 = {id: 'r2'},
+          row3 = {id: 'r3'};
+
+      sheet.addColumn(column);
+      sheet.addRow(row1);
+      sheet.addRow(row2);
+      sheet.addRow(row3);
+
+      // when
+      elementRegistry.get('cell_c_r2').rowspan = 2;
+      graphicsFactory.update('column', elementRegistry.get('c'), elementRegistry.getGraphics('c'));
+
+
+      // then
+      expect(elementRegistry.getGraphics('cell_c_r1').getAttribute('style')).to.not.contain('display: none;');
+      expect(elementRegistry.getGraphics('cell_c_r3').getAttribute('style')).to.contain('display: none;');
+    }));
+
+  });
+
 });
