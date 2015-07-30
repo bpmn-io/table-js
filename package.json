@@ -46,5 +46,8 @@
     "inherits": "^2.0.1",
     "lodash": "^3.0.1",
     "min-dom": "^0.2.0"
+  },
+  "browserify": {
+    "transform": ["brfs"]
   }
 }
