@@ -90,7 +90,16 @@ describe('features/complex-cell', function() {
       element: cell
     });
 
-    expect(cell.complex.template.parentNode.offsetLeft).to.eql(elementRegistry.getGraphics('cell_col2_row').offsetLeft);
+    // calculate the cell offset by traversing the offset chain
+    var cellOffset = 0;
+    var e = elementRegistry.getGraphics('cell_col2_row');
+    while (e)
+    {
+        cellOffset += e.offsetLeft;
+        e = e.offsetParent;
+    }
+
+    expect(cell.complex.template.parentNode.offsetLeft).to.eql(cellOffset);
 
   }));
 
