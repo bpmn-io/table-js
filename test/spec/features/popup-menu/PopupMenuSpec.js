@@ -64,7 +64,7 @@ describe('features/popup', function() {
 
       // then
       var container = popupMenu._current.container;
-      expect(domClasses(container).has('dmn-context-menu')).to.be.true;
+      expect(domClasses(container).has('tjs-context-menu')).to.be.true;
       expect(domClasses(container).has('test-popup')).to.be.true;
     }));
 
@@ -105,7 +105,7 @@ describe('features/popup', function() {
       });
 
       // then
-      var parent = queryPopup(popupMenu, '.popup-dropdown-menu');
+      var parent = queryPopup(popupMenu, '.tjs-dropdown-menu');
       var entry1 = parent.childNodes[0];
       var entry2 = parent.childNodes[1];
       var entry3 = parent.childNodes[2];
@@ -217,7 +217,7 @@ describe('features/popup', function() {
       );
 
       // then
-      var elements = domQuery.all('.entry', popupMenu._current.container);
+      var elements = domQuery.all('.tjs-entry', popupMenu._current.container);
       expect(elements.length).to.eql(2);
     }));
 
@@ -270,7 +270,7 @@ describe('features/popup', function() {
       );
 
       var container = popupMenu._current.container,
-          entriesContainer = domQuery('.popup-dropdown-menu', container);
+          entriesContainer = domQuery('.tjs-dropdown-menu', container);
 
       // then
       expect(domClasses(container).has('popup-menu2')).to.be.true;
