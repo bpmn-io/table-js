@@ -16,7 +16,7 @@ function eventFire(el, etype){
   }
 }
 
-describe.only('features/combo-box', function() {
+describe('features/combo-box', function() {
 
   var testContainer;
   beforeEach(function() {

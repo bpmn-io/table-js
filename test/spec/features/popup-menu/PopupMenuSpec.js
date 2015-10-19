@@ -8,7 +8,7 @@ var TestHelper = require('../../../TestHelper');
 
 var domQuery = require('min-dom/lib/query'),
     domClasses = require('min-dom/lib/classes'),
-    Events = require('diagram-js/test/util/Events'),
+    Events = require('../../../util/Events'),
     popupMenuModule = require('../../../../lib/features/popup-menu');
 
 
@@ -105,7 +105,7 @@ describe('features/popup', function() {
       });
 
       // then
-      var parent = queryPopup(popupMenu, '.dropdown-menu');
+      var parent = queryPopup(popupMenu, '.popup-dropdown-menu');
       var entry1 = parent.childNodes[0];
       var entry2 = parent.childNodes[1];
       var entry3 = parent.childNodes[2];
@@ -270,7 +270,7 @@ describe('features/popup', function() {
       );
 
       var container = popupMenu._current.container,
-          entriesContainer = domQuery('.dropdown-menu', container);
+          entriesContainer = domQuery('.popup-dropdown-menu', container);
 
       // then
       expect(domClasses(container).has('popup-menu2')).to.be.true;
