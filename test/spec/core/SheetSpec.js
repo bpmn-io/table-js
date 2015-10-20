@@ -15,7 +15,6 @@ describe('Sheet', function() {
    * Create a diagram with the given options
    */
   function createTable(options) {
-
     return bootstrapTable(function() {
       return merge({ sheet: { container: container } }, options);
     }, {});
