@@ -8,11 +8,12 @@ var domify = require('min-dom/lib/domify');
 
 
 var complexCellModule = require('../../../../lib/features/complex-cell');
+var popupModule = require('../../../../lib/features/popup-menu');
 
 
 describe('features/complex-cell', function() {
 
-  beforeEach(bootstrapTable({ modules: [ complexCellModule ] }));
+  beforeEach(bootstrapTable({ modules: [ complexCellModule, popupModule ] }));
 
   beforeEach(inject(function(sheet, elementRegistry) {
 
@@ -101,6 +102,23 @@ describe('features/complex-cell', function() {
 
     expect(cell.complex.template.parentNode.offsetLeft).to.eql(cellOffset);
 
+  }));
+
+  it('should close when opening a popup menu', inject(function(complexCell, popupMenu) {
+    var template = domify('<div>');
+    complexCell.open({
+      template: template,
+      position: {
+        x: 0,
+        y: 0
+      }
+    });
+
+    expect(complexCell.isOpen()).to.be.true;
+
+    popupMenu.open({position: {x:0, y:0}, entries: []});
+
+    expect(complexCell.isOpen()).to.be.false;
   }));
 
 });
