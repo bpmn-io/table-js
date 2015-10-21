@@ -11,8 +11,6 @@
     "expect": true,
     "beforeEach": true,
     "afterEach": true,
-    "console": true,
-    "spyOn": true,
-    "jasmine": true
+    "console": true
   }
 }
