@@ -18,7 +18,7 @@ module.exports = function(karma) {
 
     reporters: [ 'dots' ],
 
-    browsers: [ 'Chrome', 'Firefox' ],
+    browsers: [ 'PhantomJS' ],
 
     browserNoActivityTimeout: 30000,
 
