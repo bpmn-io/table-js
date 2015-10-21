@@ -6,7 +6,7 @@ var ComboBox = require('../../../../lib/features/combo-box');
 
 // initiate browser events
 // http://stackoverflow.com/a/2706236
-function eventFire(el, etype){
+function eventFire(el, etype) {
   if (el.fireEvent) {
     el.fireEvent('on' + etype);
   } else {

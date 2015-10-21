@@ -21,7 +21,7 @@ describe('features/controls', function() {
   }));
 
   it('should add control with label', inject(function(controls) {
-    controls.addControl('Test Control', function(){});
+    controls.addControl('Test Control', function() {});
 
     expect(controls.controlsContainer.firstChild.textContent).to.eql('Test Control');
   }));
@@ -30,7 +30,7 @@ describe('features/controls', function() {
 
     var fctCalled = false;
 
-    controls.addControl('Test Control', function(){
+    controls.addControl('Test Control', function() {
       fctCalled = true;
     });
 

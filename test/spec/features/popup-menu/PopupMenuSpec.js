@@ -137,7 +137,7 @@ describe('features/popup', function() {
     }));
 
 
-    it('should not fail if already closed', inject(function(popupMenu){
+    it('should not fail if already closed', inject(function(popupMenu) {
 
       // given
       popupMenu.open({
@@ -156,7 +156,7 @@ describe('features/popup', function() {
   });
 
 
-  describe('#trigger', function () {
+  describe('#trigger', function() {
 
     it('should trigger the right action handler', inject(function(popupMenu) {
 
@@ -283,9 +283,9 @@ describe('features/popup', function() {
   });
 
 
-  describe('#isOpen', function(){
+  describe('#isOpen', function() {
 
-    it('should not be open initially', inject(function(popupMenu){
+    it('should not be open initially', inject(function(popupMenu) {
 
       // when
       // at initial state
@@ -295,7 +295,7 @@ describe('features/popup', function() {
     }));
 
 
-    it('should be open after opening', inject(function(popupMenu){
+    it('should be open after opening', inject(function(popupMenu) {
       // when
        popupMenu.open({ position: { x: 100, y: 100, }, entries: [] });
 
@@ -304,7 +304,7 @@ describe('features/popup', function() {
     }));
 
 
-    it('should be closed after closing', inject(function(popupMenu){
+    it('should be closed after closing', inject(function(popupMenu) {
 
       // given
       popupMenu.open({ position: { x: 100, y: 100, }, entries: [] });
@@ -321,7 +321,7 @@ describe('features/popup', function() {
 
   describe('#update', function() {
 
-    it('should update an entry by id', inject(function(popupMenu){
+    it('should update an entry by id', inject(function(popupMenu) {
 
       // given
       popupMenu.open({
@@ -342,7 +342,7 @@ describe('features/popup', function() {
     }));
 
 
-    it('should update an entry by instance', inject(function(popupMenu){
+    it('should update an entry by instance', inject(function(popupMenu) {
 
       // given
       popupMenu.open({
@@ -365,7 +365,7 @@ describe('features/popup', function() {
     }));
 
 
-    it('should throw an error if no entry could be found', inject(function(popupMenu){
+    it('should throw an error if no entry could be found', inject(function(popupMenu) {
 
       // given
       popupMenu.open({
