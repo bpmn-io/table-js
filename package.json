@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dmn-io/table-js"
+    "url": "https://github.com/bpmn-io/table-js"
   },
   "keywords": [
     "modeler",
@@ -15,7 +15,7 @@
     "office",
     "table-js"
   ],
-  "author": "dmn.io",
+  "author": "bpmn.io",
   "license": "MIT",
   "devDependencies": {
     "brfs": "~1.2.0",

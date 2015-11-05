@@ -1,14 +1,14 @@
 # How to contribute
 
-We love you to contribute to this project by filing bugs, helping others on the [issue tracker](https://github.com/dmn-io/table-js/issues) or by contributing features/bug fixes through pull requests.
+We love you to contribute to this project by filing bugs, helping others on the [issue tracker](https://github.com/bpmn-io/table-js/issues) or by contributing features/bug fixes through pull requests.
 
 ## How to start with diagram-js
 
 
-    mkdir dmn.io
-    cd dmn.io
+    mkdir bpmn.io
+    cd bpmn.io
 
-    git clone git@github.com:dmn-io/table-js.git
+    git clone git@github.com:bpmn-io/table-js.git
     (cd table-js && npm i)
 
     // Run the test suite
@@ -19,7 +19,7 @@ We love you to contribute to this project by filing bugs, helping others on the 
 
 ## Working with issues
 
-We use our [issue tracker](https://github.com/dmn-io/table-js/issues) for project communication.
+We use our [issue tracker](https://github.com/bpmn-io/table-js/issues) for project communication.
 When using the issue tracker,
 
 * Be descriptive when creating an issue (what, where, when and how does a problem pop up)?

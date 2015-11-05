@@ -1,5 +1,5 @@
 > The project is in an early development stage.
-> For the time being, please refer to our [comprehensive test suite](https://github.com/dmn-io/table-js/tree/master/test/spec) for usage examples.
+> For the time being, please refer to our [comprehensive test suite](https://github.com/bpmn-io/table-js/tree/master/test/spec) for usage examples.
 
 
 # table-js
