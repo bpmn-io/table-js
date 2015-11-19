@@ -6,7 +6,7 @@
 
 A toolbox for displaying and modifying tables on the web.
 
-[![Build Status](https://travis-ci.org/dmn-io/table-js.svg?branch=master)](https://travis-ci.org/dmn-io/table-js)
+[![Build Status](https://travis-ci.org/bpmn-io/table-js.svg?branch=master)](https://travis-ci.org/bpmn-io/table-js)
 
 ## Hacking the Project
 
