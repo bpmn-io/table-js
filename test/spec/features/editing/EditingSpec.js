@@ -17,8 +17,11 @@ describe('features/editing', function() {
     sheet.addColumn({id: 'col1'});
     sheet.addColumn({id: 'col2'});
     sheet.addRow({id: 'row1'});
+    sheet.addRow({id: 'row2'});
     sheet.setCellContent({row: 'row1', column: 'col1', content:'test'});
     sheet.setCellContent({row: 'row1', column: 'col2', content:'test2'});
+    sheet.setCellContent({row: 'row2', column: 'col1', content:'test3'});
+    sheet.setCellContent({row: 'row2', column: 'col2', content:'test4'});
 
   }));
 
@@ -65,6 +68,65 @@ describe('features/editing', function() {
       expect(element1.selected).to.be.false;
       expect(element2.selected).to.be.true;
     }));
+  });
+
+  describe('select above / below', function() {
+    it('should select the cell below', inject(function(selection, elementRegistry) {
+
+      // given
+      var cell1 = elementRegistry.get('cell_col1_row1');
+      var cell2 = elementRegistry.get('cell_col1_row2');
+      selection.select(cell1);
+
+      // when
+      selection.selectBelow();
+
+      // then
+      expect(cell1.selected).to.be.false;
+      expect(cell2.selected).to.be.true;
+    }));
+
+    it('should select the cell above', inject(function(selection, elementRegistry) {
+
+      // given
+      var cell1 = elementRegistry.get('cell_col1_row1');
+      var cell2 = elementRegistry.get('cell_col1_row2');
+      selection.select(cell2);
+
+      // when
+      selection.selectAbove();
+
+      // then
+      expect(cell1.selected).to.be.true;
+      expect(cell2.selected).to.be.false;
+    }));
+
+    it('should keep the cell selected if there is none below', inject(function(selection, elementRegistry) {
+
+      // given
+      var cell2 = elementRegistry.get('cell_col1_row2');
+      selection.select(cell2);
+
+      // when
+      selection.selectBelow();
+
+      // then
+      expect(cell2.selected).to.be.true;
+    }));
+
+    it('should keep the cell selected if there is none above', inject(function(selection, elementRegistry) {
+
+      // given
+      var cell1 = elementRegistry.get('cell_col1_row1');
+      selection.select(cell1);
+
+      // when
+      selection.selectAbove();
+
+      // then
+      expect(cell1.selected).to.be.true;
+    }));
+
   });
 
 });
