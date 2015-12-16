@@ -5,6 +5,7 @@ var TestHelper = require('../../TestHelper');
 /* global bootstrapTable, inject, sinon */
 
 var merge = require('lodash/object/merge');
+var forEach = require('lodash/collection/forEach');
 var TestContainer = require('mocha-test-container-support');
 
 describe('Sheet', function() {
@@ -523,4 +524,57 @@ describe('Sheet', function() {
 
   });
 
+  describe('row move', function() {
+
+    var rows;
+
+    beforeEach(function() {
+      container = TestContainer.get(this);
+    });
+    beforeEach(createTable());
+    beforeEach(inject(function(sheet) {
+      rows = [
+        {id: '1'},
+        {id: '2'},
+        {id: '3'}
+      ];
+      forEach(rows, function(row) {
+        sheet.addRow(row);
+      });
+    }));
+
+
+    it('it should move a row above another row', inject(function(sheet) {
+      // when
+      sheet.moveRow(rows[1], rows[0], true);
+
+      // then
+      expect(rows[1].next).to.eql(rows[0]);
+    }));
+
+    it('it should move a row below another row', inject(function(sheet) {
+      // when
+      sheet.moveRow(rows[0], rows[2], false);
+
+      // then
+      expect(rows[2].next).to.eql(rows[0]);
+    }));
+
+    it('it should update the last row property when moving something to the last row', inject(function(sheet) {
+      // when
+      sheet.moveRow(rows[0], rows[2], false);
+
+      // then
+      expect(sheet.getLastRow('body')).to.eql(rows[0]);
+    }));
+
+    it('it should update the last row property when moving the last row away', inject(function(sheet) {
+      // when
+      sheet.moveRow(rows[2], rows[0], true);
+
+      // then
+      expect(sheet.getLastRow('body')).to.eql(rows[1]);
+    }));
+
+  });
 });
