@@ -577,4 +577,58 @@ describe('Sheet', function() {
     }));
 
   });
+
+  describe('column move', function() {
+
+    var columns;
+
+    beforeEach(function() {
+      container = TestContainer.get(this);
+    });
+    beforeEach(createTable());
+    beforeEach(inject(function(sheet) {
+      columns = [
+        {id: '1'},
+        {id: '2'},
+        {id: '3'}
+      ];
+      forEach(columns, function(column) {
+        sheet.addColumn(column);
+      });
+    }));
+
+
+    it('it should move a column left to another column', inject(function(sheet) {
+      // when
+      sheet.moveColumn(columns[1], columns[0], true);
+
+      // then
+      expect(columns[1].next).to.eql(columns[0]);
+    }));
+
+    it('it should move a column right to another column', inject(function(sheet) {
+      // when
+      sheet.moveColumn(columns[0], columns[2], false);
+
+      // then
+      expect(columns[2].next).to.eql(columns[0]);
+    }));
+
+    it('it should update the last column property when moving something to the last column', inject(function(sheet) {
+      // when
+      sheet.moveColumn(columns[0], columns[2], false);
+
+      // then
+      expect(sheet.getLastColumn()).to.eql(columns[0]);
+    }));
+
+    it('it should update the last column property when moving the last column away', inject(function(sheet) {
+      // when
+      sheet.moveColumn(columns[2], columns[0], true);
+
+      // then
+      expect(sheet.getLastColumn()).to.eql(columns[1]);
+    }));
+
+  });
 });
