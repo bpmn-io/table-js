@@ -5,12 +5,14 @@ var TestHelper = require('../../../TestHelper');
 /* global bootstrapTable, inject */
 
 
-var utilityColumnModule = require('../../../../lib/features/utility-column');
+var utilityColumnModule = require('../../../../lib/features/utility-column'),
+    tableNameModule = require('../../../../lib/features/table-name'),
+    modelingModule = require('../../../../lib/features/modeling');
 
 
 describe('features/utility-column', function() {
 
-  beforeEach(bootstrapTable({ modules: [ utilityColumnModule ] }));
+  beforeEach(bootstrapTable({ modules: [ modelingModule, tableNameModule, utilityColumnModule ] }));
 
   beforeEach(inject(function(sheet) {
 
@@ -45,4 +47,3 @@ describe('features/utility-column', function() {
   });
 
 });
-
