@@ -3,7 +3,8 @@
   "version": "0.5.0",
   "description": "A table editing framework for the web",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "dev": "grunt auto-test"
   },
   "repository": {
     "type": "git",
@@ -15,41 +16,57 @@
     "office",
     "table-js"
   ],
-  "author": "bpmn.io",
+  "author": {
+    "name": "Sebastian Stamm",
+    "url": "https://github.com/SebastianStamm"
+  },
+  "contributors": [
+    {
+      "name": "bpmn.io contributors",
+      "url": "https://github.com/bpmn-io"
+    }
+  ],
   "license": "MIT",
+  "browserify": {
+    "transform": [
+      [ "stringify", { "global": true, "extensions": [ ".html" ] } ]
+    ]
+  },
   "devDependencies": {
-    "brfs": "~1.2.0",
     "chai": "~2.2.0",
+    "browserify": "^13.0.0",
+    "browserify-derequire": "^0.9.1",
     "grunt": "~0.4.4",
     "grunt-contrib-jshint": "^0.7.2",
     "grunt-jsdoc": "^0.5.1",
-    "grunt-karma": "^0.8.0",
+    "grunt-karma": "^0.12.0",
     "grunt-release": "^0.7.0",
-    "karma": "^0.12.8",
-    "karma-browserify": "^4.0.0",
+    "karma": "^0.13.0",
+    "karma-browserify": "^5.0.1",
     "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^0.1.2",
+    "karma-chrome-launcher": "^0.2.2",
     "karma-firefox-launcher": "^0.1.3",
-    "karma-ie-launcher": "^0.1.4",
-    "karma-mocha": "~0.1.10",
-    "karma-phantomjs-launcher": "^0.1.2",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-mocha": "~0.1.0",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "karma-safari-launcher": "^0.1.1",
     "karma-sinon-chai": "~0.3.0",
+    "karma-spec-reporter": "0.0.26",
     "load-grunt-tasks": "^0.3.0",
-    "mocha-test-container-support": "~0.1.0",
+    "mocha": "^2.2.5",
+    "mocha-test-container-support": "0.2.0",
+    "phantomjs": "^1.9.19",
     "sinon": "~1.14.1",
     "sinon-chai": "~2.7.0",
-    "time-grunt": "^0.3.0"
+    "stringify": "^3.1.0",
+    "time-grunt": "^0.3.2",
+    "watchify": "^3.7.0"
   },
   "dependencies": {
-    "diagram-js": "^0.11.0",
+    "diagram-js": "^0.16.0",
     "didi": "^0.0.4",
     "inherits": "^2.0.1",
     "lodash": "^3.0.1",
     "min-dom": "^0.2.0"
-  },
-  "browserify": {
-    "transform": [
-      "brfs"
-    ]
   }
 }
