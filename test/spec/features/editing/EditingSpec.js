@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
 /* global bootstrapTable, inject */
 
@@ -14,14 +14,14 @@ describe('features/editing', function() {
 
   beforeEach(inject(function(sheet) {
 
-    sheet.addColumn({id: 'col1'});
-    sheet.addColumn({id: 'col2'});
-    sheet.addRow({id: 'row1'});
-    sheet.addRow({id: 'row2'});
-    sheet.setCellContent({row: 'row1', column: 'col1', content:'test'});
-    sheet.setCellContent({row: 'row1', column: 'col2', content:'test2'});
-    sheet.setCellContent({row: 'row2', column: 'col1', content:'test3'});
-    sheet.setCellContent({row: 'row2', column: 'col2', content:'test4'});
+    sheet.addColumn({ id: 'col1' });
+    sheet.addColumn({ id: 'col2' });
+    sheet.addRow({ id: 'row1' });
+    sheet.addRow({ id: 'row2' });
+    sheet.setCellContent({ row: 'row1', column: 'col1', content:'test' });
+    sheet.setCellContent({ row: 'row1', column: 'col2', content:'test2' });
+    sheet.setCellContent({ row: 'row2', column: 'col1', content:'test3' });
+    sheet.setCellContent({ row: 'row2', column: 'col2', content:'test4' });
 
   }));
 

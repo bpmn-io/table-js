@@ -21,7 +21,7 @@ describe('table', function() {
 
     it('should bootstrap', function() {
 
-      var table = new Table({
+      new Table({
         sheet: {
           container: container,
           width: 700,

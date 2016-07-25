@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
 /* global bootstrapTable, inject */
 
@@ -13,7 +13,7 @@ describe('features/modeling - delete Row', function() {
   beforeEach(bootstrapTable({ modules: [ modelingModule, tableNameModule ] }));
 
   beforeEach(inject(function(sheet) {
-    sheet.addColumn({id: 'col'});
+    sheet.addColumn({ id: 'col' });
   }));
 
 
@@ -24,7 +24,7 @@ describe('features/modeling - delete Row', function() {
     beforeEach(inject(function(sheet) {
 
       // add new shape
-      newRow = {id: 'row'};
+      newRow = { id: 'row' };
       sheet.addRow(newRow);
     }));
 
@@ -74,7 +74,7 @@ describe('features/modeling - delete Column', function() {
   beforeEach(bootstrapTable({ modules: [ modelingModule, tableNameModule ] }));
 
   beforeEach(inject(function(sheet) {
-    sheet.addRow({id: 'row'});
+    sheet.addRow({ id: 'row' });
   }));
 
 
@@ -85,7 +85,7 @@ describe('features/modeling - delete Column', function() {
     beforeEach(inject(function(sheet) {
 
       // add new shape
-      newColumn = {id: 'column'};
+      newColumn = { id: 'column' };
       sheet.addColumn(newColumn);
     }));
 

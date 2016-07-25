@@ -1,8 +1,8 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
-/* global bootstrapTable, inject, sinon */
+/* global bootstrapTable, inject */
 
 
 var tableNameModule = require('../../../../lib/features/table-name');
@@ -38,4 +38,3 @@ describe('features/table-name', function() {
   });
 
 });
-

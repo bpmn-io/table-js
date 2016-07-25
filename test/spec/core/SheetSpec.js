@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../../TestHelper');
+require('../../TestHelper');
 
 /* global bootstrapTable, inject, sinon */
 
@@ -139,9 +139,9 @@ describe('Sheet', function() {
     it('should create a cell for each existing column', inject(function(sheet, elementRegistry) {
 
       //given
-      var col1 = {id: 'c1'},
-          col2 = {id: 'c2'},
-          row  = {id: 'r'};
+      var col1 = { id: 'c1' },
+          col2 = { id: 'c2' },
+          row  = { id: 'r' };
 
       sheet.addColumn(col1);
       sheet.addColumn(col2);
@@ -198,9 +198,9 @@ describe('Sheet', function() {
     it('should remove cells from the row', inject(function(sheet, elementRegistry) {
 
       //given
-      var col1 = {id: 'c1'},
-          col2 = {id: 'c2'},
-          row  = {id: 'r'};
+      var col1 = { id: 'c1' },
+          col2 = { id: 'c2' },
+          row  = { id: 'r' };
 
       sheet.addColumn(col1);
       sheet.addColumn(col2);
@@ -218,10 +218,10 @@ describe('Sheet', function() {
 
     it('should add rows in a specified order', inject(function(sheet) {
       // given
-      var column = {id: 'c'},
-          row1 = {id: 'r1'},
-          row2 = {id: 'r2', next: row1},
-          row3 = {id: 'r3', previous: row2};
+      var column = { id: 'c' },
+          row1 = { id: 'r1' },
+          row2 = { id: 'r2', next: row1 },
+          row3 = { id: 'r3', previous: row2 };
 
       sheet.addColumn(column);
 
@@ -267,9 +267,9 @@ describe('Sheet', function() {
     it('should create cells for rows', inject(function(sheet, elementRegistry) {
 
       // given
-      var row1 = {id: 'r1'},
-          row2 = {id: 'r2'},
-          column  = {id: 'c'};
+      var row1 = { id: 'r1' },
+          row2 = { id: 'r2' },
+          column  = { id: 'c' };
 
       sheet.addRow(row1);
       sheet.addRow(row2);
@@ -285,10 +285,10 @@ describe('Sheet', function() {
 
     it('should add columns in a specified order', inject(function(sheet) {
       // given
-      var row = {id: 'r'},
-          column1 = {id: 'c1'},
-          column2 = {id: 'c2', next: column1},
-          column3 = {id: 'c3', previous: column2};
+      var row = { id: 'r' },
+          column1 = { id: 'c1' },
+          column2 = { id: 'c2', next: column1 },
+          column3 = { id: 'c3', previous: column2 };
 
       sheet.addRow(row);
 
@@ -336,9 +336,9 @@ describe('Sheet', function() {
     it('should remove cells from the column', inject(function(sheet, elementRegistry) {
 
       //given
-      var row1 = {id: 'r1'},
-          row2 = {id: 'r2'},
-          column  = {id: 'c'};
+      var row1 = { id: 'r1' },
+          row2 = { id: 'r2' },
+          column  = { id: 'c' };
 
       sheet.addRow(row1);
       sheet.addRow(row2);
@@ -393,9 +393,9 @@ describe('Sheet', function() {
 
     it('should set the colspan attribute', inject(function(sheet, elementRegistry, graphicsFactory) {
       // given
-      var row = {id: 'r'},
-          column1 = {id: 'c1'},
-          column2 = {id: 'c2'};
+      var row = { id: 'r' },
+          column1 = { id: 'c1' },
+          column2 = { id: 'c2' };
 
       sheet.addRow(row);
       sheet.addColumn(column1);
@@ -411,10 +411,10 @@ describe('Sheet', function() {
 
     it('should hide subsequent cells', inject(function(sheet, elementRegistry, graphicsFactory) {
       // given
-      var row = {id: 'r'},
-          column1 = {id: 'c1'},
-          column2 = {id: 'c2'},
-          column3 = {id: 'c3'};
+      var row = { id: 'r' },
+          column1 = { id: 'c1' },
+          column2 = { id: 'c2' },
+          column3 = { id: 'c3' };
 
       sheet.addRow(row);
       sheet.addColumn(column1);
@@ -432,10 +432,10 @@ describe('Sheet', function() {
 
     it('should not affect cells to the left', inject(function(sheet, elementRegistry, graphicsFactory) {
       // given
-      var row = {id: 'r'},
-          column1 = {id: 'c1'},
-          column2 = {id: 'c2'},
-          column3 = {id: 'c3'};
+      var row = { id: 'r' },
+          column1 = { id: 'c1' },
+          column2 = { id: 'c2' },
+          column3 = { id: 'c3' };
 
       sheet.addRow(row);
       sheet.addColumn(column1);
@@ -463,9 +463,9 @@ describe('Sheet', function() {
 
     it('should set the rowspan attribute', inject(function(sheet, elementRegistry, graphicsFactory) {
       // given
-      var row1 = {id: 'r1'},
-          row2 = {id: 'r2'},
-          column = {id: 'c'};
+      var row1 = { id: 'r1' },
+          row2 = { id: 'r2' },
+          column = { id: 'c' };
 
       sheet.addRow(row1);
       sheet.addRow(row2);
@@ -481,10 +481,10 @@ describe('Sheet', function() {
 
     it('should hide subsequent cells', inject(function(sheet, elementRegistry, graphicsFactory) {
       // given
-      var column = {id: 'c'},
-          row1 = {id: 'r1'},
-          row2 = {id: 'r2'},
-          row3 = {id: 'r3'};
+      var column = { id: 'c' },
+          row1 = { id: 'r1' },
+          row2 = { id: 'r2' },
+          row3 = { id: 'r3' };
 
       sheet.addColumn(column);
       sheet.addRow(row1);
@@ -502,10 +502,10 @@ describe('Sheet', function() {
 
     it('should not affect cells to the left', inject(function(sheet, elementRegistry, graphicsFactory) {
       // given
-      var column = {id: 'c'},
-          row1 = {id: 'r1'},
-          row2 = {id: 'r2'},
-          row3 = {id: 'r3'};
+      var column = { id: 'c' },
+          row1 = { id: 'r1' },
+          row2 = { id: 'r2' },
+          row3 = { id: 'r3' };
 
       sheet.addColumn(column);
       sheet.addRow(row1);
@@ -534,9 +534,9 @@ describe('Sheet', function() {
     beforeEach(createTable());
     beforeEach(inject(function(sheet) {
       rows = [
-        {id: '1'},
-        {id: '2'},
-        {id: '3'}
+        { id: '1' },
+        { id: '2' },
+        { id: '3' }
       ];
       forEach(rows, function(row) {
         sheet.addRow(row);
@@ -588,9 +588,9 @@ describe('Sheet', function() {
     beforeEach(createTable());
     beforeEach(inject(function(sheet) {
       columns = [
-        {id: '1'},
-        {id: '2'},
-        {id: '3'}
+        { id: '1' },
+        { id: '2' },
+        { id: '3' }
       ];
       forEach(columns, function(column) {
         sheet.addColumn(column);

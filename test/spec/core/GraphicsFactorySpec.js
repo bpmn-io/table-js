@@ -1,8 +1,8 @@
 'use strict';
 
-var TestHelper = require('../../TestHelper');
+require('../../TestHelper');
 
-/* global bootstrapTable, inject, sinon */
+/* global bootstrapTable, inject */
 
 var merge = require('lodash/object/merge');
 var TestContainer = require('mocha-test-container-support');

@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
 /* global bootstrapTable, inject */
 
@@ -14,9 +14,9 @@ describe('features/utility-column', function() {
 
   beforeEach(inject(function(sheet) {
 
-    sheet.addColumn({id: 'col1'});
-    sheet.addRow({id: 'row1'});
-    sheet.addRow({id: 'row2'});
+    sheet.addColumn({ id: 'col1' });
+    sheet.addRow({ id: 'row1' });
+    sheet.addRow({ id: 'row2' });
 
   }));
 
@@ -45,7 +45,7 @@ describe('features/utility-column', function() {
   describe('update', function() {
     it('should display line number for newly added row', function(done) {
       inject(function(sheet, elementRegistry) {
-        sheet.addRow({id:'row3'});
+        sheet.addRow({ id:'row3' });
 
         var ln = elementRegistry.get('cell_utilityColumn_row3');
 
@@ -59,7 +59,7 @@ describe('features/utility-column', function() {
 
     it('should update line number when adding row in the middle', function(done) {
       inject(function(sheet, elementRegistry) {
-        sheet.addRow({id:'row3', previous: elementRegistry.get('row1')});
+        sheet.addRow({ id:'row3', previous: elementRegistry.get('row1') });
 
         // wait for line numbers to be updated
         window.setTimeout(function() {
@@ -86,4 +86,3 @@ describe('features/utility-column', function() {
   });
 
 });
-

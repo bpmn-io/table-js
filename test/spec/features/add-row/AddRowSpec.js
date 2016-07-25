@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
 /* global bootstrapTable, inject */
 
@@ -14,9 +14,9 @@ describe('features/add-row', function() {
 
   beforeEach(inject(function(sheet) {
 
-    sheet.addColumn({id: 'col1'});
-    sheet.addColumn({id: 'col2'});
-    sheet.addRow({id: 'row1'});
+    sheet.addColumn({ id: 'col1' });
+    sheet.addColumn({ id: 'col2' });
+    sheet.addRow({ id: 'row1' });
 
   }));
 

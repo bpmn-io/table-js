@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
 /* global bootstrapTable, inject */
 
@@ -14,10 +14,10 @@ describe('features/interaction-events', function() {
 
   beforeEach(inject(function(sheet) {
 
-    sheet.addColumn({id: 'col1'});
-    sheet.addColumn({id: 'col2'});
-    sheet.addRow({id: 'row1'});
-    sheet.setCellContent({row: 'row1', column: 'col1', content:'test'});
+    sheet.addColumn({ id: 'col1' });
+    sheet.addColumn({ id: 'col2' });
+    sheet.addRow({ id: 'row1' });
+    sheet.setCellContent({ row: 'row1', column: 'col1', content:'test' });
 
   }));
 

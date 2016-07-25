@@ -1,8 +1,7 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
-var domify = require('min-dom/lib/domify');
 var MouseEvents = require('../../../util/MouseEvents');
 /* global bootstrapTable, inject */
 
@@ -40,4 +39,3 @@ describe('features/controls', function() {
   }));
 
 });
-

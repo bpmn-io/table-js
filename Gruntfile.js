@@ -32,17 +32,25 @@ module.exports = function(grunt) {
       }
     },
 
-    jshint: {
-      src: ['<%= config.sources %>'],
-
-      options: {
-        jshintrc: true
+    eslint: {
+      check: {
+        src: [
+          '{lib,test}/**/*.js'
+        ]
+      },
+      fix: {
+        src: [
+          '{lib,test}/**/*.js'
+        ],
+        options: {
+          fix: true
+        }
       }
     },
 
     karma: {
       options: {
-        configFile: '<%= config.tests %>/config/karma.unit.js',
+        configFile: '<%= config.tests %>/config/karma.unit.js'
       },
       single: {
         singleRun: true,
@@ -73,5 +81,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('auto-test', [ 'karma:unit' ]);
 
-  grunt.registerTask('default', [ 'jshint', 'test', 'jsdoc' ]);
+  grunt.registerTask('default', [ 'eslint:check', 'test', 'jsdoc' ]);
 };

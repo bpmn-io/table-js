@@ -1,24 +1,22 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
 /* global bootstrapTable, inject */
 
 
-var utilityColumnModule = require('../../../../lib/features/utility-column'),
-    tableNameModule = require('../../../../lib/features/table-name'),
-    modelingModule = require('../../../../lib/features/modeling');
+var utilityColumnModule = require('../../../../lib/features/utility-column');
 
 
 describe('features/utility-column', function() {
 
-  beforeEach(bootstrapTable({ modules: [ modelingModule, tableNameModule, utilityColumnModule ] }));
+  beforeEach(bootstrapTable({ modules: [ utilityColumnModule ] }));
 
   beforeEach(inject(function(sheet) {
 
-    sheet.addColumn({id: 'col1'});
-    sheet.addColumn({id: 'col2'});
-    sheet.addRow({id: 'row1'});
+    sheet.addColumn({ id: 'col1' });
+    sheet.addColumn({ id: 'col2' });
+    sheet.addRow({ id: 'row1' });
 
   }));
 

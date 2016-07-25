@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
 /* global bootstrapTable, inject */
 
@@ -13,10 +13,10 @@ describe('features/modeling - edit cell', function() {
   before(bootstrapTable({ modules: [ modelingModule, tableNameModule ] }));
 
   before(inject(function(sheet) {
-    sheet.addColumn({id: 'col'});
-    sheet.addColumn({id: 'col2'});
-    sheet.addRow({id: 'row'});
-    sheet.setCellContent({row: 'row', column: 'col', content: 'asdf'});
+    sheet.addColumn({ id: 'col' });
+    sheet.addColumn({ id: 'col2' });
+    sheet.addRow({ id: 'row' });
+    sheet.setCellContent({ row: 'row', column: 'col', content: 'asdf' });
   }));
 
 

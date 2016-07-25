@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
 var domify = require('min-dom/lib/domify');
 
@@ -17,9 +17,9 @@ describe('features/complex-cell', function() {
 
   beforeEach(inject(function(sheet, elementRegistry) {
 
-    sheet.addColumn({id: 'col1'});
-    sheet.addColumn({id: 'col2'});
-    sheet.addRow({id: 'row'});
+    sheet.addColumn({ id: 'col1' });
+    sheet.addColumn({ id: 'col2' });
+    sheet.addRow({ id: 'row' });
 
     var cell = elementRegistry.get('cell_col2_row');
 
@@ -96,8 +96,8 @@ describe('features/complex-cell', function() {
     var e = elementRegistry.getGraphics('cell_col2_row');
     while (e)
     {
-        cellOffset += e.offsetLeft;
-        e = e.offsetParent;
+      cellOffset += e.offsetLeft;
+      e = e.offsetParent;
     }
 
     expect(cell.complex.template.parentNode.offsetLeft).to.eql(cellOffset);
@@ -116,10 +116,9 @@ describe('features/complex-cell', function() {
 
     expect(complexCell.isOpen()).to.be.true;
 
-    popupMenu.open({position: {x:0, y:0}, entries: []});
+    popupMenu.open({ position: { x:0, y:0 }, entries: [] });
 
     expect(complexCell.isOpen()).to.be.false;
   }));
 
 });
-

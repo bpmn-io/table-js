@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../../TestHelper');
+require('../../TestHelper');
 
 /* global bootstrapTable, inject */
 var merge = require('lodash/object/merge');
@@ -26,8 +26,8 @@ describe('ElementRegistry', function() {
   beforeEach(createTable());
 
   beforeEach(inject(function(sheet) {
-    sheet.addRow({id: '1', foo: 'bar'});
-    sheet.addRow({id: '2', foo: 'test'});
+    sheet.addRow({ id: '1', foo: 'bar' });
+    sheet.addRow({ id: '2', foo: 'test' });
   }));
 
   describe('add', function() {
@@ -53,7 +53,7 @@ describe('ElementRegistry', function() {
     it('should wire element', inject(function(elementRegistry, sheet) {
 
       // when
-      sheet.removeRow({id: '1'});
+      sheet.removeRow({ id: '1' });
 
       // then
       var shape = elementRegistry.get('1'),

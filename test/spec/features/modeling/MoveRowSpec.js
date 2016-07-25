@@ -1,6 +1,7 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
+
 var forEach = require('lodash/collection/forEach');
 /* global bootstrapTable, inject */
 
@@ -14,9 +15,9 @@ describe('features/modeling - move row', function() {
   var rows;
   before(inject(function(sheet) {
     rows = [
-      {id: '1'},
-      {id: '2'},
-      {id: '3'}
+      { id: '1' },
+      { id: '2' },
+      { id: '3' }
     ];
     forEach(rows, function(row) {
       sheet.addRow(row);

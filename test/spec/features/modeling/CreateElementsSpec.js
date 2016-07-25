@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../../../TestHelper');
+require('../../../TestHelper');
 
 /* global bootstrapTable, inject */
 
@@ -14,7 +14,7 @@ describe('features/modeling - create Row', function() {
   beforeEach(bootstrapTable({ modules: [ modelingModule, tableNameModule ] }));
 
   beforeEach(inject(function(sheet) {
-    sheet.addColumn({id: 'col'});
+    sheet.addColumn({ id: 'col' });
   }));
 
 
@@ -87,7 +87,7 @@ describe('features/modeling - create Column', function() {
   beforeEach(bootstrapTable({ modules: [ modelingModule, tableNameModule ] }));
 
   beforeEach(inject(function(sheet) {
-    sheet.addRow({id: 'row'});
+    sheet.addRow({ id: 'row' });
   }));
 
 
