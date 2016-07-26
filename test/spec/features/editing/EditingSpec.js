@@ -70,6 +70,60 @@ describe('features/editing', function() {
     }));
   });
 
+  describe('selection freeze', function() {
+    var element1, element2;
+    beforeEach(inject(function(elementRegistry) {
+      element1 = elementRegistry.get('cell_col1_row1');
+      element2 = elementRegistry.get('cell_col2_row1');
+    }));
+    it('should not update the selection when selection is frozen', inject(function(selection, elementRegistry) {
+      // given
+      selection.select(element1);
+
+      // when
+      selection.freeze();
+      selection.select(element2);
+
+      // then
+      expect(selection.get()).to.eql(element1);
+    }));
+    it('should update the selection when selection is unfrozen', inject(function(selection, elementRegistry) {
+      // given
+      selection.select(element1);
+      selection.freeze();
+      selection.select(element2);
+
+      // when
+      selection.unfreeze();
+
+      // then
+      expect(selection.get()).to.eql(element2);
+    }));
+    it('should not unset the selection when selection is frozen', inject(function(selection, elementRegistry) {
+      // given
+      selection.select(element1);
+
+      // when
+      selection.freeze();
+      selection.deselect();
+
+      // then
+      expect(selection.get()).to.eql(element1);
+    }));
+    it('should unset the selection when selection is unfrozen', inject(function(selection, elementRegistry) {
+      // given
+      selection.select(element1);
+      selection.freeze();
+      selection.deselect();
+
+      // when
+      selection.unfreeze();
+
+      // then
+      expect(selection.get()).to.be.null;
+    }));
+  });
+
   describe('select above / below', function() {
     it('should select the cell below', inject(function(selection, elementRegistry) {
 
