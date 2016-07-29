@@ -63,16 +63,6 @@ module.exports = function(grunt) {
         debug: true
       }
     },
-
-    jsdoc: {
-      dist: {
-        src: [ '<%= config.sources %>/**/*.js' ],
-        options: {
-          destination: 'docs/api',
-          plugins: [ 'plugins/markdown' ]
-        }
-      }
-    }
   });
 
   // tasks
@@ -81,5 +71,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('auto-test', [ 'karma:unit' ]);
 
-  grunt.registerTask('default', [ 'eslint:check', 'test', 'jsdoc' ]);
+  grunt.registerTask('default', [ 'eslint:check', 'test' ]);
 };
