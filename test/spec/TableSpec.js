@@ -31,7 +31,8 @@ describe('table', function() {
     });
 
 
-    it('should offer #destroy method', function() {
+    it('should destroy', function() {
+      var sheet;
 
       // when
       var table = new Table({
@@ -42,8 +43,39 @@ describe('table', function() {
         }
       });
 
+      sheet = table.get('sheet');
+
+      table.destroy();
+
       // then
-      expect(table.destroy).to.be.an('function');
+      expect(sheet.getRootElement()).to.not.exist;
+    });
+
+
+    it('should clear', function() {
+      var elementRegistry,
+          sheet;
+
+      // when
+      var table = new Table({
+        sheet: {
+          container: container,
+          width: 700,
+          height: 500
+        }
+      });
+
+      sheet = table.get('sheet');
+      elementRegistry = table.get('elementRegistry');
+
+      sheet.addColumn({ id: 'c1' });
+
+      expect(elementRegistry.get('c1')).to.exist;
+
+      table.clear();
+
+      // then
+      expect(elementRegistry.get('c1')).to.not.exist;
     });
 
 
@@ -89,8 +121,13 @@ describe('table', function() {
             row: 'r1',
             content: 'foobar'
           });
+
         }]);
+
       });
+
     });
+
   });
+
 });

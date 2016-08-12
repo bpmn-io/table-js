@@ -161,6 +161,20 @@ describe('ElementRegistry', function() {
 
   });
 
+
+  describe('getAll', function() {
+
+    it('should get by id', inject(function(elementRegistry) {
+
+      // when
+      var elements = elementRegistry.getAll();
+
+      // then
+      expect(elements).to.have.length(2);
+    }));
+
+  });
+
   describe('filter', function() {
 
     it('should noop, returning all', inject(function(elementRegistry) {
