@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "diagram-js": "^0.16.0",
-    "didi": "^0.0.4",
+    "didi": "^0.1.0",
     "inherits": "^2.0.1",
     "lodash": "^3.0.1",
     "min-dom": "^0.2.0"
