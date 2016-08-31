@@ -2,7 +2,7 @@
 
 require('../../../TestHelper');
 
-var MouseEvents = require('../../../util/MouseEvents');
+var DOMEvents = require('../../../util/DOMEvents');
 /* global bootstrapTable, inject */
 
 
@@ -33,7 +33,7 @@ describe('features/controls', function() {
       fctCalled = true;
     });
 
-    MouseEvents.performMouseEvent('click', controls.controlsContainer.firstChild);
+    DOMEvents.performMouseEvent('click', controls.controlsContainer.firstChild);
 
     expect(fctCalled).to.eql(true);
   }));
