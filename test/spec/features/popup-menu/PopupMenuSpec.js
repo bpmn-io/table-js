@@ -57,6 +57,23 @@ describe('features/popup', function() {
     }));
 
 
+    it('should open at the right place', inject(function(popupMenu, sheet) {
+
+      // given
+      var container = sheet.getContainer(),
+          contextMenu;
+
+      // when
+      popupMenu.open({ position: { x: 100, y: 100 }, entries: [] });
+
+      contextMenu = domQuery('.tjs-context-menu', container);
+
+      // then
+      expect(contextMenu.offsetLeft).to.equal(100);
+      expect(contextMenu.offsetTop).to.equal(100);
+    }));
+
+
     it('should attach popup to html', inject(function(popupMenu) {
 
       // when
