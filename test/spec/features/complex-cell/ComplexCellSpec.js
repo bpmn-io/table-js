@@ -123,7 +123,7 @@ describe('features/complex-cell', function() {
     // calculate the cell offset by traversing the offset chain
     e = elementRegistry.getGraphics('cell_col2_row');
 
-    cellOffset = e.offsetLeft;
+    cellOffset = e.getBoundingClientRect().left;
 
     // then
     expect(cell.complex.template.parentNode.offsetLeft).to.eql(cellOffset);
