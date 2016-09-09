@@ -1,6 +1,6 @@
 {
   "name": "table-js",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A table editing framework for the web",
   "scripts": {
     "all": "grunt",
