@@ -1,8 +1,2 @@
-bower_components/
 node_modules/
-docs/api/
-dist/
-.idea/
-test/test_old
-.DS_Store
-*.log
+.vscode/
