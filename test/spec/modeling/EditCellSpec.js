@@ -2,7 +2,7 @@
 
 import { inject, bootstrap } from 'test/TestHelper';
 
-import ModelingModule from 'lib/modeling';
+import ModelingModule from 'lib/features/modeling';
 
 
 describe('modeling - EditCell', function() {
