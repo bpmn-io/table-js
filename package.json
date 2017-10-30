@@ -8,10 +8,12 @@
     "lint": "eslint lib test",
     "test": "karma start test/config/karma.unit.js --single-run --no-auto-watch"
   },
+  "module": "lib/Table.js",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-inferno": "^3.3.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
