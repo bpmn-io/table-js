@@ -18,10 +18,10 @@ describe('TableComponent', function() {
   beforeEach(bootstrap({}));
 
 
-  it('should render table', inject(function(eventBus, injector) {
+  it('should render table', inject(function(components, injector) {
 
     // when
-    const renderedTree = renderIntoDocument(<TableComponent eventBus={ eventBus } injector={ injector } />);
+    const renderedTree = renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
 
     // then
     const result = findRenderedDOMElementWithClass(renderedTree, 'tjs-table');
@@ -30,15 +30,15 @@ describe('TableComponent', function() {
   }));
 
 
-  it('should render head, body & foot', inject(function(eventBus, injector) {
+  it('should render head, body & foot', inject(function(components, injector) {
 
     // given
-    eventBus.on('render.head', () => () => <thead className="head"></thead>);
-    eventBus.on('render.body', () => () => <tbody className="body"></tbody>);
-    eventBus.on('render.foot', () => () => <tfoot className="foot"></tfoot>);
+    components.onGetComponent('table.head', () => () => <thead className="head"></thead>);
+    components.onGetComponent('table.body', () => () => <tbody className="body"></tbody>);
+    components.onGetComponent('table.foot', () => () => <tfoot className="foot"></tfoot>);
 
     // when
-    const renderedTree = renderIntoDocument(<TableComponent eventBus={ eventBus } injector={ injector } />);
+    const renderedTree = renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
 
     // then
     expect(findRenderedDOMElementWithClass(renderedTree, 'head')).to.exist;
@@ -47,7 +47,7 @@ describe('TableComponent', function() {
   }));
 
 
-  it('should provide child context', inject(function(eventBus, injector) {
+  it('should provide child context', inject(function(components, injector) {
     
     // given
     class Body extends Component {
@@ -55,19 +55,19 @@ describe('TableComponent', function() {
 
         // then
         expect(this.context.elementsChangedListeners).to.exist;
-        expect(this.context.eventBus).to.exist;
+        expect(this.context.components).to.exist;
         expect(this.context.injector).to.exist;
       }
     }
 
-    eventBus.on('render.body', () => Body);
+    components.onGetComponent('table.body', () => Body);
 
     // when
-    renderIntoDocument(<TableComponent eventBus={ eventBus } injector={ injector } />);
+    renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
   }));
 
 
-  it('should call event listeners on elements.changed', inject(function(eventBus, injector) {
+  it('should call event listeners on elements.changed', inject(function(components, eventBus, injector) {
 
     // given
     const onElementsChanged = sinon.spy();
@@ -78,9 +78,9 @@ describe('TableComponent', function() {
       }
     }
 
-    eventBus.on('render.body', () => Body);
+    components.onGetComponent('table.body', () => Body);
 
-    renderIntoDocument(<TableComponent eventBus={ eventBus } injector={ injector } />);
+    renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
 
     // when
     eventBus.fire('elements.changed', { elements: [ { id: 'foo' } ] });

@@ -9,8 +9,6 @@ import { query as domQuery, remove as domRemove } from 'min-dom';
 
 import { inject, bootstrap } from 'test/TestHelper';
 
-import RenderModule from 'lib/render';
-
 
 describe('render', function() {
 
@@ -19,13 +17,10 @@ describe('render', function() {
   beforeEach(function() {
     container = document.createElement('div');
 
-    container.classList.add('iwantthiscontainer');
-
     document.body.appendChild(container);
 
     bootstrap({
-      container,
-      modules: [ RenderModule ]
+      container
     })();
   });
 
@@ -34,7 +29,7 @@ describe('render', function() {
   });
 
 
-  it('should render', inject(function(renderer) {
+  it('should render', inject(function() {
     
     // then
     expect(domQuery('.tjs-container', container)).to.exist;
