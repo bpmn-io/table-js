@@ -47,6 +47,34 @@ describe('TableComponent', function() {
   }));
 
 
+  it('should render before table', inject(function(components, injector) {
+
+    // given
+    components.onGetComponent('table.before', () => () => <div className="before"></div>);
+
+    // when
+    const renderedTree = renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
+
+    // then
+    expect(findRenderedDOMElementWithClass(renderedTree, 'before')).to.exist;
+
+  }));
+
+
+  it('should render after table', inject(function(components, injector) {
+    
+    // given
+    components.onGetComponent('table.after', () => () => <div className="after"></div>);
+
+    // when
+    const renderedTree = renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
+
+    // then
+    expect(findRenderedDOMElementWithClass(renderedTree, 'after')).to.exist;
+
+  }));
+
+
   it('should provide child context', inject(function(components, injector) {
     
     // given
