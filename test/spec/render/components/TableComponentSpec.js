@@ -18,10 +18,10 @@ describe('TableComponent', function() {
   beforeEach(bootstrap({}));
 
 
-  it('should render table', inject(function(components, injector) {
+  it('should render table', inject(function(injector) {
 
     // when
-    const renderedTree = renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
+    const renderedTree = renderIntoDocument(<TableComponent injector={ injector } />);
 
     // then
     const result = findRenderedDOMElementWithClass(renderedTree, 'tjs-table');
@@ -38,7 +38,7 @@ describe('TableComponent', function() {
     components.onGetComponent('table.foot', () => () => <tfoot className="foot"></tfoot>);
 
     // when
-    const renderedTree = renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
+    const renderedTree = renderIntoDocument(<TableComponent injector={ injector } />);
 
     // then
     expect(findRenderedDOMElementWithClass(renderedTree, 'head')).to.exist;
@@ -53,7 +53,7 @@ describe('TableComponent', function() {
     components.onGetComponent('table.before', () => () => <div className="before"></div>);
 
     // when
-    const renderedTree = renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
+    const renderedTree = renderIntoDocument(<TableComponent injector={ injector } />);
 
     // then
     expect(findRenderedDOMElementWithClass(renderedTree, 'before')).to.exist;
@@ -67,7 +67,7 @@ describe('TableComponent', function() {
     components.onGetComponent('table.after', () => () => <div className="after"></div>);
 
     // when
-    const renderedTree = renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
+    const renderedTree = renderIntoDocument(<TableComponent injector={ injector } />);
 
     // then
     expect(findRenderedDOMElementWithClass(renderedTree, 'after')).to.exist;
@@ -82,8 +82,6 @@ describe('TableComponent', function() {
       componentWillMount() {
 
         // then
-        expect(this.context.elementsChangedListeners).to.exist;
-        expect(this.context.components).to.exist;
         expect(this.context.injector).to.exist;
       }
     }
@@ -91,30 +89,7 @@ describe('TableComponent', function() {
     components.onGetComponent('table.body', () => Body);
 
     // when
-    renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
-  }));
-
-
-  it('should call event listeners on elements.changed', inject(function(components, eventBus, injector) {
-
-    // given
-    const onElementsChanged = sinon.spy();
-
-    class Body extends Component {
-      componentWillMount() {
-        this.context.elementsChangedListeners['foo'] = onElementsChanged;
-      }
-    }
-
-    components.onGetComponent('table.body', () => Body);
-
-    renderIntoDocument(<TableComponent components={ components } injector={ injector } />);
-
-    // when
-    eventBus.fire('elements.changed', { elements: [ { id: 'foo' } ] });
-
-    // then
-    expect(onElementsChanged).to.have.been.called;
+    renderIntoDocument(<TableComponent injector={ injector } />);
   }));
 
 });
