@@ -20,7 +20,9 @@ describe('render', function() {
     document.body.appendChild(container);
 
     bootstrap({
-      container
+      renderer: {
+        container
+      }
     })();
   });
 

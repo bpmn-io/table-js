@@ -25,13 +25,21 @@ describe('Table', function() {
     ];
 
     // when
-    var table = new Table({ container, modules, bar: 'BAR' });
+    var table = new Table({
+      renderer: {
+        container
+      },
+      modules,
+      bar: 'BAR'
+    });
 
     // then
     expect(table.get('foo')).to.eql(1);
 
     expect(table.get('config')).to.eql({
-      container: container,
+      renderer: {
+        container
+      },
       bar: 'BAR'
     });
   });

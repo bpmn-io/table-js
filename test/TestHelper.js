@@ -30,11 +30,11 @@ export function bootstrap(options, locals) {
       INSTANCE.destroy();
     }
 
-    if (!actualOpts.container) {
+    if (!actualOpts.renderer) {
       let container = document.createElement('div');
 
       document.body.appendChild(container);
-      actualOpts.container = container;
+      actualOpts.renderer = { container };
     }
 
     INSTANCE = new Table(actualOpts);
