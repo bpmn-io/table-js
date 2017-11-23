@@ -12,12 +12,12 @@ describe('modeling - EditCell', function() {
   }));
 
 
-  let row, col, cell;
+  let row, cell;
 
   beforeEach(inject(function(modeling) {
 
     // given
-    col = modeling.addCol({ id: 'col1' });
+    modeling.addCol({ id: 'col1' });
     row = modeling.addRow({ id: 'row1' });
 
     cell = row.cells[0];

@@ -12,14 +12,12 @@ describe('modeling - RemoveRow', function() {
 
   let row1,
       row2,
-      row3,
-      col1,
-      col2;
+      row3;
 
   beforeEach(inject(function(sheet) {
 
-    col1 = sheet.addCol({ id: 'col1', cells: [] });
-    col2 = sheet.addCol({ id: 'col2', cells: [] });
+    sheet.addCol({ id: 'col1', cells: [] });
+    sheet.addCol({ id: 'col2', cells: [] });
 
     row1 = sheet.addRow({ id: 'row1', cells: [ {}, {} ] });
     row2 = sheet.addRow({ id: 'row2', cells: [ {}, {} ] });

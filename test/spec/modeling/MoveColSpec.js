@@ -10,9 +10,7 @@ describe('modeling - MoveCol', function() {
   }));
 
 
-  let row1,
-      row2,
-      col1,
+  let col1,
       col2,
       col3;
 
@@ -22,8 +20,8 @@ describe('modeling - MoveCol', function() {
     col2 = modeling.addCol({ id: 'col2', cells: [] });
     col3 = modeling.addCol({ id: 'col2', cells: [] });
 
-    row1 = modeling.addRow({ id: 'row1', cells: [ {}, {}, {} ] });
-    row2 = modeling.addRow({ id: 'row2', cells: [ {}, {}, {} ] });
+    modeling.addRow({ id: 'row1', cells: [ {}, {}, {} ] });
+    modeling.addRow({ id: 'row2', cells: [ {}, {}, {} ] });
 
   }));
 

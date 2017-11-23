@@ -15,7 +15,10 @@
     "node": true,
     "browser": true
   },
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:inferno/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -25,6 +28,7 @@
     }
   },
   "plugins": [
+    "inferno",
     "mocha"
   ],
   "globals": {

@@ -62,14 +62,11 @@ describe('modeling - AddCol', function() {
 
 
   describe('with existing rows', function() {
-    
-    let row1,
-        row2;
-
+  
     beforeEach(inject(function(sheet) {
       
-      row1 = sheet.addCol({ id: 'row1', cells: [] });
-      row2 = sheet.addCol({ id: 'row2', cells: [] });
+      sheet.addCol({ id: 'row1', cells: [] });
+      sheet.addCol({ id: 'row2', cells: [] });
 
     }));
 

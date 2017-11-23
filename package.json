@@ -2,9 +2,8 @@
   "name": "table-js",
   "version": "1.0.0",
   "scripts": {
-    "all": "npm run lint && npm run test && npm run build",
-    "auto-test": "karma start test/config/karma.unit.js --log-level debug",
-    "distro": "webpack",
+    "all": "npm run lint && npm run test",
+    "dev": "karma start test/config/karma.unit.js --log-level debug",
     "lint": "eslint lib test",
     "test": "karma start test/config/karma.unit.js --single-run --no-auto-watch"
   },
@@ -23,6 +22,7 @@
     "diagram-js": "^0.21.1",
     "didi": "^0.1.1",
     "eslint": "^4.8.0",
+    "eslint-plugin-inferno": "^7.4.0",
     "eslint-plugin-mocha": "^4.11.0",
     "ids": "^0.2.0",
     "inferno": "^3.9.0",

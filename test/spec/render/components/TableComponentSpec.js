@@ -1,4 +1,3 @@
-/* global sinon */
 
 // eslint-disable-next-line
 import Inferno from 'inferno';
