@@ -1,5 +1,7 @@
-import uniq from 'lodash/uniq';
 import forEach from 'lodash/forEach';
+import uniq from 'lodash/uniq';
+
+import TestContainer from 'mocha-test-container-support';
 
 import Table from 'lib/Table';
 
@@ -7,9 +9,24 @@ import Table from 'lib/Table';
 let INSTANCE = null;
 
 
-export function bootstrap(options, locals) {
+export function bootstrap(options = {}, locals = {}) {
 
   return function() {
+
+    let testContainer;
+    // Make sure the test container is an optional dependency and we fall back
+    // to an empty <div> if it does not exist.
+    //
+    // This is needed if other libraries rely on this helper for testing
+    // while not adding the mocha-test-container-support as a dependency.
+    try {
+      testContainer = TestContainer.get(this);
+    } catch (e) {
+      testContainer = document.createElement('div');
+      document.body.appendChild(testContainer);
+    }
+
+    testContainer.classList.add('test-container');
 
     const { ...actualOpts } = options;
 
@@ -31,10 +48,11 @@ export function bootstrap(options, locals) {
     }
 
     if (!actualOpts.renderer) {
-      let container = document.createElement('div');
+      actualOpts.renderer = {};
+    }
 
-      document.body.appendChild(container);
-      actualOpts.renderer = { container };
+    if (!actualOpts.renderer.container) {
+      actualOpts.renderer.container = testContainer;
     }
 
     INSTANCE = new Table(actualOpts);

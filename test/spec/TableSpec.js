@@ -1,24 +1,27 @@
 import Table from 'lib/Table';
 
+import { domify, remove as domRemove } from 'min-dom';
+
 
 describe('Table', function() {
 
   let container;
 
   beforeEach(function() {
-    container = document.createElement('div');
+    container = domify('<div></div>');
+
     document.body.appendChild(container);
   });
 
   afterEach(function() {
-    container.parentNode.removeChild(container);
+    domRemove(container);
   });
 
 
-  it('should construct with { modules, config }', function() {
+  it('should bootstrap', function() {
 
     // given
-    var modules = [
+    const modules = [
       {
         foo: [ 'value', 1 ]
       }
@@ -42,6 +45,34 @@ describe('Table', function() {
       },
       bar: 'BAR'
     });
+  });
+
+
+  it('#destroy', function() { 
+    
+    // when 
+    const table = new Table({ 
+      renderer: {
+        container 
+      } 
+    }); 
+
+    // then 
+    expect(table.destroy).to.be.a('function'); 
+  }); 
+
+
+  it('#clear', function() { 
+    
+    // when 
+    const table = new Table({ 
+      renderer: { 
+        container 
+      } 
+    }); 
+
+    // then 
+    expect(table.clear).to.be.a('function'); 
   });
 
 });

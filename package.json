@@ -10,7 +10,6 @@
   "module": "lib/Table.js",
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-inferno": "^3.3.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -40,6 +39,7 @@
     "lodash": "^4.17.4",
     "min-dom": "^0.3.0",
     "mocha": "^4.0.0",
+    "mocha-test-container-support": "^0.2.0",
     "puppeteer": "^0.11.0",
     "sinon": "^2.4.1",
     "sinon-chai": "^2.14.0"
