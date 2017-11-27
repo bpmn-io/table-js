@@ -10,7 +10,7 @@ describe('modeling - performance', function() {
   }));
 
 
-  it('should create HUGE table', inject(function(modeling, sheet) {
+  it.skip('should add 20000 cells', inject(function(modeling, sheet) {
 
     let now = performance.now();
 
