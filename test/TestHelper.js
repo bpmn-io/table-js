@@ -6,7 +6,7 @@ import TestContainer from 'mocha-test-container-support';
 import Table from 'lib/Table';
 
 
-let INSTANCE = null;
+let TABLE_JS = null;
 
 
 export function bootstrap(options = {}, locals = {}) {
@@ -43,8 +43,8 @@ export function bootstrap(options = {}, locals = {}) {
       )
     );
 
-    if (INSTANCE) {
-      INSTANCE.destroy();
+    if (TABLE_JS) {
+      TABLE_JS.destroy();
     }
 
     if (!actualOpts.renderer) {
@@ -55,7 +55,7 @@ export function bootstrap(options = {}, locals = {}) {
       actualOpts.renderer.container = testContainer;
     }
 
-    INSTANCE = new Table(actualOpts);
+    TABLE_JS = new Table(actualOpts);
   };
 }
 
@@ -63,11 +63,15 @@ export function inject(fn) {
 
   return function() {
 
-    if (!INSTANCE) {
-      throw new Error('no bootstrapped INSTANCE, call bootstrap(options, ...) first');
+    if (!TABLE_JS) {
+      throw new Error('no bootstrapped instance, call bootstrap(options, ...) first');
     }
 
-    INSTANCE.invoke(fn);
+    TABLE_JS.invoke(fn);
   };
 
+}
+
+export function getTableJS() {
+  return TABLE_JS;
 }
