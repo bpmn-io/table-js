@@ -21,8 +21,8 @@ function triggerMouseEvent(node, event, clientX = 0, clientY = 0) {
 
 describe('InteractionEvents', function() {
 
-  let withElementId,
-      withoutElementId;
+  let nodeWithElementId,
+      nodeWithoutElementId;
 
   beforeEach(bootstrap({
     modules: [ InterActionEventsModule ]
@@ -42,8 +42,8 @@ describe('InteractionEvents', function() {
 
     const cells = domQuery.all('td');
 
-    withoutElementId = cells[0];
-    withElementId = cells[1];
+    nodeWithoutElementId = cells[0];
+    nodeWithElementId = cells[1];
   }));
 
   function expectInteractionEvent(event) {
@@ -53,7 +53,7 @@ describe('InteractionEvents', function() {
       eventBus.on(`cell.${event}`, spy);
   
       // when
-      triggerMouseEvent(withElementId, event);
+      triggerMouseEvent(nodeWithElementId, event);
   
       // then
       expect(spy).to.have.been.called;
@@ -67,7 +67,7 @@ describe('InteractionEvents', function() {
       eventBus.on(`cell.${event}`, spy);
   
       // when
-      triggerMouseEvent(withoutElementId, event);
+      triggerMouseEvent(nodeWithoutElementId, event);
   
       // then
       expect(spy).to.not.have.been.called;
