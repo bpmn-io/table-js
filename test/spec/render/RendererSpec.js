@@ -9,7 +9,7 @@ import { bootstrap, inject } from 'test/TestHelper';
 import TestContainer from 'mocha-test-container-support';
 
 
-describe('render', function() {
+describe('Renderer', function() {
 
   let testContainer;
 
