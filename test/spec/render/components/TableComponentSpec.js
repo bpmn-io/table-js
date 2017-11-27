@@ -23,9 +23,9 @@ describe('TableComponent', function() {
     const renderedTree = renderIntoDocument(<TableComponent injector={ injector } />);
 
     // then
-    const result = findRenderedDOMElementWithClass(renderedTree, 'tjs-table');
+    const node = findRenderedDOMElementWithClass(renderedTree, 'tjs-table');
 
-    expect(result).to.exist;
+    expect(node).to.exist;
   }));
 
 
@@ -56,7 +56,6 @@ describe('TableComponent', function() {
 
     // then
     expect(findRenderedDOMElementWithClass(renderedTree, 'before')).to.exist;
-
   }));
 
 
@@ -70,7 +69,6 @@ describe('TableComponent', function() {
 
     // then
     expect(findRenderedDOMElementWithClass(renderedTree, 'after')).to.exist;
-
   }));
 
 

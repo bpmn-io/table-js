@@ -2,8 +2,9 @@
 
 import { inject, bootstrap } from 'test/TestHelper';
 
-import ModelingModule from 'lib/features/modeling';
+import CommandInterceptor from 'diagram-js/lib/command/CommandInterceptor';
 
+import ModelingModule from 'lib/features/modeling';
 
 describe('modeling - EditCell', function() {
 
@@ -61,6 +62,43 @@ describe('modeling - EditCell', function() {
   }));
 
 
-  it('should provide extension point for external change handlers');
+  describe('extension point', function() {
+
+    class Interceptor extends CommandInterceptor {
+      constructor(eventBus) {
+        super(eventBus);
+
+        this.postExecute('cell.edit', ({ context }) => {
+          context.cell.foo = 'foo';
+        });
+      }
+    }
+
+    Interceptor.$inject = [ 'eventBus' ];
+
+    beforeEach(bootstrap({
+      modules: [
+        ModelingModule,
+        {
+          __init__: [ 'interceptor' ],
+          interceptor: [ 'type', Interceptor ]
+        }
+      ]
+    }));
+    
+    
+    it('should provide extension point for external change handlers', inject(function(eventBus, interceptor, modeling) {
+      
+      eventBus.on('elements.changed', () => {
+        
+        // then
+        expect(cell.foo).to.eql('foo');
+      });
+      
+      // when
+      modeling.editCell(cell);
+    }));
+
+  });
 
 });
