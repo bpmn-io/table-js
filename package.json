@@ -4,7 +4,7 @@
   "scripts": {
     "all": "npm run lint && npm run test",
     "dev": "karma start test/config/karma.unit.js --log-level debug",
-    "lint": "eslint lib test",
+    "lint": "eslint .",
     "test": "karma start test/config/karma.unit.js --single-run --no-auto-watch"
   },
   "module": "lib/Table.js",

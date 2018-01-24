@@ -19,7 +19,7 @@ describe('ContextMenu', function() {
     modules: [ ContextMenuModule ]
   }));
 
-  beforeEach(function() {    
+  beforeEach(function() {
     testContainer = TestContainer.get(this);
   });
 
@@ -42,7 +42,7 @@ describe('ContextMenu', function() {
 
 
   it('should close', inject(function(components, contextMenu) {
-    
+
     // given
     components.onGetComponent('context-menu', () => () => 'FOO');
     contextMenu.open();
@@ -53,5 +53,5 @@ describe('ContextMenu', function() {
     // expect
     expect(domQuery('.context-menu', testContainer)).to.not.exist;
   }));
-  
+
 });

@@ -8,7 +8,11 @@ function triggerMouseEvent(node, event, clientX = 0, clientY = 0) {
   const e = document.createEvent('MouseEvent');
 
   if (e.initMouseEvent) {
-    e.initMouseEvent(event, true, true, window, 0, 0, 0, clientX, clientY, false, false, false, false, 0, null);
+    e.initMouseEvent(
+      event, true, true, window,
+      0, 0, 0, clientX, clientY,
+      false, false, false, false, 0, null
+    );
   }
 
   node.dispatchEvent(e);
@@ -50,7 +54,7 @@ describe('SelectionBehavior', function() {
 
 
   it('should select on click', inject(function(elementRegistry, eventBus, selection) {
-    
+
     // when
     eventBus.fire('cell.click', { id: 'cell' });
 
@@ -70,35 +74,39 @@ describe('SelectionBehavior', function() {
     // then
     expect(selection.get()).to.not.exist;
   }));
-  
-
-  it('should unselect on row.remove', inject(function(elementRegistry, eventBus, selection) {
-    
-    // given
-    selection.select('cell');
-
-    // when
-    eventBus.fire('row.remove', {
-      row: elementRegistry.get('row')
-    });
-
-    // then
-    expect(selection.get()).to.not.exist;
-  }));
 
 
-  it('should unselect on col.remove', inject(function(elementRegistry, eventBus, selection) {
-    
-    // given
-    selection.select('cell');
+  it('should unselect on row.remove', inject(
+    function(elementRegistry, eventBus, selection) {
 
-    // when
-    eventBus.fire('col.remove', {
-      col: elementRegistry.get('col')
-    });
+      // given
+      selection.select('cell');
 
-    // then
-    expect(selection.get()).to.not.exist;
-  }));
+      // when
+      eventBus.fire('row.remove', {
+        row: elementRegistry.get('row')
+      });
+
+      // then
+      expect(selection.get()).to.not.exist;
+    }
+  ));
+
+
+  it('should unselect on col.remove', inject(
+    function(elementRegistry, eventBus, selection) {
+
+      // given
+      selection.select('cell');
+
+      // when
+      eventBus.fire('col.remove', {
+        col: elementRegistry.get('col')
+      });
+
+      // then
+      expect(selection.get()).to.not.exist;
+    }
+  ));
 
 });

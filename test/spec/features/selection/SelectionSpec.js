@@ -23,7 +23,7 @@ describe('Selection', function() {
     modules: [ SelectionModule ]
   }));
 
-  beforeEach(function() {    
+  beforeEach(function() {
     testContainer = TestContainer.get(this);
   });
 
@@ -63,10 +63,10 @@ describe('Selection', function() {
 
 
   it('should select by element ID', inject(function(selection) {
-    
+
     // when
     selection.select(cell1.id);
-    
+
     // then
     expect(selection._selection).to.eql(cell1);
     expect(domClasses(nodeCell1).array()).to.contain('selected');
@@ -102,12 +102,12 @@ describe('Selection', function() {
 
     // given
     selection.select(cell1);
-    
+
     // when
     selection.freeze();
 
     selection.select(cell2);
-    
+
     // then
     expect(selection._selection).to.eql(cell1);
     expect(domClasses(nodeCell1).array()).to.contain('selected');
@@ -121,16 +121,16 @@ describe('Selection', function() {
     selection.select(cell1);
 
     selection.freeze();
-    
+
     // when
     selection.unfreeze();
 
     selection.select(cell2);
-    
+
     // then
     expect(selection._selection).to.eql(cell2);
     expect(domClasses(nodeCell1).array()).to.not.contain('selected');
     expect(domClasses(nodeCell2).array()).to.contain('selected');
   }));
-  
+
 });

@@ -31,14 +31,14 @@ describe('EditorActions', function() {
 
     // when
     editorActions.unregister('foo', listener);
-    
+
     // then
     expect(editorActions._actions['foo']).to.not.exist;
   }));
 
 
   it('should trigger', inject(function(editorActions) {
-    
+
     // given
     const spy = sinon.spy();
 
@@ -53,11 +53,11 @@ describe('EditorActions', function() {
 
 
   it('should check if registered', inject(function(editorActions) {
-    
+
     // given
     editorActions.register('foo', () => {});
 
-    // when    
+    // when
     // then
     expect(editorActions.isRegistered('foo')).to.be.true;
   }));
@@ -75,31 +75,31 @@ describe('EditorActions', function() {
 
 
     it('redo', expectRegistered('redo'));
-    
-    
+
+
     it('select', expectRegistered('select'));
-    
-    
+
+
     it('deselect', expectRegistered('deselect'));
-    
-    
+
+
     it('addRow', expectRegistered('addRow'));
-    
-    
+
+
     it('removeRow', expectRegistered('removeRow'));
-    
-    
+
+
     it('moveRow', expectRegistered('moveRow'));
-    
-    
+
+
     it('addCol', expectRegistered('addCol'));
-    
-    
+
+
     it('removeCol', expectRegistered('removeCol'));
-    
-    
+
+
     it('moveCol', expectRegistered('moveCol'));
 
   });
-  
+
 });

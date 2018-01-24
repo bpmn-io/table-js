@@ -8,7 +8,11 @@ var absoluteBasePath = path.resolve(path.join(__dirname, basePath));
 
 // configures browsers to run test against
 // any of [ 'ChromeHeadless', 'Chrome', 'Firefox', 'IE' ]
-var TEST_BROWSERS = ((process.env.TEST_BROWSERS || '').replace(/^\s+|\s+$/, '') || 'ChromeHeadless').split(/\s*,\s*/g);
+var TEST_BROWSERS = (
+  (process.env.TEST_BROWSERS || 'ChromeHeadless')
+    .replace(/^\s+|\s+$/, '')
+    .split(/\s*,\s*/g)
+);
 
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 

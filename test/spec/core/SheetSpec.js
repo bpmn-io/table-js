@@ -11,67 +11,67 @@ describe('Sheet', function() {
   describe('root', function() {
 
     it('set root', inject(function(sheet) {
-      
+
       // given
       const root = { id: 'foo' };
-  
+
       // when
       sheet.setRoot(root);
-  
+
       // then
       expect(sheet._root).to.eql(root);
     }));
-  
-  
+
+
     it('setting root should fire events', inject(function(eventBus, sheet) {
-      
+
       // given
       const oldRoot = { id: 'foo' };
       const newRoot = { id: 'bar' };
-  
+
       sheet._root = oldRoot;
-  
+
       const removeSpy = sinon.spy(function(e) {
         expect(e.root).to.eql(oldRoot);
       });
-  
+
       const removedSpy = sinon.spy(function(e) {
         expect(e.root).to.eql(oldRoot);
       });
-  
+
       const addSpy = sinon.spy(function(e) {
         expect(e.root).to.eql(newRoot);
       });
-  
+
       const addedSpy = sinon.spy(function(e) {
         expect(e.root).to.eql(newRoot);
       });
-  
+
       eventBus.on('root.remove', removeSpy);
       eventBus.on('root.removed', removedSpy);
       eventBus.on('root.add', addSpy);
       eventBus.on('root.added', addedSpy);
-  
+
       // when
       sheet.setRoot(newRoot);
     }));
-  
-  
+
+
     it('get root should return set root', inject(function(sheet) {
-  
+
       // given
       const root = { id: 'foo' };
-  
+
       sheet._root = root;
-      
+
       // when
       // then
       expect(sheet.getRoot()).to.eql(root);
     }));
-  
-  
+
+
     it('get root should return implicit root', inject(function(sheet) {
-         
+
       // when
       // then
       expect(sheet.getRoot()).to.eql({
@@ -80,21 +80,21 @@ describe('Sheet', function() {
         cols: []
       });
     }));
-  
-  
+
+
     it('should remove root on table.clear', inject(function(eventBus, sheet) {
-      
+
       // given
       const root = { id: 'foo' };
-      
+
       sheet._root = root;
-      
+
       // when
       eventBus.fire('table.clear');
-  
+
       // then
       expect(sheet._root).to.be.null;
-    }));  
+    }));
 
   });
 
@@ -116,7 +116,7 @@ describe('Sheet', function() {
 
 
     it('should fire row.add', inject(function(elementRegistry, eventBus, sheet) {
-      
+
       // given
       const row = { id: 'row', cells: [] };
 
@@ -129,7 +129,7 @@ describe('Sheet', function() {
       // when
       sheet.addRow(row);
     }));
-    
+
 
     it('add row with cells', inject(function(elementRegistry, sheet) {
 
@@ -152,7 +152,7 @@ describe('Sheet', function() {
       expect(elementRegistry.getAll()).to.have.lengthOf(3);
     }));
 
-          
+
     it('add row at index', inject(function(elementRegistry, sheet) {
 
       // given
@@ -164,14 +164,14 @@ describe('Sheet', function() {
           id: 'cell1'
         }]
       };
-      
+
       const row2 = {
         id: 'row2',
         cells: [{
           id: 'cell2'
         }]
       };
-      
+
       sheet.addRow(row1);
 
       // when
@@ -190,12 +190,12 @@ describe('Sheet', function() {
   describe('removeRow', function() {
 
     it('remove row with given row', inject(function(elementRegistry, sheet) {
-      
+
       // given
       const row = { id: 'row', cells: [] };
 
       sheet.addRow(row);
-      
+
       // when
       sheet.removeRow(row);
 
@@ -206,12 +206,12 @@ describe('Sheet', function() {
 
 
     it('remove row with given row id', inject(function(elementRegistry, sheet) {
-      
+
       // given
       const row = { id: 'row', cells: [] };
 
       sheet.addRow(row);
-      
+
       // when
       sheet.removeRow(row.id);
 
@@ -223,7 +223,7 @@ describe('Sheet', function() {
 
 
     it('should fire row.remove', inject(function(elementRegistry, eventBus, sheet) {
-      
+
       // given
       const row = { id: 'row', cells: [] };
 
@@ -238,7 +238,7 @@ describe('Sheet', function() {
       // when
       sheet.removeRow(row);
     }));
-    
+
   });
 
 
@@ -259,7 +259,7 @@ describe('Sheet', function() {
 
 
     it('should fire col.add', inject(function(elementRegistry, eventBus, sheet) {
-      
+
       // given
       const col = { id: 'col', cells: [] };
 
@@ -272,7 +272,7 @@ describe('Sheet', function() {
       // when
       sheet.addCol(col);
     }));
-    
+
 
     it('add col with cells', inject(function(elementRegistry, sheet) {
 
@@ -295,7 +295,7 @@ describe('Sheet', function() {
       expect(elementRegistry.getAll()).to.have.lengthOf(3);
     }));
 
-          
+
     it('add col at index', inject(function(elementRegistry, sheet) {
 
       // given
@@ -307,14 +307,14 @@ describe('Sheet', function() {
           id: 'cell1'
         }]
       };
-      
+
       const col2 = {
         id: 'col2',
         cells: [{
           id: 'cell2'
         }]
       };
-      
+
       sheet.addCol(col1);
 
       // when
@@ -333,12 +333,12 @@ describe('Sheet', function() {
   describe('removeCol', function() {
 
     it('remove col with given col', inject(function(elementRegistry, sheet) {
-      
+
       // given
       const col = { id: 'col', cells: [] };
 
       sheet.addCol(col);
-      
+
       // when
       sheet.removeCol(col);
 
@@ -349,12 +349,12 @@ describe('Sheet', function() {
 
 
     it('remove col with given col id', inject(function(elementRegistry, sheet) {
-      
+
       // given
       const col = { id: 'col', cells: [] };
 
       sheet.addCol(col);
-      
+
       // when
       sheet.removeCol(col.id);
 
@@ -366,7 +366,7 @@ describe('Sheet', function() {
 
 
     it('should fire col.remove', inject(function(elementRegistry, eventBus, sheet) {
-      
+
       // given
       const col = { id: 'col', cells: [] };
 
@@ -381,7 +381,7 @@ describe('Sheet', function() {
       // when
       sheet.removeCol(col);
     }));
-    
+
   });
 
 });

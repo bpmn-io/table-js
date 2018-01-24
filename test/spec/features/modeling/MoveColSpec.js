@@ -58,7 +58,7 @@ describe('modeling - MoveCol', function() {
 
     // given
     modeling.moveCol(col3, 1);
-    
+
     const root = sheet.getRoot();
 
     // when
@@ -68,5 +68,5 @@ describe('modeling - MoveCol', function() {
     // then
     expect(root.cols).to.eql([ col1, col3, col2 ]);
   }));
-  
+
 });

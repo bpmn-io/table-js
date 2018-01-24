@@ -64,7 +64,7 @@ describe('modeling - AddRow', function() {
   describe('with existing cols', function() {
 
     beforeEach(inject(function(sheet) {
-      
+
       sheet.addCol({ id: 'col1', cells: [] });
       sheet.addCol({ id: 'col2', cells: [] });
 
@@ -72,29 +72,29 @@ describe('modeling - AddRow', function() {
 
 
     it('should execute', inject(function(elementRegistry, modeling, sheet) {
-      
+
       // when
       modeling.addRow();
 
       const root = sheet.getRoot();
-  
+
       // then
       root.cols.forEach(col => {
         expect(col.cells).to.have.lengthOf(1);
       });
     }));
 
-    
+
     it('should revert', inject(function(commandStack, elementRegistry, modeling, sheet) {
-      
+
       // given
       modeling.addRow();
 
       const root = sheet.getRoot();
-  
+
       // when
       commandStack.undo();
-  
+
       // then
       root.cols.forEach(col => {
         expect(col.cells).to.have.lengthOf(0);
@@ -103,12 +103,12 @@ describe('modeling - AddRow', function() {
 
 
     it('should redo', inject(function(commandStack, elementRegistry, modeling, sheet) {
-      
+
       // given
       modeling.addRow();
 
       const root = sheet.getRoot();
-  
+
       // when
       commandStack.undo();
       commandStack.redo();

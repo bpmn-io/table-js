@@ -48,31 +48,31 @@ describe('Table', function() {
   });
 
 
-  it('#destroy', function() { 
-    
-    // when 
-    const table = new Table({ 
+  it('#destroy', function() {
+
+    // when
+    const table = new Table({
       renderer: {
-        container 
-      } 
-    }); 
+        container
+      }
+    });
 
-    // then 
-    expect(table.destroy).to.be.a('function'); 
-  }); 
+    // then
+    expect(table.destroy).to.be.a('function');
+  });
 
 
-  it('#clear', function() { 
-    
-    // when 
-    const table = new Table({ 
-      renderer: { 
-        container 
-      } 
-    }); 
+  it('#clear', function() {
 
-    // then 
-    expect(table.clear).to.be.a('function'); 
+    // when
+    const table = new Table({
+      renderer: {
+        container
+      }
+    });
+
+    // then
+    expect(table.clear).to.be.a('function');
   });
 
 });

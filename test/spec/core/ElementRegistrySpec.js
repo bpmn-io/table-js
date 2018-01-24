@@ -7,7 +7,7 @@ describe('ElementRegistry', function() {
 
 
   it('add', inject(function(elementRegistry) {
-    
+
     // when
     elementRegistry.add({ id: 'foo' });
 
@@ -18,7 +18,7 @@ describe('ElementRegistry', function() {
 
 
   it('remove', inject(function(elementRegistry) {
-    
+
     // given
     elementRegistry.add({ id: 'foo' });
 
@@ -32,7 +32,7 @@ describe('ElementRegistry', function() {
 
 
   it('get', inject(function(elementRegistry) {
-    
+
     // given
     elementRegistry.add({ id: 'foo' });
 
@@ -45,7 +45,7 @@ describe('ElementRegistry', function() {
 
 
   it('getAll', inject(function(elementRegistry) {
-    
+
     // given
     elementRegistry.add({ id: 'foo' });
     elementRegistry.add({ id: 'bar' });
@@ -62,7 +62,7 @@ describe('ElementRegistry', function() {
 
 
   it('forEach', inject(function(elementRegistry) {
-    
+
     // given
     elementRegistry.add({ id: 'foo' });
     elementRegistry.add({ id: 'bar' });
@@ -85,7 +85,7 @@ describe('ElementRegistry', function() {
 
 
   it('filter', inject(function(elementRegistry) {
-    
+
     // given
     elementRegistry.add({ id: 'foo' });
     elementRegistry.add({ id: 'bar' });
@@ -102,7 +102,7 @@ describe('ElementRegistry', function() {
 
 
   it('clear', inject(function(elementRegistry) {
-    
+
     // given
     elementRegistry.add({ id: 'foo' });
     elementRegistry.add({ id: 'bar' });
@@ -116,7 +116,7 @@ describe('ElementRegistry', function() {
 
 
   it('clear on table.clear', inject(function(elementRegistry, eventBus) {
-    
+
     // given
     elementRegistry.add({ id: 'foo' });
     elementRegistry.add({ id: 'bar' });

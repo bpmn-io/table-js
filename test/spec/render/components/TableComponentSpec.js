@@ -13,7 +13,7 @@ import TableComponent from 'lib/render/components/TableComponent';
 
 
 describe('TableComponent', function() {
-  
+
   beforeEach(bootstrap({}));
 
 
@@ -60,7 +60,7 @@ describe('TableComponent', function() {
 
 
   it('should render after table', inject(function(components, injector) {
-    
+
     // given
     components.onGetComponent('table.after', () => () => <div className="after"></div>);
 
@@ -73,7 +73,7 @@ describe('TableComponent', function() {
 
 
   it('should provide child context', inject(function(components, injector) {
-    
+
     // given
     class Body extends Component {
       componentWillMount() {

@@ -17,7 +17,7 @@ describe('modeling - RemoveCol', function() {
       col3;
 
   beforeEach(inject(function(sheet) {
-    
+
     col1 = sheet.addCol({ id: 'col1', cells: [] });
     col2 = sheet.addCol({ id: 'col2', cells: [] });
     col3 = sheet.addCol({ id: 'col3', cells: [] });
@@ -60,7 +60,7 @@ describe('modeling - RemoveCol', function() {
 
     // when
     modeling.removeCol(col2);
-    
+
     commandStack.undo();
 
     // then

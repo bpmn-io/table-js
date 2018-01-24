@@ -10,7 +10,8 @@ import { findRenderedDOMElementWithClass, renderIntoDocument } from 'inferno-tes
 import { inject, bootstrap } from 'test/TestHelper';
 
 import ContextMenuModule from 'lib/features/context-menu';
-import ContextMenuComponent from 'lib/features/context-menu/components/ContextMenuComponent';
+import ContextMenuComponent
+  from 'lib/features/context-menu/components/ContextMenuComponent';
 
 
 function withContext(WithoutContext, context) {
@@ -29,101 +30,109 @@ function withContext(WithoutContext, context) {
 
 
 describe('ContextMenuComponent', function() {
-  
+
   beforeEach(bootstrap({
     modules: [ ContextMenuModule ]
   }));
 
 
-  it('should render context menu on contextMenu.open', inject(function(components, contextMenu, eventBus, injector) {
+  it('should render context menu on contextMenu.open', inject(
+    function(components, contextMenu, eventBus, injector) {
 
-    // given
-    const WithContext = withContext(ContextMenuComponent, {
-      injector,
-      eventBus
-    });
+      // given
+      const WithContext = withContext(ContextMenuComponent, {
+        injector,
+        eventBus
+      });
 
-    const renderedTree = renderIntoDocument(<WithContext />);
+      const renderedTree = renderIntoDocument(<WithContext />);
 
-    components.onGetComponent('context-menu', () => () => <div className="foo"></div>);
-    
-    // when
-    contextMenu.open();
+      components.onGetComponent('context-menu', () => () => <div className="foo"></div>);
 
-    // then
-    expect(findRenderedDOMElementWithClass(renderedTree, 'context-menu')).to.exist;
-    expect(findRenderedDOMElementWithClass(renderedTree, 'foo')).to.exist;
-  }));
+      // when
+      contextMenu.open();
+
+      // then
+      expect(findRenderedDOMElementWithClass(renderedTree, 'context-menu')).to.exist;
+      expect(findRenderedDOMElementWithClass(renderedTree, 'foo')).to.exist;
+    }
+  ));
 
   // TODO(philippfromme): fix
-  it.skip('should render context menu at position', inject(function(components, contextMenu, eventBus, injector) {
-    
-    // given
-    const WithContext = withContext(ContextMenuComponent, {
-      injector,
-      eventBus
-    });
+  it.skip('should render context menu at position', inject(
+    function(components, contextMenu, eventBus, injector) {
 
-    const renderedTree = renderIntoDocument(<WithContext />);
+      // given
+      const WithContext = withContext(ContextMenuComponent, {
+        injector,
+        eventBus
+      });
 
-    components.onGetComponent('context-menu', () => () => <div></div>);
-    
-    // when
-    contextMenu.open({
-      x: 100,
-      y: 100
-    });
+      const renderedTree = renderIntoDocument(<WithContext />);
 
-    // then
-    const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+      components.onGetComponent('context-menu', () => () => <div></div>);
 
-    expect(node).to.exist;
-    expect(node.style.top).to.equal('100px');
-    expect(node.style.left).to.equal('100px');
-  }));
+      // when
+      contextMenu.open({
+        x: 100,
+        y: 100
+      });
 
+      // then
+      const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
 
-  it('should not render context menu on contextMenu.open if no components', inject(function(contextMenu, eventBus, injector) {
-
-    // given
-    const WithContext = withContext(ContextMenuComponent, {
-      injector,
-      eventBus
-    });
-
-    const renderedTree = renderIntoDocument(<WithContext />);
-    
-    // when
-    contextMenu.open();
-
-    // then
-    const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
-
-    expect(node).to.not.exist;
-  }));
+      expect(node).to.exist;
+      expect(node.style.top).to.equal('100px');
+      expect(node.style.left).to.equal('100px');
+    }
+  ));
 
 
-  it('should not render context menu on contextMenu.close', inject(function(components, contextMenu, eventBus, injector) {
-    
-    // given
-    const WithContext = withContext(ContextMenuComponent, {
-      injector,
-      eventBus
-    });
+  it('should ignore contextMenu.open if no components', inject(
+    function(contextMenu, eventBus, injector) {
 
-    const renderedTree = renderIntoDocument(<WithContext />);
+      // given
+      const WithContext = withContext(ContextMenuComponent, {
+        injector,
+        eventBus
+      });
 
-    components.onGetComponent('context-menu', () => () => <div></div>);
-    
-    contextMenu.open();
+      const renderedTree = renderIntoDocument(<WithContext />);
 
-    // when
-    contextMenu.close();
+      // when
+      contextMenu.open();
 
-    // then
-    const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+      // then
+      const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
 
-    expect(node).to.not.exist;
-  }));
+      expect(node).to.not.exist;
+    }
+  ));
+
+
+  it('should not render context menu on contextMenu.close', inject(
+    function(components, contextMenu, eventBus, injector) {
+
+      // given
+      const WithContext = withContext(ContextMenuComponent, {
+        injector,
+        eventBus
+      });
+
+      const renderedTree = renderIntoDocument(<WithContext />);
+
+      components.onGetComponent('context-menu', () => () => <div></div>);
+
+      contextMenu.open();
+
+      // when
+      contextMenu.close();
+
+      // then
+      const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+
+      expect(node).to.not.exist;
+    }
+  ));
 
 });

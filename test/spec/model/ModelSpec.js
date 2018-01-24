@@ -14,7 +14,7 @@ describe('model', function() {
 
 
   it('should create <row>', function() {
-    
+
     // when
     const row = create('row');
 
@@ -24,7 +24,7 @@ describe('model', function() {
 
 
   it('should create <col>', function() {
-    
+
     // when
     const col = create('col');
 

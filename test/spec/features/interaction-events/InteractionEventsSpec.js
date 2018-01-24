@@ -12,7 +12,11 @@ function triggerMouseEvent(node, event, clientX = 0, clientY = 0) {
   const e = document.createEvent('MouseEvent');
 
   if (e.initMouseEvent) {
-    e.initMouseEvent(event, true, true, window, 0, 0, 0, clientX, clientY, false, false, false, false, 0, null);
+    e.initMouseEvent(
+      event, true, true, window,
+      0, 0, 0, clientX, clientY,
+      false, false, false, false, 0, null
+    );
   }
 
   node.dispatchEvent(e);
@@ -47,28 +51,28 @@ describe('InteractionEvents', function() {
   }));
 
   function expectInteractionEvent(event) {
-    return inject(function(eventBus) {  
+    return inject(function(eventBus) {
       const spy = sinon.spy();
-      
+
       eventBus.on(`cell.${event}`, spy);
-  
+
       // when
       triggerMouseEvent(nodeWithElementId, event);
-  
+
       // then
       expect(spy).to.have.been.called;
     });
   }
 
   function expectNoInteractionEvent(event) {
-    return inject(function(eventBus) {  
+    return inject(function(eventBus) {
       const spy = sinon.spy();
-      
+
       eventBus.on(`cell.${event}`, spy);
-  
+
       // when
       triggerMouseEvent(nodeWithoutElementId, event);
-  
+
       // then
       expect(spy).to.not.have.been.called;
     });
@@ -103,5 +107,5 @@ describe('InteractionEvents', function() {
 
 
   it('should not fire cell.mouseup', expectNoInteractionEvent('mouseup'));
-  
+
 });

@@ -43,7 +43,7 @@ describe('CutPaste', function() {
 
 
   it('paste row before', inject(function(clipBoard, cutPaste, sheet) {
-    
+
     // given
     cutPaste.cut(row1);
 
@@ -59,7 +59,7 @@ describe('CutPaste', function() {
 
 
   it('paste row after', inject(function(clipBoard, cutPaste, sheet) {
-    
+
     // given
     cutPaste.cut(row1);
 
@@ -88,7 +88,7 @@ describe('CutPaste', function() {
 
 
   it('paste col before', inject(function(clipBoard, cutPaste, sheet) {
-    
+
     // given
     cutPaste.cut(col1);
 
@@ -104,7 +104,7 @@ describe('CutPaste', function() {
 
 
   it('paste col after', inject(function(clipBoard, cutPaste, sheet) {
-    
+
     // given
     cutPaste.cut(col1);
 

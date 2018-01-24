@@ -7,7 +7,7 @@ describe('ElementFactory', function() {
 
 
   it('root', inject(function(elementFactory) {
-    
+
     // when
     const root = elementFactory.createRoot({
       foo: 'foo'
@@ -23,7 +23,7 @@ describe('ElementFactory', function() {
 
 
   it('row', inject(function(elementFactory) {
-    
+
     // when
     const row = elementFactory.createRow({
       foo: 'foo'
@@ -38,7 +38,7 @@ describe('ElementFactory', function() {
 
 
   it('col', inject(function(elementFactory) {
-    
+
     // when
     const col = elementFactory.createCol({
       foo: 'foo'

@@ -9,7 +9,7 @@ describe('Components', function() {
 
     // given
     const listener = () => {};
-    
+
     // when
     components.onGetComponent('foo', 1000, listener);
 
@@ -26,7 +26,7 @@ describe('Components', function() {
 
 
   it('should remove listener', inject(function(components) {
-    
+
     // given
     const listener = () => {};
 
@@ -43,7 +43,7 @@ describe('Components', function() {
 
 
   it('should remove all listeners', inject(function(components) {
-    
+
     // given
     components.onGetComponent('foo', () => {});
     components.onGetComponent('foo', () => {});
@@ -76,7 +76,7 @@ describe('Components', function() {
 
 
     it('should get all components', inject(function(components) {
-      
+
       // when
       // then
       expect(components.getComponents('foo')).to.eql([
@@ -84,7 +84,7 @@ describe('Components', function() {
         'bar'
       ]);
     }));
-    
+
   });
 
 });

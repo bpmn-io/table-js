@@ -85,19 +85,21 @@ describe('modeling - EditCell', function() {
         }
       ]
     }));
-    
-    
-    it('should provide extension point for external change handlers', inject(function(eventBus, interceptor, modeling) {
-      
-      eventBus.on('elements.changed', () => {
-        
-        // then
-        expect(cell.foo).to.eql('foo');
-      });
-      
-      // when
-      modeling.editCell(cell);
-    }));
+
+
+    it('should provide extension point for external change handlers', inject(
+      function(eventBus, interceptor, modeling) {
+
+        eventBus.on('elements.changed', () => {
+
+          // then
+          expect(cell.foo).to.eql('foo');
+        });
+
+        // when
+        modeling.editCell(cell);
+      }
+    ));
 
   });
 

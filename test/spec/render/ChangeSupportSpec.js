@@ -8,7 +8,7 @@ describe('ChangeSupport', function() {
 
 
   it('should add listener', inject(function(changeSupport) {
-    
+
     // given
     const listener = () => {};
 
@@ -29,7 +29,7 @@ describe('ChangeSupport', function() {
     const listener = () => {};
 
     changeSupport.onElementsChanged('foo', listener);
-    
+
     // when
     changeSupport.offElementsChanged('foo', listener);
 
@@ -44,7 +44,7 @@ describe('ChangeSupport', function() {
     // given
     changeSupport.onElementsChanged('foo', () => {});
     changeSupport.onElementsChanged('foo', () => {});
-    
+
     // when
     changeSupport.offElementsChanged('foo');
 
@@ -81,7 +81,7 @@ describe('ChangeSupport', function() {
 
 
     it('should not call listener', inject(function(eventBus) {
-      
+
       // when
       eventBus.fire('elements.changed', {
         elements: [{
@@ -99,7 +99,7 @@ describe('ChangeSupport', function() {
   describe('root element change', function() {
 
     let spy;
-    
+
     beforeEach(inject(function(changeSupport, sheet) {
       spy = sinon.spy();
 
@@ -112,12 +112,12 @@ describe('ChangeSupport', function() {
 
 
     it('should update on root change', inject(function(sheet, eventBus) {
-      
+
       // when
       const root = {
         id: 'bar'
       };
-      
+
       sheet.setRoot(root);
 
       eventBus.fire('elements.changed', {

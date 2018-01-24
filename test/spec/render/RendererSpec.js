@@ -21,7 +21,7 @@ describe('Renderer', function() {
 
 
   it('should render', function() {
-    
+
     // then
     expect(domQuery('.tjs-container')).to.exist;
     expect(domQuery('.tjs-table')).to.exist;
@@ -65,7 +65,7 @@ describe('Renderer', function() {
 
 
   it('should return container', inject(function(renderer) {
-    
+
     // when
     const container = renderer.getContainer();
 
