@@ -3,9 +3,9 @@
   "version": "1.3.2",
   "scripts": {
     "all": "npm run lint && npm run test",
-    "dev": "karma start test/config/karma.unit.js --log-level debug",
+    "dev": "karma start --no-single-run --auto-watch --log-level debug",
     "lint": "eslint .",
-    "test": "karma start test/config/karma.unit.js --single-run --no-auto-watch"
+    "test": "karma start"
   },
   "module": "lib/Table.js",
   "devDependencies": {

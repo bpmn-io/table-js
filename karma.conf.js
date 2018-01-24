@@ -2,9 +2,7 @@
 
 var path = require('path');
 
-var basePath = '../../';
-
-var absoluteBasePath = path.resolve(path.join(__dirname, basePath));
+var absoluteBasePath = path.resolve(__dirname);
 
 // configures browsers to run test against
 // any of [ 'ChromeHeadless', 'Chrome', 'Firefox', 'IE' ]
@@ -32,8 +30,6 @@ if (process.platform === 'linux') {
 module.exports = function(karma) {
   karma.set({
 
-    basePath: basePath,
-
     frameworks: [
       'browserify',
       'mocha',
@@ -53,8 +49,9 @@ module.exports = function(karma) {
     browsers: TEST_BROWSERS,
 
     browserNoActivityTimeout: 30000,
-    singleRun: false,
-    autoWatch: true,
+
+    singleRun: true,
+    autoWatch: false,
 
     customLaunchers: {
       ChromeHeadless_Linux: {
