@@ -1,5 +1,3 @@
-import Inferno from 'inferno';
-
 import { query as domQuery } from 'min-dom';
 
 /* global sinon */
