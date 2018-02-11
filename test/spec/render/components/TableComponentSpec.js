@@ -1,11 +1,13 @@
+import {
+  Component,
+  render
+} from 'inferno';
 
-// eslint-disable-next-line
-import Inferno from 'inferno';
+import TestContainerSupport from 'mocha-test-container-support';
 
-// eslint-disable-next-line
-import Component from 'inferno-component';
-
-import { findRenderedDOMElementWithClass, renderIntoDocument } from 'inferno-test-utils';
+import {
+  findRenderedDOMElementWithClass
+} from 'inferno-test-utils';
 
 import { inject, bootstrap } from 'test/TestHelper';
 
@@ -15,6 +17,21 @@ import TableComponent from 'lib/render/components/TableComponent';
 describe('TableComponent', function() {
 
   beforeEach(bootstrap({}));
+
+  var container, vTree;
+
+  function renderIntoDocument(vNode) {
+    vTree = render(vNode, container);
+    return vTree;
+  }
+
+  beforeEach(function() {
+    container = TestContainerSupport.get(this);
+  });
+
+  afterEach(function() {
+    render(null, container);
+  });
 
 
   it('should render table', inject(function(injector) {

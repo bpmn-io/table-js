@@ -1,5 +1,3 @@
-import Inferno from 'inferno';
-
 import { inject, bootstrap } from 'test/TestHelper';
 
 import SelectionModule from 'lib/features/selection';

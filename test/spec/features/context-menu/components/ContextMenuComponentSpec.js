@@ -1,10 +1,13 @@
-// eslint-disable-next-line
-import Inferno from 'inferno';
+import {
+  Component,
+  render
+} from 'inferno';
 
-// eslint-disable-next-line
-import Component from 'inferno-component';
+import TestContainerSupport from 'mocha-test-container-support';
 
-import { findRenderedDOMElementWithClass, renderIntoDocument } from 'inferno-test-utils';
+import {
+  findRenderedDOMElementWithClass
+} from 'inferno-test-utils';
 
 import { inject, bootstrap } from 'test/TestHelper';
 
@@ -33,6 +36,22 @@ describe('ContextMenuComponent', function() {
   beforeEach(bootstrap({
     modules: [ ContextMenuModule ]
   }));
+
+
+  var container, vTree;
+
+  function renderIntoDocument(vNode) {
+    vTree = render(vNode, container);
+    return vTree;
+  }
+
+  beforeEach(function() {
+    container = TestContainerSupport.get(this);
+  });
+
+  afterEach(function() {
+    render(null, container);
+  });
 
 
   it('should render context menu on contextMenu.open', inject(

@@ -1,5 +1,3 @@
-import Inferno from 'inferno';
-
 import { classes as domClasses, query as domQuery } from 'min-dom';
 
 import { inject, bootstrap } from 'test/TestHelper';
