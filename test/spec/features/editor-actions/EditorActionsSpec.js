@@ -3,12 +3,16 @@ import { inject, bootstrap } from 'test/TestHelper';
 /* global sinon */
 
 import EditorActionsModule from 'lib/features/editor-actions';
+import ModelingModule from 'lib/features/modeling';
 
 
 describe('EditorActions', function() {
 
   beforeEach(bootstrap({
-    modules: [ EditorActionsModule ]
+    modules: [
+      EditorActionsModule,
+      ModelingModule
+    ]
   }));
 
 

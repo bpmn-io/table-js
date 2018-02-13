@@ -1,12 +1,16 @@
 import { inject, bootstrap } from 'test/TestHelper';
 
 import CutPasteModule from 'lib/features/cut-paste';
+import ModelingModule from 'lib/features/modeling';
 
 
 describe('CutPaste', function() {
 
   beforeEach(bootstrap({
-    modules: [ CutPasteModule ]
+    modules: [
+      CutPasteModule,
+      ModelingModule
+    ]
   }));
 
   let col1,
