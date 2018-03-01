@@ -384,4 +384,25 @@ describe('Sheet', function() {
 
   });
 
+
+  describe('resized', function() {
+
+    it('should emit <sheet.resized> event', inject(function(eventBus, sheet) {
+
+      let listenerCalled = false;
+
+      // given
+      eventBus.on('sheet.resized', function() {
+        listenerCalled = true;
+      });
+
+      // when
+      sheet.resized();
+
+      // then
+      expect(listenerCalled).to.be.true;
+    }));
+
+  });
+
 });
