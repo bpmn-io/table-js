@@ -1,5 +1,5 @@
-import forEach from 'lodash/forEach';
-import uniq from 'lodash/uniq';
+import forEach from 'lodash/collection/forEach';
+import uniq from 'lodash/array/uniq';
 
 import TestContainer from 'mocha-test-container-support';
 
