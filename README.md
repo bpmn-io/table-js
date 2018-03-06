@@ -4,39 +4,30 @@ A blazing fast library for viewing and editing tables.
 
 [![Build Status](https://travis-ci.org/bpmn-io/table-js.svg?branch=master)](https://travis-ci.org/bpmn-io/table-js)
 
-## Setup
 
-Run
+## Hacking the Project
+
+To get the development setup make sure to have [NodeJS](https://nodejs.org/en/download/) installed.
+If your set up, clone the project and execute
 
 ```
 npm install
 ```
 
-to install all dependencies.
 
-### Test
+### Testing
 
-Run
+Execute `npm run dev` to run the test suite in watch mode.
 
-```
-npm test
-```
+Expose an environment variable `TEST_BROWSERS=(Chrome|Firefox|IE)` to execute the tests in a non-headless browser.
 
-or
-
-```
-npm run dev
-```
-
-to run tests.
-
-Tests are running in Chrome Headless by default. Set environment variable `TEST_BROWSERS=(Chrome|Firefox|IE)` to run the tests in a non-headless browser.
 
 ### Package
 
-Execute npm run all to lint and test the project.
+Execute `npm run all` to lint and test the project.
 
-Note: We do not generate any build artifacts. Required parts of the library should be bundled by modelers / viewers as needed instead.
+__Note:__ We do not generate any build artifacts. Required parts of the library should be bundled by library consumers as needed instead.
+
 
 ## License
 
