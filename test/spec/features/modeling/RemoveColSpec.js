@@ -106,7 +106,7 @@ describe('modeling - RemoveCol', function() {
 
 
 
-////////// helpers //////////
+// helpers /////////////
 
 function removeAtIndex(array, idx) {
 
