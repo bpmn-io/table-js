@@ -6,6 +6,8 @@ import {
 
 import { inject, bootstrap } from 'test/TestHelper';
 
+import TestContainer from 'mocha-test-container-support';
+
 import InterActionEventsModule from 'lib/features/interaction-events';
 
 function triggerMouseEvent(node, event, clientX = 0, clientY = 0) {
@@ -28,6 +30,12 @@ describe('InteractionEvents', function() {
   let nodeWithElementId,
       nodeWithoutElementId;
 
+  let testContainer;
+
+  beforeEach(function() {
+    testContainer = TestContainer.get(this);
+  });
+
   beforeEach(bootstrap({
     modules: [ InterActionEventsModule ]
   }));
@@ -44,7 +52,8 @@ describe('InteractionEvents', function() {
 
     eventBus.fire('elements.changed', { elements: [ sheet.getRoot() ] });
 
-    const cells = domQueryAll('td');
+
+    const cells = domQueryAll('td', testContainer);
 
     nodeWithoutElementId = cells[0];
     nodeWithElementId = cells[1];
