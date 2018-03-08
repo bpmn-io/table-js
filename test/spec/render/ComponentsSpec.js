@@ -67,23 +67,47 @@ describe('Components', function() {
     }));
 
 
-    it('should get component with highest priority', inject(function(components) {
+    describe('single', function() {
 
-      // when
-      // then
-      expect(components.getComponent('foo')).to.eql('baz');
-    }));
+      it('should get with highest priority', inject(function(components) {
+
+        // when
+        // then
+        expect(components.getComponent('foo')).to.eql('baz');
+      }));
 
 
-    it('should get all components', inject(function(components) {
+      it('should get none', inject(function(components) {
 
-      // when
-      // then
-      expect(components.getComponents('foo')).to.eql([
-        'baz',
-        'bar'
-      ]);
-    }));
+        // when
+        // then
+        expect(components.getComponent('blub')).not.to.exist;
+      }));
+
+    });
+
+
+    describe('many', function() {
+
+      it('should get all components', inject(function(components) {
+
+        // when
+        // then
+        expect(components.getComponents('foo')).to.eql([
+          'baz',
+          'bar'
+        ]);
+      }));
+
+
+      it('should get empty', inject(function(components) {
+
+        // when
+        // then
+        expect(components.getComponents('blub')).to.eql([]);
+      }));
+
+    });
 
   });
 
