@@ -1,4 +1,6 @@
-import { query as domQuery } from 'min-dom';
+import {
+  queryAll as domQueryAll
+} from 'min-dom';
 
 /* global sinon */
 
@@ -42,7 +44,7 @@ describe('InteractionEvents', function() {
 
     eventBus.fire('elements.changed', { elements: [ sheet.getRoot() ] });
 
-    const cells = domQuery.all('td');
+    const cells = domQueryAll('td');
 
     nodeWithoutElementId = cells[0];
     nodeWithElementId = cells[1];

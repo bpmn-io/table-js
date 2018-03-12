@@ -1,4 +1,7 @@
-import { classes as domClasses, query as domQuery } from 'min-dom';
+import {
+  classes as domClasses,
+  queryAll as domQueryAll
+} from 'min-dom';
 
 import { inject, bootstrap } from 'test/TestHelper';
 
@@ -42,7 +45,7 @@ describe('Selection', function() {
 
     eventBus.fire('elements.changed', { elements: [ sheet.getRoot() ] });
 
-    const cells = domQuery.all('td', testContainer);
+    const cells = domQueryAll('td', testContainer);
 
     nodeCell1 = cells[0];
     nodeCell2 = cells[1];
