@@ -1,5 +1,6 @@
-import forEach from 'lodash/collection/forEach';
-import uniq from 'lodash/array/uniq';
+import {
+  forEach
+} from 'min-dash';
 
 import TestContainer from 'mocha-test-container-support';
 
@@ -36,11 +37,9 @@ export function bootstrap(options = {}, locals = {}) {
       mockModule[k] = [ 'value', v ];
     });
 
-    actualOpts.modules = uniq(
-      [].concat(
-        options.modules || [],
-        [ mockModule ]
-      )
+    actualOpts.modules = [].concat(
+      options.modules || [],
+      [ mockModule ]
     );
 
     if (TABLE_JS) {

@@ -1,5 +1,7 @@
-import every from 'lodash/collection/every';
-import isArray from 'lodash/lang/isArray';
+import {
+  every,
+  isArray
+} from 'min-dash';
 
 import { Row, Col } from 'lib/model';
 
