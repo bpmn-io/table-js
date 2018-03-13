@@ -60,7 +60,7 @@ describe('DragAndDrop', function() {
 
     beforeEach(inject(function(dragAndDrop) {
       const table = domify(`
-        <table>
+        <table class="dmn-decision-table-container">
           <tbody>
             <tr>
               <td draggable="true"></td>
