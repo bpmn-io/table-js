@@ -39,7 +39,7 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
-    "diagram-js": "^0.28.2",
+    "diagram-js": "^0.29.0",
     "didi": "^3.0.0",
     "ids": "^0.2.0",
     "inferno": "^4.0.0",
