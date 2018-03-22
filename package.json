@@ -1,6 +1,6 @@
 {
   "name": "table-js",
-  "version": "2.0.0-alpha6",
+  "version": "2.0.0-alpha7",
   "scripts": {
     "all": "npm run lint && npm run test",
     "dev": "karma start --no-single-run --auto-watch --log-level debug",
