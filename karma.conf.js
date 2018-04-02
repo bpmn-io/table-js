@@ -68,7 +68,9 @@ module.exports = function(karma) {
     browserify: {
       debug: true,
       paths: [ absoluteBasePath ],
-      transform: [ 'babelify' ]
+      transform: [
+        [ 'babelify', { global: true } ]
+      ]
     }
   });
 
