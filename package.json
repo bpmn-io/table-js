@@ -40,11 +40,11 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
-    "didi": "^3.0.0",
+    "didi": "^3.2.0",
     "ids": "^0.2.0",
     "inferno": "^4.0.0",
-    "min-dash": "^2.0.1",
-    "min-dom": "^2.0.0"
+    "min-dash": "^2.4.0",
+    "min-dom": "^2.2.0"
   },
   "peerDependencies": {
     "diagram-js": ">=0.28 <1"
