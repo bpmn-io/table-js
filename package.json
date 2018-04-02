@@ -11,7 +11,7 @@
   "module": "lib/Table.js",
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-plugin-inferno": "^4.0.0",
+    "babel-plugin-inferno": "^5.0.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -43,7 +43,7 @@
   "dependencies": {
     "didi": "^3.2.0",
     "ids": "^0.2.0",
-    "inferno": "^4.0.0",
+    "inferno": "^5.0.1",
     "min-dash": "^2.4.0",
     "min-dom": "^2.2.0"
   },
