@@ -7,6 +7,10 @@
     "lint": "eslint .",
     "test": "karma start"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpmn-io/table-js"
+  },
   "sideEffects": false,
   "module": "lib/Table.js",
   "license": "MIT",
