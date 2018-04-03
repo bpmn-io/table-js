@@ -18,7 +18,7 @@
     "babelify": "^7.3.0",
     "browserify": "^16.1.1",
     "chai": "~3.5.0",
-    "diagram-js": "^1.0.0-1",
+    "diagram-js": "^1.1.0",
     "eslint": "^4.8.0",
     "eslint-plugin-bpmn-io": "^0.5.2",
     "eslint-plugin-inferno": "^7.4.0",
@@ -41,11 +41,11 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
-    "didi": "^3.2.0",
+    "didi": "^4.0.0",
     "ids": "^0.2.0",
     "inferno": "^5.0.1",
-    "min-dash": "^2.4.0",
-    "min-dom": "^2.2.0"
+    "min-dash": "^3.0.0",
+    "min-dom": "^3.0.0"
   },
   "peerDependencies": {
     "diagram-js": ">=0.28 <2"
