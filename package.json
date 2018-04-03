@@ -9,6 +9,7 @@
   },
   "sideEffects": false,
   "module": "lib/Table.js",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-inferno": "^5.0.1",
