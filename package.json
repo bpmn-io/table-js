@@ -50,7 +50,8 @@
     "ids": "^0.2.0",
     "inferno": "^5.0.1",
     "min-dash": "^3.0.0",
-    "min-dom": "^3.0.0"
+    "min-dom": "^3.0.0",
+    "selection-ranges": "^3.0.0"
   },
   "peerDependencies": {
     "diagram-js": ">=0.28 <2"

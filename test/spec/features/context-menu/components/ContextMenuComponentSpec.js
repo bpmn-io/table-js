@@ -3,6 +3,7 @@ import {
   render
 } from 'inferno';
 
+
 import TestContainerSupport from 'mocha-test-container-support';
 
 import {
@@ -75,6 +76,62 @@ describe('ContextMenuComponent', function() {
       expect(findRenderedDOMElementWithClass(renderedTree, 'foo')).to.exist;
     }
   ));
+
+
+  describe('should close', function() {
+
+    it('on global click', inject(
+      function(components, contextMenu, eventBus, injector) {
+
+        // given
+        const WithContext = withContext(ContextMenuComponent, {
+          injector,
+          eventBus
+        });
+
+        const renderedTree = renderIntoDocument(<WithContext />);
+
+        components.onGetComponent('context-menu', () => () => <div></div>);
+
+        contextMenu.open();
+
+        // when
+        triggerClick(document.body);
+
+        // then
+        expect(
+          findRenderedDOMElementWithClass(renderedTree, 'context-menu')
+        ).not.to.exist;
+      }
+    ));
+
+
+    it('on blur', inject(
+      function(components, contextMenu, eventBus, injector) {
+
+        // given
+        const WithContext = withContext(ContextMenuComponent, {
+          injector,
+          eventBus
+        });
+
+        const renderedTree = renderIntoDocument(<WithContext />);
+
+        components.onGetComponent('context-menu', () => () => <div></div>);
+
+        contextMenu.open();
+
+        // when
+        triggerFocusIn(document.body);
+
+        // then
+        expect(
+          findRenderedDOMElementWithClass(renderedTree, 'context-menu')
+        ).not.to.exist;
+      }
+    ));
+
+  });
 
 
   it('should render context menu at position', inject(
@@ -154,3 +211,36 @@ describe('ContextMenuComponent', function() {
   ));
 
 });
+
+
+// helpers /////////////////////
+
+function triggerClick(el, clientX, clientY, ctrlKey) {
+  triggerMouseEvent(el, 'click', clientX, clientY, ctrlKey);
+}
+
+function triggerMouseEvent(element, event, clientX, clientY, ctrlKey = false) {
+  const e = document.createEvent('MouseEvent');
+
+  if (e.initMouseEvent) {
+    e.initMouseEvent(
+      event, true, true, window, 0, 0, 0,
+      clientX, clientY, ctrlKey, false, false, false,
+      0, null
+    );
+  }
+
+  element.dispatchEvent(e);
+}
+
+function triggerEvent(element, name, eventType, bubbles=false) {
+  const event = document.createEvent(eventType);
+
+  event.initEvent(name, bubbles, true);
+
+  return element.dispatchEvent(event);
+}
+
+function triggerFocusIn(element) {
+  return triggerEvent(element, 'focusin', 'UIEvents', true);
+}
