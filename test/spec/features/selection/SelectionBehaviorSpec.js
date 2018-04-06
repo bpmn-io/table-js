@@ -1,20 +1,9 @@
-import { inject, bootstrap } from 'test/TestHelper';
+import {
+  inject,
+  bootstrap
+} from 'test/TestHelper';
 
 import SelectionModule from 'lib/features/selection';
-
-function triggerMouseEvent(node, event, clientX = 0, clientY = 0) {
-  const e = document.createEvent('MouseEvent');
-
-  if (e.initMouseEvent) {
-    e.initMouseEvent(
-      event, true, true, window,
-      0, 0, 0, clientX, clientY,
-      false, false, false, false, 0, null
-    );
-  }
-
-  node.dispatchEvent(e);
-}
 
 
 describe('SelectionBehavior', function() {
@@ -58,19 +47,6 @@ describe('SelectionBehavior', function() {
 
     // then
     expect(selection.get()).to.eql(elementRegistry.get('cell'));
-  }));
-
-
-  it('should unselect on click', inject(function(eventBus, selection) {
-
-    // given
-    eventBus.fire('cell.click', { id: 'cell' });
-
-    // when
-    triggerMouseEvent(document.body, 'click');
-
-    // then
-    expect(selection.get()).to.not.exist;
   }));
 
 
