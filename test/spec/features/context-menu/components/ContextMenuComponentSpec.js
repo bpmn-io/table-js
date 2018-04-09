@@ -32,7 +32,7 @@ function withContext(WithoutContext, context) {
 }
 
 
-describe('ContextMenuComponent', function() {
+describe('features/context-menu - ContextMenuComponent', function() {
 
   beforeEach(bootstrap({
     modules: [ ContextMenuModule ]
@@ -78,22 +78,62 @@ describe('ContextMenuComponent', function() {
   ));
 
 
-  describe('should close', function() {
+  describe('should automatically close', function() {
 
-    it('on global click', inject(
-      function(components, contextMenu, eventBus, injector) {
+    let renderedTree;
+
+    beforeEach(inject(function(components, eventBus, injector) {
+
+      // given
+      const WithContext = withContext(ContextMenuComponent, {
+        injector,
+        eventBus
+      });
+
+      renderedTree = renderIntoDocument(<WithContext />);
+
+      components.onGetComponent('context-menu', () => () => <div></div>);
+    }));
+
+
+    it('on global click', inject(function(contextMenu) {
+
+      // given
+      contextMenu.open();
+
+      // when
+      triggerClick(document.body);
+
+      // then
+      expect(
+        findRenderedDOMElementWithClass(renderedTree, 'context-menu')
+      ).not.to.exist;
+    }));
+
+
+    it('on blur', inject(function(contextMenu) {
+
+      // given
+      contextMenu.open();
+
+      // when
+      triggerFocusIn(document.body);
+
+      // then
+      expect(
+        findRenderedDOMElementWithClass(renderedTree, 'context-menu')
+      ).not.to.exist;
+    }));
+
+
+    describe('unless autoClose=false', function() {
+
+      it('on global click', inject(function(contextMenu) {
 
         // given
-        const WithContext = withContext(ContextMenuComponent, {
-          injector,
-          eventBus
+        contextMenu.open(null, {
+          autoClose: false
         });
-
-        const renderedTree = renderIntoDocument(<WithContext />);
-
-        components.onGetComponent('context-menu', () => () => <div></div>);
-
-        contextMenu.open();
 
         // when
         triggerClick(document.body);
@@ -101,25 +141,16 @@ describe('ContextMenuComponent', function() {
         // then
         expect(
           findRenderedDOMElementWithClass(renderedTree, 'context-menu')
-        ).not.to.exist;
-      }
-    ));
+        ).to.exist;
+      }));
 
 
-    it('on blur', inject(
-      function(components, contextMenu, eventBus, injector) {
+      it('on blur', inject(function(contextMenu) {
 
         // given
-        const WithContext = withContext(ContextMenuComponent, {
-          injector,
-          eventBus
+        contextMenu.open(null, {
+          autoClose: false
         });
-
-        const renderedTree = renderIntoDocument(<WithContext />);
-
-        components.onGetComponent('context-menu', () => () => <div></div>);
-
-        contextMenu.open();
 
         // when
         triggerFocusIn(document.body);
@@ -127,9 +158,63 @@ describe('ContextMenuComponent', function() {
         // then
         expect(
           findRenderedDOMElementWithClass(renderedTree, 'context-menu')
-        ).not.to.exist;
-      }
-    ));
+        ).to.exist;
+      }));
+
+    });
+
+  });
+
+
+  describe('should automatically focus', function() {
+
+    let renderedTree;
+
+    beforeEach(inject(function(components, eventBus, injector) {
+
+      // given
+      const WithContext = withContext(ContextMenuComponent, {
+        injector,
+        eventBus
+      });
+
+      renderedTree = renderIntoDocument(<WithContext />);
+
+      components.onGetComponent(
+        'context-menu',
+        () => () => <input type="text" className="test-input" />
+      );
+    }));
+
+
+    it('on open', inject(function(contextMenu) {
+
+      // when
+      contextMenu.open();
+
+      // then
+      var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
+
+      expect(
+        document.activeElement
+      ).to.equal(inputEl);
+    }));
+
+
+    it('unless autoFocus=false', inject(function(contextMenu) {
+
+      // when
+      contextMenu.open(null, {
+        autoFocus: false
+      });
+
+      // then
+      var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
+
+      expect(
+        document.activeElement
+      ).not.to.equal(inputEl);
+    }));
 
   });
 
