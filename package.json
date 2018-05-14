@@ -27,7 +27,7 @@
     "eslint": "^4.8.0",
     "eslint-plugin-bpmn-io": "^0.5.2",
     "eslint-plugin-inferno": "^7.4.0",
-    "inferno-test-utils": "^4.0.2",
+    "inferno-test-utils": "^5.0.5",
     "karma": "^1.7.1",
     "karma-browserify": "^5.2.0",
     "karma-chrome-launcher": "^2.2.0",
@@ -48,7 +48,7 @@
   "dependencies": {
     "didi": "^4.0.0",
     "ids": "^0.2.0",
-    "inferno": "^5.0.1",
+    "inferno": "^5.0.5",
     "min-dash": "^3.0.0",
     "min-dom": "^3.0.0",
     "selection-ranges": "^3.0.0"
