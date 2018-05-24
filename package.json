@@ -23,7 +23,7 @@
     "babelify": "^7.3.0",
     "browserify": "^16.1.1",
     "chai": "~3.5.0",
-    "diagram-js": "^1.1.0",
+    "diagram-js": "^2.1.1",
     "eslint": "^4.8.0",
     "eslint-plugin-bpmn-io": "^0.5.2",
     "eslint-plugin-inferno": "^7.4.0",
@@ -54,7 +54,7 @@
     "selection-ranges": "^3.0.0"
   },
   "peerDependencies": {
-    "diagram-js": ">=0.28 <2"
+    "diagram-js": ">=0.28 <3"
   },
   "browserify": {
     "transform": [
