@@ -1,4 +1,4 @@
-import Table from 'lib/Table';
+import Table from 'src/Table';
 
 import { domify, remove as domRemove } from 'min-dom';
 

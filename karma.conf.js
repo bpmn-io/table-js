@@ -69,7 +69,17 @@ module.exports = function(karma) {
       debug: true,
       paths: [ absoluteBasePath ],
       transform: [
-        [ 'babelify', { global: true } ]
+        [ 'babelify', {
+          babelrc: false,
+          'plugins': [
+            'inferno',
+            'transform-class-properties',
+            'transform-object-rest-spread'
+          ],
+          'presets': [
+            'env'
+          ]
+        } ]
       ]
     }
   });

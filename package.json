@@ -2,10 +2,12 @@
   "name": "table-js",
   "version": "4.3.3",
   "scripts": {
-    "all": "npm run lint && npm run test",
+    "all": "run-s lint test build",
     "dev": "karma start --no-single-run --auto-watch --log-level debug",
     "lint": "eslint .",
-    "test": "karma start"
+    "test": "karma start",
+    "build": "del lib && babel -s -q -d lib src",
+    "prepublishOnly": "run-s build"
   },
   "repository": {
     "type": "git",
@@ -15,6 +17,7 @@
   "module": "lib/Table.js",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-inferno": "^5.0.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -23,6 +26,7 @@
     "babelify": "^7.3.0",
     "browserify": "^16.1.1",
     "chai": "~3.5.0",
+    "del-cli": "^1.1.0",
     "diagram-js": "^2.1.1",
     "eslint": "^4.8.0",
     "eslint-plugin-bpmn-io": "^0.5.2",
@@ -40,6 +44,7 @@
     "karma-spec-reporter": "0.0.26",
     "mocha": "^4.0.0",
     "mocha-test-container-support": "^0.2.0",
+    "npm-run-all": "^4.1.3",
     "puppeteer": "^0.11.0",
     "sinon": "^2.4.1",
     "sinon-chai": "^2.14.0",

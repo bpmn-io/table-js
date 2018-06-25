@@ -12,9 +12,9 @@ import {
 
 import { inject, bootstrap } from 'test/TestHelper';
 
-import ContextMenuModule from 'lib/features/context-menu';
+import ContextMenuModule from 'src/features/context-menu';
 import ContextMenuComponent
-  from 'lib/features/context-menu/components/ContextMenuComponent';
+  from 'src/features/context-menu/components/ContextMenuComponent';
 
 
 function withContext(WithoutContext, context) {

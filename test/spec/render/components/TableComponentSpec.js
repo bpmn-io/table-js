@@ -11,7 +11,7 @@ import {
 
 import { inject, bootstrap } from 'test/TestHelper';
 
-import TableComponent from 'lib/render/components/TableComponent';
+import TableComponent from 'src/render/components/TableComponent';
 
 
 describe('TableComponent', function() {

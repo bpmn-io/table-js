@@ -5,7 +5,7 @@ import {
   DiContainer,
   inject,
   mixin
-} from 'lib/components';
+} from 'src/components';
 
 import {
   Component,

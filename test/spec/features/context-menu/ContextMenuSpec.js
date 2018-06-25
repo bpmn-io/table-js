@@ -2,7 +2,7 @@ import { query as domQuery } from 'min-dom';
 
 import { inject, bootstrap } from 'test/TestHelper';
 
-import ContextMenuModule from 'lib/features/context-menu';
+import ContextMenuModule from 'src/features/context-menu';
 
 import TestContainer from 'mocha-test-container-support';
 

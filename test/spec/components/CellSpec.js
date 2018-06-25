@@ -5,7 +5,7 @@ import {
 import {
   Cell,
   DiContainer
-} from 'lib/components';
+} from 'src/components';
 
 import {
   findRenderedDOMElementWithClass

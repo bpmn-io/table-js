@@ -8,7 +8,7 @@ import { inject, bootstrap } from 'test/TestHelper';
 
 import TestContainer from 'mocha-test-container-support';
 
-import InterActionEventsModule from 'lib/features/interaction-events';
+import InterActionEventsModule from 'src/features/interaction-events';
 
 function triggerMouseEvent(node, event, clientX = 0, clientY = 0) {
   const e = document.createEvent('MouseEvent');
