@@ -1,4 +1,4 @@
-import { create } from 'lib/model';
+import { create } from 'src/model';
 
 describe('model', function() {
 

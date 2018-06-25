@@ -1,6 +1,6 @@
 import { inject, bootstrap } from 'test/TestHelper';
 
-import ModelingModule from 'lib/features/modeling';
+import ModelingModule from 'src/features/modeling';
 
 
 describe('modeling - performance', function() {

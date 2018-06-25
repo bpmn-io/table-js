@@ -1,9 +1,9 @@
 import { inject, bootstrap } from 'test/TestHelper';
 
-import ModelingModule from 'lib/features/modeling';
+import ModelingModule from 'src/features/modeling';
 import TestRulesModule from './test-rules';
 
-import { Row, Col } from 'lib/model';
+import { Row, Col } from 'src/model';
 
 
 describe('modeling rules', function() {

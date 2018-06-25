@@ -9,8 +9,8 @@ import TestContainer from 'mocha-test-container-support';
 
 import { bootstrap, inject } from 'test/TestHelper';
 
-import DragAndDropModule from 'lib/features/drag-and-drop';
-import ModelingModule from 'lib/features/modeling';
+import DragAndDropModule from 'src/features/drag-and-drop';
+import ModelingModule from 'src/features/modeling';
 
 function triggerEvent(element, type, data = {}) {
   const event = document.createEvent('Event');

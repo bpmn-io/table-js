@@ -3,7 +3,7 @@ import {
   isArray
 } from 'min-dash';
 
-import { Row, Col } from 'lib/model';
+import { Row, Col } from 'src/model';
 
 import RuleProvider from 'diagram-js/lib/features/rules/RuleProvider';
 

@@ -4,7 +4,7 @@ import { inject, bootstrap } from 'test/TestHelper';
 
 import CommandInterceptor from 'diagram-js/lib/command/CommandInterceptor';
 
-import ModelingModule from 'lib/features/modeling';
+import ModelingModule from 'src/features/modeling';
 
 describe('modeling - EditCell', function() {
 

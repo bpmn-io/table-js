@@ -1,6 +1,6 @@
 import { inject, bootstrap } from 'test/TestHelper';
 
-import SelectionModule from 'lib/features/selection';
+import SelectionModule from 'src/features/selection';
 
 
 describe('Selection', function() {

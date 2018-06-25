@@ -1,4 +1,6 @@
-test
+src/*
+test/*
+!lib/*
 .eslintignore
 .eslintrc
 karma.conf.js

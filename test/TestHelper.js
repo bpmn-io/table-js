@@ -4,7 +4,7 @@ import {
 
 import TestContainer from 'mocha-test-container-support';
 
-import Table from 'lib/Table';
+import Table from 'src/Table';
 
 
 let TABLE_JS = null;
