@@ -1,3 +1,5 @@
+> This library exposes ES modules. Use an ES module aware transpiler such as Webpack, Rollup or Browserify + babelify to bundle it for the browser.
+
 # table-js
 
 A blazing fast library for viewing and editing tables.
