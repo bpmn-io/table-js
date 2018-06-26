@@ -2,6 +2,8 @@ import Table from 'src/Table';
 
 import { domify, remove as domRemove } from 'min-dom';
 
+import DefaultExport from 'src';
+
 
 describe('Table', function() {
 
@@ -15,6 +17,11 @@ describe('Table', function() {
 
   afterEach(function() {
     domRemove(container);
+  });
+
+
+  it('should be default library export', function() {
+    expect(Table).to.equal(DefaultExport);
   });
 
 
