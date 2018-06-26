@@ -1,9 +1,5 @@
 'use strict';
 
-var path = require('path');
-
-var absoluteBasePath = path.resolve(__dirname);
-
 // configures browsers to run test against
 // any of [ 'ChromeHeadless', 'Chrome', 'Firefox', 'IE' ]
 var TEST_BROWSERS = (
@@ -31,7 +27,6 @@ module.exports = function(karma) {
   karma.set({
 
     frameworks: [
-      'browserify',
       'mocha',
       'sinon-chai'
     ],
@@ -41,7 +36,7 @@ module.exports = function(karma) {
     ],
 
     preprocessors: {
-      'test/spec/**/*Spec.js': [ 'browserify' ]
+      'test/spec/**/*Spec.js': [ 'webpack' ]
     },
 
     reporters: [ 'spec' ],
@@ -64,23 +59,33 @@ module.exports = function(karma) {
       }
     },
 
-    // browserify configuration
-    browserify: {
-      debug: true,
-      paths: [ absoluteBasePath ],
-      transform: [
-        [ 'babelify', {
-          babelrc: false,
-          'plugins': [
-            'inferno',
-            'transform-class-properties',
-            'transform-object-rest-spread'
-          ],
-          'presets': [
-            'env'
-          ]
-        } ]
-      ]
+    webpack: {
+      mode: 'development',
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: 'babel-loader'
+          },
+          {
+            test: /\.css|\.dmn$/,
+            use: 'raw-loader'
+          }
+        ]
+      },
+      resolve: {
+        mainFields: [
+          'dev:module',
+          'browser',
+          'module',
+          'main'
+        ],
+        modules: [
+          'node_modules',
+          __dirname
+        ]
+      }
     }
   });
 
