@@ -61,9 +61,9 @@
   "peerDependencies": {
     "diagram-js": ">=0.28 <3"
   },
-  "browserify": {
-    "transform": [
-      "babelify"
+  "babel": {
+    "presets": [
+      "env"
     ]
   }
 }
