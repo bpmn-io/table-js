@@ -6,6 +6,11 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 5.0.0-0
+
+* `FEAT`: transpile to ES5 + ES modules
+* `CHORE`: make `inferno` a peer dependency
+
 ## 4.3.2
 
 * `FIX`: bumb to `inferno@5.0.5`
