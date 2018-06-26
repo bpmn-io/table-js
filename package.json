@@ -14,7 +14,7 @@
     "url": "https://github.com/bpmn-io/table-js"
   },
   "sideEffects": false,
-  "module": "lib/Table.js",
+  "main": "./lib/index.js",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
