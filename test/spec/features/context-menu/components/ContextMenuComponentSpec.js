@@ -170,7 +170,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
 
     let renderedTree;
 
-    beforeEach(inject(function(components, eventBus, injector) {
+    beforeEach(inject(function(eventBus, injector) {
 
       // given
       const WithContext = withContext(ContextMenuComponent, {
@@ -179,42 +179,93 @@ describe('features/context-menu - ContextMenuComponent', function() {
       });
 
       renderedTree = renderIntoDocument(<WithContext />);
-
-      components.onGetComponent(
-        'context-menu',
-        () => () => <input type="text" className="test-input" />
-      );
     }));
 
 
-    it('on open', inject(function(contextMenu) {
+    describe('input', function() {
 
-      // when
-      contextMenu.open();
-
-      // then
-      var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
-
-      expect(
-        document.activeElement
-      ).to.equal(inputEl);
-    }));
+      beforeEach(inject(function(components, eventBus, injector) {
+        components.onGetComponent(
+          'context-menu',
+          () => () => <input type="text" className="test-input" />
+        );
+      }));
 
 
-    it('unless autoFocus=false', inject(function(contextMenu) {
+      it('on open', inject(function(contextMenu) {
 
-      // when
-      contextMenu.open(null, {
-        autoFocus: false
-      });
+        // when
+        contextMenu.open();
 
-      // then
-      var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
+        // then
+        var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
 
-      expect(
-        document.activeElement
-      ).not.to.equal(inputEl);
-    }));
+        expect(
+          document.activeElement
+        ).to.equal(inputEl);
+      }));
+
+
+      it('unless autoFocus=false', inject(function(contextMenu) {
+
+        // when
+        contextMenu.open(null, {
+          autoFocus: false
+        });
+
+        // then
+        var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
+
+        expect(
+          document.activeElement
+        ).not.to.equal(inputEl);
+      }));
+
+    });
+
+
+    describe('contenteditable', function() {
+
+      beforeEach(inject(function(components, eventBus, injector) {
+        components.onGetComponent(
+          'context-menu',
+          () => () => <div contentEditable="true" className="test-contenteditable" />
+        );
+      }));
+
+
+      it('on open', inject(function(contextMenu) {
+
+        // when
+        contextMenu.open();
+
+        // then
+        var inputEl =
+          findRenderedDOMElementWithClass(renderedTree, 'test-contenteditable');
+
+        expect(
+          document.activeElement
+        ).to.equal(inputEl);
+      }));
+
+
+      it('unless autoFocus=false', inject(function(contextMenu) {
+
+        // when
+        contextMenu.open(null, {
+          autoFocus: false
+        });
+
+        // then
+        var inputEl =
+          findRenderedDOMElementWithClass(renderedTree, 'test-contenteditable');
+
+        expect(
+          document.activeElement
+        ).not.to.equal(inputEl);
+      }));
+
+    });
 
   });
 
