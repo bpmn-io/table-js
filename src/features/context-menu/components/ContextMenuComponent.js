@@ -10,8 +10,7 @@ import {
 } from '../../../components';
 
 import {
-  query as domQuery,
-  matches as domMatches
+  query as domQuery
 } from 'min-dom';
 
 import {
@@ -396,14 +395,14 @@ function ensureFocus(el) {
   if (focusEl) {
     focusEl.focus();
 
+    // inputs
+    if ('setSelectionRange' in focusEl) {
+      focusEl.setSelectionRange(100000, 10000);
+    } else
+
     // content editable elements
     if ('contentEditable' in focusEl) {
       setRange(focusEl, { start: 100000, end: 100000 });
-    }
-
-    // inputs
-    if (domMatches(focusEl, '[type=text], textarea')) {
-      focusEl.selectionStart = 100000;
     }
   }
 }
