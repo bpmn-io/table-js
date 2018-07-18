@@ -7,6 +7,7 @@
     "lint": "eslint .",
     "test": "karma start",
     "build": "del-cli lib && babel -s -q -d lib src",
+    "auto-build": "babel -s -d lib src --watch",
     "prepublishOnly": "run-s build"
   },
   "repository": {
