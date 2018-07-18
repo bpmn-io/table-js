@@ -227,11 +227,12 @@ class ContextMenu extends Component {
     } = this.props;
 
     if (node) {
-      this.updatePosition();
 
       if (autoFocus) {
         ensureFocus(node);
       }
+
+      this.updatePosition();
     }
   }
 
@@ -396,8 +397,8 @@ function ensureFocus(el) {
     focusEl.focus();
 
     // inputs
-    if ('setSelectionRange' in focusEl) {
-      focusEl.setSelectionRange(100000, 10000);
+    if (focusEl.selectionStart && focusEl.type === 'text') {
+      focusEl.selectionStart = 100000;
     } else
 
     // content editable elements

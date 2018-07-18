@@ -182,12 +182,54 @@ describe('features/context-menu - ContextMenuComponent', function() {
     }));
 
 
-    describe('input', function() {
+    describe('text input', function() {
 
       beforeEach(inject(function(components, eventBus, injector) {
         components.onGetComponent(
           'context-menu',
           () => () => <input type="text" className="test-input" />
+        );
+      }));
+
+
+      it('on open', inject(function(contextMenu) {
+
+        // when
+        contextMenu.open();
+
+        // then
+        var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
+
+        expect(
+          document.activeElement
+        ).to.equal(inputEl);
+      }));
+
+
+      it('unless autoFocus=false', inject(function(contextMenu) {
+
+        // when
+        contextMenu.open(null, {
+          autoFocus: false
+        });
+
+        // then
+        var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
+
+        expect(
+          document.activeElement
+        ).not.to.equal(inputEl);
+      }));
+
+    });
+
+
+    describe('number input', function() {
+
+      beforeEach(inject(function(components, eventBus, injector) {
+        components.onGetComponent(
+          'context-menu',
+          () => () => <input type="number" className="test-input" />
         );
       }));
 
