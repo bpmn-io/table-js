@@ -6,7 +6,7 @@
     "dev": "karma start --no-single-run --auto-watch --log-level debug",
     "lint": "eslint .",
     "test": "karma start",
-    "build": "del lib && babel -s -q -d lib src",
+    "build": "del-cli lib && babel -s -q -d lib src",
     "prepublishOnly": "run-s build"
   },
   "repository": {
