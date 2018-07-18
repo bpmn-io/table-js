@@ -6,6 +6,14 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 5.0.1
+
+* `FIX`: correct focus handling on IE 11 ([`828b3e46`](https://github.com/bpmn-io/table-js/commit/828b3e4656d1ae2d749ed3ab2e447d6388bd634e))
+
+## 5.0.0
+
+_Republish of `5.0.0-x`._
+
 ## 5.0.0-0
 
 * `FEAT`: transpile to ES5 + ES modules
