@@ -1,5 +1,7 @@
 import { inject, bootstrap } from 'test/TestHelper';
 
+/* global sinon */
+
 
 describe('ElementRegistry', function() {
 
@@ -126,6 +128,34 @@ describe('ElementRegistry', function() {
 
     // then
     expect(elementRegistry._elements).to.eql({});
+  }));
+
+
+  it('updateId', inject(function(elementRegistry, eventBus) {
+
+    // given
+    const spy = sinon.spy();
+
+    eventBus.on('element.updateId', spy);
+
+    const element = {
+      id: 'foo'
+    };
+
+    elementRegistry.add(element);
+
+    // when
+    elementRegistry.updateId(element, 'bar');
+
+    // then
+    expect(elementRegistry._elements).to.eql({
+      bar: {
+        id: 'bar'
+      }
+    });
+
+    expect(spy).to.have.been.called;
+
   }));
 
 });
