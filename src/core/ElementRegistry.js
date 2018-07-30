@@ -38,6 +38,44 @@ export default class ElementRegistry {
   clear() {
     this._elements = {};
   }
+
+  updateId(element, newId) {
+
+    this._validateId(newId);
+
+    if (typeof element === 'string') {
+      element = this.get(element);
+    }
+
+    this._eventBus.fire('element.updateId', {
+      element: element,
+      newId: newId
+    });
+
+    this.remove(element);
+
+    element.id = newId;
+
+    this.add(element);
+  }
+
+  /**
+ * Validate the suitability of the given id and signals a problem
+ * with an exception.
+ *
+ * @param {String} id
+ *
+ * @throws {Error} if id is empty or already assigned
+ */
+  _validateId(id) {
+    if (!id) {
+      throw new Error('element must have an id');
+    }
+
+    if (this._elements[id]) {
+      throw new Error('element with id ' + id + ' already added');
+    }
+  }
 }
 
 ElementRegistry.$inject = [ 'eventBus' ];

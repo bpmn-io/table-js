@@ -130,4 +130,37 @@ describe('ChangeSupport', function() {
 
   });
 
+
+  describe('update ID', function() {
+
+    let spy;
+
+    const element = {
+      id: 'foo'
+    };
+
+    beforeEach(inject(function(changeSupport, elementRegistry) {
+      spy = sinon.spy();
+
+      changeSupport.onElementsChanged(element.id, spy);
+
+      elementRegistry.updateId(element, 'bar');
+    }));
+
+
+    it('should update on elements change after updating ID', inject(
+      function(eventBus, changeSupport) {
+
+        // when
+        eventBus.fire('elements.changed', {
+          elements: [ element ]
+        });
+
+        // then
+        expect(spy).to.have.been.called;
+      })
+    );
+
+  });
+
 });
