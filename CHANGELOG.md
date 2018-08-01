@@ -6,6 +6,10 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 5.0.3
+
+* `FIX`: allow `ChangeSupport` to react to element id changes ([#19](https://github.com/bpmn-io/table-js/issues/19))
+
 ## 5.0.2
 
 * `FIX`: correct focus handling on `[type=number]` inputs
