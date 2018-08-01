@@ -32,11 +32,11 @@ module.exports = function(karma) {
     ],
 
     files: [
-      'test/spec/**/*Spec.js'
+      'test/suite.js'
     ],
 
     preprocessors: {
-      'test/spec/**/*Spec.js': [ 'webpack' ]
+      'test/suite.js': [ 'webpack' ]
     },
 
     reporters: [ 'spec' ],
