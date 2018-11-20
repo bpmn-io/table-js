@@ -27,7 +27,7 @@
     "babel-preset-env": "^1.6.1",
     "chai": "~3.5.0",
     "del-cli": "^1.1.0",
-    "diagram-js": "^2.1.1",
+    "diagram-js": "^3.0.1",
     "eslint": "^4.8.0",
     "eslint-plugin-bpmn-io": "^0.5.2",
     "eslint-plugin-inferno": "^7.4.0",
@@ -60,7 +60,7 @@
     "selection-ranges": "^3.0.0"
   },
   "peerDependencies": {
-    "diagram-js": ">=0.28 <3",
+    "diagram-js": ">=0.28 <4",
     "inferno": "^5.0.5"
   },
   "babel": {
