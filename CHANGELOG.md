@@ -6,6 +6,16 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 6.0.0
+
+* `CHORE`: bump dependencies
+* `CHORE`: require `diagram-js@4`
+* `CHORE`: update to `babel@7`
+
+### Breaking Change
+
+* `diagram-js@4` is required
+
 ## 5.1.0
 
 * `CHORE`: mark as compatible with `diagram-js@3`
