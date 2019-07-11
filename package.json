@@ -54,10 +54,10 @@
   },
   "dependencies": {
     "didi": "^4.0.0",
-    "ids": "^0.2.0",
-    "min-dash": "^3.0.0",
+    "ids": "^1.0.0",
+    "min-dash": "^3.5.0",
     "min-dom": "^3.0.0",
-    "selection-ranges": "^3.0.0"
+    "selection-ranges": "^3.0.3"
   },
   "peerDependencies": {
     "diagram-js": "^4.0.0",
