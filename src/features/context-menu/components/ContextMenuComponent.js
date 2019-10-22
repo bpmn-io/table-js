@@ -227,12 +227,11 @@ class ContextMenu extends Component {
     } = this.props;
 
     if (node) {
+      this.updatePosition();
 
       if (autoFocus) {
         ensureFocus(node);
       }
-
-      this.updatePosition();
     }
   }
 

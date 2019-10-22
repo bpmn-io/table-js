@@ -341,6 +341,53 @@ describe('features/context-menu - ContextMenuComponent', function() {
   ));
 
 
+  it('should set position before the context menu is focused', function(done) {
+    const test = inject(
+      function(components, contextMenu, eventBus, injector) {
+
+        // given
+        const WithContext = withContext(ContextMenuComponent, {
+          injector,
+          eventBus
+        });
+
+        const renderedTree = renderIntoDocument(<WithContext />);
+
+
+        components.onGetComponent(
+          'context-menu',
+          () => () => <input type="text" onFocus={ onFocus } className="test-input" />
+        );
+
+        // when
+        contextMenu.open({
+          x: 100,
+          y: 100
+        }, { autoFocus: true });
+
+        // then
+        function onFocus() {
+          try {
+            const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+
+            expect(node).to.exist;
+            expect(node.style.top).to.not.equal('');
+            expect(node.style.left).to.not.equal('');
+
+            done();
+          } catch (error) {
+            done(error);
+          }
+        }
+      }
+    );
+
+    test();
+  });
+
+
+
+
   it('should ignore contextMenu.open if no components', inject(
     function(contextMenu, eventBus, injector) {
 
