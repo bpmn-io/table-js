@@ -85,7 +85,8 @@ module.exports = function(karma) {
           'node_modules',
           __dirname
         ]
-      }
+      },
+      devtool: 'eval-source-map'
     }
   });
 
