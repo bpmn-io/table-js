@@ -210,13 +210,13 @@ class ContextMenu extends Component {
   componentDidMount() {
     document.addEventListener('focusin', this.onFocusChanged);
     document.addEventListener('keydown', this.onGlobalKey);
-    document.addEventListener('click', this.onGlobalClick);
+    document.addEventListener('mousedown', this.onGlobalClick);
   }
 
   componentWillUnmount() {
     document.removeEventListener('focusin', this.onFocusChanged);
     document.removeEventListener('keydown', this.onGlobalKey);
-    document.removeEventListener('click', this.onGlobalClick);
+    document.removeEventListener('mousedown', this.onGlobalClick);
   }
 
   setNode = (node) => {

@@ -126,6 +126,41 @@ describe('features/context-menu - ContextMenuComponent', function() {
     }));
 
 
+    it('on mousedown outside of context menu', inject(function(contextMenu) {
+
+      // given
+      contextMenu.open();
+
+      // when
+      triggerMouseEvent(document.body, 'mousedown');
+
+      // then
+      expect(
+        findRenderedDOMElementWithClass(renderedTree, 'context-menu')
+      ).not.to.exist;
+    }));
+
+
+    it('unless click was started inside context menu', inject(
+      function(contextMenu) {
+
+        // given
+        contextMenu.open();
+        const element = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+
+        // when
+        triggerMouseEvent(element, 'mousedown');
+        triggerMouseEvent(document.body, 'mouseup');
+        triggerMouseEvent(document.body, 'click');
+
+        // then
+        expect(
+          findRenderedDOMElementWithClass(renderedTree, 'context-menu')
+        ).to.exist;
+      })
+    );
+
+
     describe('unless autoClose=false', function() {
 
       it('on global click', inject(function(contextMenu) {
@@ -446,6 +481,8 @@ describe('features/context-menu - ContextMenuComponent', function() {
 // helpers /////////////////////
 
 function triggerClick(el, clientX, clientY, ctrlKey) {
+  triggerMouseEvent(el, 'mousedown', clientX, clientY, ctrlKey);
+  triggerMouseEvent(el, 'mouseup', clientX, clientY, ctrlKey);
   triggerMouseEvent(el, 'click', clientX, clientY, ctrlKey);
 }
 
