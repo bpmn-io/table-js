@@ -234,7 +234,9 @@ describe('features/context-menu - ContextMenuComponent', function() {
       }));
 
 
-      it('on open', inject(function(contextMenu) {
+      // skip on Firefox due to inconsistent focus handling,
+      // cf. https://github.com/bpmn-io/table-js/pull/25 and linked sources
+      (isFirefox() ? it.skip : it)('on open', inject(function(contextMenu) {
 
         // when
         contextMenu.open();
@@ -340,8 +342,11 @@ describe('features/context-menu - ContextMenuComponent', function() {
     }
   ));
 
-
-  it('should set position before the context menu is focused', function(done) {
+  // skip on Firefox due to inconsistent focus handling,
+  // cf. https://github.com/bpmn-io/table-js/pull/25 and linked sources
+  (
+    isFirefox() ? it.skip : it
+  )('should set position before the context menu is focused', function(done) {
     const test = inject(
       function(components, contextMenu, eventBus, injector) {
 
@@ -468,4 +473,10 @@ function triggerEvent(element, name, eventType, bubbles=false) {
 
 function triggerFocusIn(element) {
   return triggerEvent(element, 'focusin', 'UIEvents', true);
+}
+
+function isFirefox() {
+  return window.navigator &&
+    window.navigator.userAgent &&
+    /Firefox/.test(window.navigator.userAgent);
 }
