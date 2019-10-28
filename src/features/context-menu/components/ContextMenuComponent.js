@@ -178,9 +178,9 @@ class ContextMenu extends Component {
   }
 
   /**
-   * Handle global (window) click event.
+   * Handle global (window) mousedown event.
    */
-  onGlobalClick = (event) => {
+  onGlobalMouseDown = (event) => {
     this.checkClose(event.target);
   }
 
@@ -210,13 +210,13 @@ class ContextMenu extends Component {
   componentDidMount() {
     document.addEventListener('focusin', this.onFocusChanged);
     document.addEventListener('keydown', this.onGlobalKey);
-    document.addEventListener('mousedown', this.onGlobalClick);
+    document.addEventListener('mousedown', this.onGlobalMouseDown);
   }
 
   componentWillUnmount() {
     document.removeEventListener('focusin', this.onFocusChanged);
     document.removeEventListener('keydown', this.onGlobalKey);
-    document.removeEventListener('mousedown', this.onGlobalClick);
+    document.removeEventListener('mousedown', this.onGlobalMouseDown);
   }
 
   setNode = (node) => {
