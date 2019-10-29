@@ -6,6 +6,11 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 6.0.1
+
+* `FIX`: correctly position context menu on scrolled table ([ddd59e6](https://github.com/bpmn-io/table-js/commit/ddd59e6009a30422732eae56f0dee7466f99943a))
+* `FIX`: auto-close context menu only when clicked outside of menu ([8f29911](https://github.com/bpmn-io/table-js/commit/8f29911d5ee7152552661f78aaa77a784ad38712))
+
 ## 6.0.0
 
 * `CHORE`: bump dependencies
