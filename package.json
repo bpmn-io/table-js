@@ -60,7 +60,7 @@
     "selection-ranges": "^3.0.3"
   },
   "peerDependencies": {
-    "diagram-js": "^4.0.0",
+    "diagram-js": ">=4",
     "inferno": "^5.0.5"
   }
 }
