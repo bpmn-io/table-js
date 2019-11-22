@@ -6,6 +6,14 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 6.0.3
+
+_Republish of `v6.0.2`._
+
+## 6.0.2
+
+* `CHORE`: mark as compatible with `diagram-js@6`
+
 ## 6.0.1
 
 * `FIX`: correctly position context menu on scrolled table ([ddd59e6](https://github.com/bpmn-io/table-js/commit/ddd59e6009a30422732eae56f0dee7466f99943a))
