@@ -1,7 +1,7 @@
-import { Component } from 'inferno';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
-
-export default class TableComponent extends Component {
+export default class TableComponent extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -27,7 +27,7 @@ export default class TableComponent extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const { id } = this._sheet.getRoot();
 
     this._changeSupport.onElementsChanged(id, this.onElementsChanged);
@@ -68,3 +68,9 @@ export default class TableComponent extends Component {
     );
   }
 }
+
+TableComponent.childContextTypes = {
+  changeSupport: PropTypes.object,
+  components: PropTypes.object,
+  injector: PropTypes.object
+};

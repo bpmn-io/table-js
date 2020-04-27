@@ -1,4 +1,4 @@
-import { Component } from 'inferno';
+import React, { PureComponent } from 'react';
 
 import {
   classNames,
@@ -11,7 +11,7 @@ import {
 } from './mixins';
 
 
-export default class BaseCell extends Component {
+export default class BaseCell extends PureComponent {
 
   constructor(props, context) {
     super(props, context);

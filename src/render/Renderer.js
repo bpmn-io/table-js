@@ -1,4 +1,5 @@
-import { render } from 'inferno';
+import React from 'react';
+import { render } from 'react-dom';
 
 import TableComponent from './components/TableComponent';
 

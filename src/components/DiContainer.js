@@ -1,7 +1,7 @@
-import { Component } from 'inferno';
+import React, { PureComponent } from 'react';
 
 
-export default class DiContainer extends Component {
+export default class DiContainer extends PureComponent {
 
   getChildContext() {
 

@@ -1,14 +1,10 @@
-import {
-  Component,
-  render
-} from 'inferno';
+import React, { PureComponent } from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
+import { mount } from 'enzyme';
 
 import TestContainerSupport from 'mocha-test-container-support';
-
-import {
-  findRenderedDOMElementWithClass
-} from 'inferno-test-utils';
 
 import { inject, bootstrap } from 'test/TestHelper';
 
@@ -18,8 +14,7 @@ import ContextMenuComponent
 
 
 function withContext(WithoutContext, context) {
-
-  return class WithContext extends Component {
+  class WithContext extends PureComponent {
     getChildContext() {
       return context;
     }
@@ -27,8 +22,16 @@ function withContext(WithoutContext, context) {
     render() {
       return <WithoutContext />;
     }
-  };
+  }
 
+  WithContext.childContextTypes =
+    Object.keys(context).reduce((childContextTypes, key) => {
+      return Object.assign(childContextTypes, {
+        [ key ]: PropTypes.any
+      });
+    }, {});
+
+  return WithContext;
 }
 
 
@@ -39,11 +42,12 @@ describe('features/context-menu - ContextMenuComponent', function() {
   }));
 
 
-  var container, vTree;
+  let container;
 
-  function renderIntoDocument(vNode) {
-    vTree = render(vNode, container);
-    return vTree;
+  function mountAndAttach(Component) {
+    return mount(Component, {
+      attachTo: container
+    });
   }
 
   beforeEach(function() {
@@ -51,7 +55,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
   });
 
   afterEach(function() {
-    render(null, container);
+    ReactDOM.render(null, container);
   });
 
 
@@ -60,11 +64,11 @@ describe('features/context-menu - ContextMenuComponent', function() {
 
       // given
       const WithContext = withContext(ContextMenuComponent, {
-        injector,
-        eventBus
+        eventBus,
+        injector
       });
 
-      const renderedTree = renderIntoDocument(<WithContext />);
+      const wrapper = mountAndAttach(<WithContext />);
 
       components.onGetComponent('context-menu', () => () => <div className="foo"></div>);
 
@@ -72,25 +76,27 @@ describe('features/context-menu - ContextMenuComponent', function() {
       contextMenu.open();
 
       // then
-      expect(findRenderedDOMElementWithClass(renderedTree, 'context-menu')).to.exist;
-      expect(findRenderedDOMElementWithClass(renderedTree, 'foo')).to.exist;
+      process.nextTick(() => {
+        expect(wrapper.find('.context-menu')).to.have.lengthOf(1);
+        expect(wrapper.find('.foo')).to.have.lengthOf(1);
+      });
     }
   ));
 
 
   describe('should automatically close', function() {
 
-    let renderedTree;
+    let wrapper;
 
     beforeEach(inject(function(components, eventBus, injector) {
 
       // given
       const WithContext = withContext(ContextMenuComponent, {
-        injector,
-        eventBus
+        eventBus,
+        injector
       });
 
-      renderedTree = renderIntoDocument(<WithContext />);
+      wrapper = mountAndAttach(<WithContext />);
 
       components.onGetComponent('context-menu', () => () => <div></div>);
     }));
@@ -105,9 +111,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
       triggerClick(document.body);
 
       // then
-      expect(
-        findRenderedDOMElementWithClass(renderedTree, 'context-menu')
-      ).not.to.exist;
+      expect(wrapper.find('.context-menu')).to.have.lengthOf(0);
     }));
 
 
@@ -120,9 +124,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
       triggerFocusIn(document.body);
 
       // then
-      expect(
-        findRenderedDOMElementWithClass(renderedTree, 'context-menu')
-      ).not.to.exist;
+      expect(wrapper.find('.context-menu')).to.have.lengthOf(0);
     }));
 
 
@@ -135,9 +137,8 @@ describe('features/context-menu - ContextMenuComponent', function() {
       triggerMouseEvent(document.body, 'mousedown');
 
       // then
-      expect(
-        findRenderedDOMElementWithClass(renderedTree, 'context-menu')
-      ).not.to.exist;
+      expect(wrapper.find('.context-menu')).to.have.lengthOf(0);
+
     }));
 
 
@@ -146,7 +147,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
 
         // given
         contextMenu.open();
-        const element = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+        const element = wrapper.find('.context-menu');
 
         // when
         triggerMouseEvent(element, 'mousedown');
@@ -155,7 +156,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
 
         // then
         expect(
-          findRenderedDOMElementWithClass(renderedTree, 'context-menu')
+          findRenderedDOMComponentWithClass(wrapper, 'context-menu')
         ).to.exist;
       })
     );
@@ -175,7 +176,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
 
         // then
         expect(
-          findRenderedDOMElementWithClass(renderedTree, 'context-menu')
+          findRenderedDOMComponentWithClass(wrapper, 'context-menu')
         ).to.exist;
       }));
 
@@ -192,7 +193,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
 
         // then
         expect(
-          findRenderedDOMElementWithClass(renderedTree, 'context-menu')
+          findRenderedDOMComponentWithClass(wrapper, 'context-menu')
         ).to.exist;
       }));
 
@@ -213,7 +214,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
         eventBus
       });
 
-      renderedTree = renderIntoDocument(<WithContext />);
+      renderedTree = mountAndAttach(<WithContext />);
     }));
 
 
@@ -233,7 +234,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
         contextMenu.open();
 
         // then
-        var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
+        var inputEl = findRenderedDOMComponentWithClass(renderedTree, 'test-input');
 
         expect(
           document.activeElement
@@ -249,7 +250,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
         });
 
         // then
-        var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
+        var inputEl = findRenderedDOMComponentWithClass(renderedTree, 'test-input');
 
         expect(
           document.activeElement
@@ -277,7 +278,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
         contextMenu.open();
 
         // then
-        var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
+        var inputEl = findRenderedDOMComponentWithClass(renderedTree, 'test-input');
 
         expect(
           document.activeElement
@@ -293,7 +294,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
         });
 
         // then
-        var inputEl = findRenderedDOMElementWithClass(renderedTree, 'test-input');
+        var inputEl = findRenderedDOMComponentWithClass(renderedTree, 'test-input');
 
         expect(
           document.activeElement
@@ -320,7 +321,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
 
         // then
         var inputEl =
-          findRenderedDOMElementWithClass(renderedTree, 'test-contenteditable');
+        findRenderedDOMComponentWithClass(renderedTree, 'test-contenteditable');
 
         expect(
           document.activeElement
@@ -337,7 +338,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
 
         // then
         var inputEl =
-          findRenderedDOMElementWithClass(renderedTree, 'test-contenteditable');
+        findRenderedDOMComponentWithClass(renderedTree, 'test-contenteditable');
 
         expect(
           document.activeElement
@@ -358,7 +359,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
         eventBus
       });
 
-      const renderedTree = renderIntoDocument(<WithContext />);
+      const renderedTree = mountAndAttach(<WithContext />);
 
       components.onGetComponent('context-menu', () => () => <div></div>);
 
@@ -369,7 +370,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
       });
 
       // then
-      const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+      const node = findRenderedDOMComponentWithClass(renderedTree, 'context-menu');
 
       expect(node).to.exist;
       expect(node.style.top).to.not.equal('');
@@ -387,12 +388,12 @@ describe('features/context-menu - ContextMenuComponent', function() {
 
         // given
         const WithContext = withContext(ContextMenuComponent, {
+          components,
           injector,
           eventBus
         });
 
-        const renderedTree = renderIntoDocument(<WithContext />);
-
+        const renderedTree = mountAndAttach(<WithContext />);
 
         components.onGetComponent(
           'context-menu',
@@ -408,7 +409,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
         // then
         function onFocus() {
           try {
-            const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+            const node = findRenderedDOMComponentWithClass(renderedTree, 'context-menu');
 
             expect(node).to.exist;
             expect(node.style.top).to.not.equal('');
@@ -437,13 +438,13 @@ describe('features/context-menu - ContextMenuComponent', function() {
         eventBus
       });
 
-      const renderedTree = renderIntoDocument(<WithContext />);
+      const renderedTree = mountAndAttach(<WithContext />);
 
       // when
       contextMenu.open();
 
       // then
-      const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+      const node = findRenderedDOMComponentWithClass(renderedTree, 'context-menu');
 
       expect(node).to.not.exist;
     }
@@ -459,7 +460,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
         eventBus
       });
 
-      const renderedTree = renderIntoDocument(<WithContext />);
+      const renderedTree = mountAndAttach(<WithContext />);
 
       components.onGetComponent('context-menu', () => () => <div></div>);
 
@@ -469,7 +470,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
       contextMenu.close();
 
       // then
-      const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+      const node = findRenderedDOMComponentWithClass(renderedTree, 'context-menu');
 
       expect(node).to.not.exist;
     }

@@ -16,12 +16,15 @@ describe('Renderer', function() {
   });
 
 
-  it('should render', function() {
+  it('should render', inject(function(sheet) {
+
+    // given
+    sheet.getRoot();
 
     // then
     expect(domQuery('.tjs-container')).to.exist;
     expect(domQuery('.tjs-table')).to.exist;
-  });
+  }));
 
 
   it('should render null', inject(function(eventBus, sheet) {

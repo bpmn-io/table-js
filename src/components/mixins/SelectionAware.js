@@ -29,7 +29,7 @@ const SelectionAware = {
     this.setState(newSelection);
   },
 
-  componentWillUpdate(newProps) {
+  UNSAFE_componentWillUpdate(newProps) {
     if (newProps.elementId !== this.props.elementId) {
       this.updateSelectionSubscription(false);
     }

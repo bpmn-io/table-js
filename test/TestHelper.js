@@ -6,6 +6,11 @@ import TestContainer from 'mocha-test-container-support';
 
 import Table from 'src/Table';
 
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+
 
 let TABLE_JS = null;
 

@@ -1,4 +1,5 @@
-import { Component } from 'inferno';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   assign,
@@ -18,7 +19,7 @@ import {
 } from 'selection-ranges';
 
 
-export default class ContextMenuComponent extends Component {
+export default class ContextMenuComponent extends PureComponent {
 
   constructor(props, context) {
     super(props, context);
@@ -122,11 +123,17 @@ ContextMenuComponent.$inject = [
   'components'
 ];
 
+ContextMenuComponent.contextTypes = {
+  components: PropTypes.object,
+  eventBus: PropTypes.object,
+  injector: PropTypes.object
+};
+
 
 /**
  * Low-level, stateless context menu holder.
  */
-class ContextMenu extends Component {
+class ContextMenu extends PureComponent {
 
   constructor(props, context) {
     super(props, context);
@@ -135,7 +142,6 @@ class ContextMenu extends Component {
   }
 
   close() {
-
     const {
       onClose
     } = this.props;
@@ -369,6 +375,12 @@ ContextMenu.$inject = [
   'renderer'
 ];
 
+ContextMenu.contextTypes = {
+  components: PropTypes.object,
+  eventBus: PropTypes.object,
+  injector: PropTypes.object
+};
+
 
 // helpers /////////////
 
@@ -389,7 +401,6 @@ const SELECTABLE_ELEMENTS = `
 `;
 
 function ensureFocus(el) {
-
   var focusEl = domQuery(SELECTABLE_ELEMENTS, el);
 
   if (focusEl) {
@@ -402,6 +413,12 @@ function ensureFocus(el) {
 
     // content editable elements
     if ('contentEditable' in focusEl) {
+
+      if (!document.body.contains(focusEl)) {
+        console.error('element to focus is not in DOM');
+        return;
+      }
+
       setRange(focusEl, { start: 100000, end: 100000 });
     }
   }
