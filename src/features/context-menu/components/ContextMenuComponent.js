@@ -271,68 +271,52 @@ class ContextMenu extends Component {
 
     const style = {};
 
-    if (position.x + (position.width / 2) > containerBounds.width / 2) {
-      let left = position.x
+    let left, top;
+
+    if (
+      !position.exact && position.x + (position.width / 2) > containerBounds.width / 2
+    ) {
+      left = position.x
         - containerBounds.left
         - bounds.width
         + offset.x
         + scrollLeft;
-
-      left = clampNumber(
-        left,
-        0 + scrollLeft,
-        containerBounds.width - bounds.width + scrollLeft
-      );
-
-      style.left = left + 'px';
     } else {
-      let left = window.scrollX
+      left = window.scrollX
         - containerBounds.left
         + position.x
         + position.width
         - offset.x
         + scrollLeft;
-
-      left = clampNumber(
-        left,
-        0 + scrollLeft,
-        containerBounds.width - bounds.width + scrollLeft
-      );
-
-      style.left = left + 'px';
     }
+    left = position.exact ? left : clampNumber(
+      left,
+      0 + scrollLeft,
+      containerBounds.width - bounds.width + scrollLeft
+    );
+    style.left = left + 'px';
 
-    let top;
-
-    if (position.y + (position.height / 2) > containerBounds.height / 2) {
+    if (
+      !position.exact && position.y + (position.height / 2) > containerBounds.height / 2
+    ) {
       top = position.y
         - containerBounds.top
         - bounds.height
         + offset.y
         + scrollTop;
-
-      top = clampNumber(
-        top,
-        0 + scrollTop,
-        containerBounds.height - bounds.height + scrollTop
-      );
-
-      style.top = top + 'px';
     } else {
       top = window.scrollY
         - containerBounds.top
         + position.y
         - offset.y
         + scrollTop;
-
-      top = clampNumber(
-        top,
-        0 + scrollTop,
-        containerBounds.height - bounds.height + scrollTop
-      );
-
-      style.top = top + 'px';
     }
+    top = position.exact ? top : clampNumber(
+      top,
+      0 + scrollTop,
+      containerBounds.height - bounds.height + scrollTop
+    );
+    style.top = top + 'px';
 
     // ensure context menu will always be accessible
     style.overflowY = 'auto';
