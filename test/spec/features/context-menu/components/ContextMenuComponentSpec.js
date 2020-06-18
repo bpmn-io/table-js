@@ -15,6 +15,7 @@ import { inject, bootstrap } from 'test/TestHelper';
 import ContextMenuModule from 'src/features/context-menu';
 import ContextMenuComponent
   from 'src/features/context-menu/components/ContextMenuComponent';
+import { expect } from 'chai';
 
 
 function withContext(WithoutContext, context) {
@@ -376,6 +377,39 @@ describe('features/context-menu - ContextMenuComponent', function() {
       expect(node.style.left).to.not.equal('');
     }
   ));
+
+
+  it('should render context menu at exact position', inject(
+    function(components, contextMenu, eventBus, injector) {
+
+      // given
+      const WithContext = withContext(ContextMenuComponent, {
+        injector,
+        eventBus
+      });
+
+      const renderedTree = renderIntoDocument(<WithContext />);
+
+      components.onGetComponent('context-menu', () => () => <div></div>);
+
+      // when
+      container.scrollTop = 100;
+      contextMenu.open({
+        x: 100,
+        y: 0,
+        exact: true
+      });
+
+      // then
+      const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+
+      expect(node).to.exist;
+      expect(node.style.top).to.not.equal('');
+      expect(node.style.left).to.not.equal('');
+      expect(/^-/.test(node.style.top), 'style.top should be negative').to.be.true;
+    }
+  ));
+
 
   // skip on Firefox due to inconsistent focus handling,
   // cf. https://github.com/bpmn-io/table-js/pull/25 and linked sources
