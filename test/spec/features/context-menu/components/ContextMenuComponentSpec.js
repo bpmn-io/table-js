@@ -397,7 +397,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
       contextMenu.open({
         x: 100,
         y: 0,
-        exact: true
+        align: 'bottom-right'
       });
 
       // then

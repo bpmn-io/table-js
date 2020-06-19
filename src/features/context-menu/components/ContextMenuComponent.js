@@ -17,6 +17,14 @@ import {
   setRange
 } from 'selection-ranges';
 
+/**
+ * @typedef ContextMenuPosition
+ * @property {number} x
+ * @property {number} y
+ * @property {number} [width=0]
+ * @property {number} [height=0]
+ * @property {'bottom-left'|'bottom-right'|'top-left'|'top-right'} [align]
+ */
 
 export default class ContextMenuComponent extends Component {
 
@@ -38,9 +46,10 @@ export default class ContextMenuComponent extends Component {
    * Open the context menu with given position and context.
    *
    * The menu itself will figure out the best position, taking the optional
-   * positioning parameter into account.
+   * positioning parameter into account. Position can also contain indicator
+   * in which direction to open context menu.
    *
-   * @param {Bounds|Point} position
+   * @param {ContextMenuPosition} position
    * @param {Object} [context]
    */
   open = ({ position, context }) => {
@@ -271,11 +280,19 @@ class ContextMenu extends Component {
 
     const style = {};
 
+    let alignment;
+
+    if (position.align) {
+      alignment = position.align.split('-');
+    }
+
     let left, top;
 
-    if (
-      !position.exact && position.x + (position.width / 2) > containerBounds.width / 2
-    ) {
+    const horizontalAlignment = alignment && alignment[1] || (
+      position.x + (position.width / 2) > containerBounds.width / 2 ? 'left' : 'right'
+    );
+
+    if (horizontalAlignment === 'left') {
       left = position.x
         - containerBounds.left
         - bounds.width
@@ -289,16 +306,18 @@ class ContextMenu extends Component {
         - offset.x
         + scrollLeft;
     }
-    left = position.exact ? left : clampNumber(
+    left = alignment ? left : clampNumber(
       left,
       0 + scrollLeft,
       containerBounds.width - bounds.width + scrollLeft
     );
     style.left = left + 'px';
 
-    if (
-      !position.exact && position.y + (position.height / 2) > containerBounds.height / 2
-    ) {
+    const verticalAlignment = alignment && alignment[0] || (
+      position.y + (position.height / 2) > containerBounds.height / 2 ? 'top' : 'bottom'
+    );
+
+    if (verticalAlignment === 'top') {
       top = position.y
         - containerBounds.top
         - bounds.height
@@ -311,7 +330,7 @@ class ContextMenu extends Component {
         - offset.y
         + scrollTop;
     }
-    top = position.exact ? top : clampNumber(
+    top = alignment ? top : clampNumber(
       top,
       0 + scrollTop,
       containerBounds.height - bounds.height + scrollTop
