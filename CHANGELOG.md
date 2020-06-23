@@ -6,6 +6,10 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 6.1.0
+
+* `FEAT`: allow to align context menu via `position#align` ([#33](https://github.com/bpmn-io/table-js/pull/33))
+
 ## 6.0.3
 
 _Republish of `v6.0.2`._
