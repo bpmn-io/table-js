@@ -4,7 +4,7 @@
 
 A blazing fast library for viewing and editing tables.
 
-[![Build Status](https://travis-ci.org/bpmn-io/table-js.svg?branch=master)](https://travis-ci.org/bpmn-io/table-js)
+[![Build Status](https://travis-ci.com/bpmn-io/table-js.svg?branch=master)](https://travis-ci.com/bpmn-io/table-js)
 
 
 ## Hacking the Project
