@@ -55,11 +55,13 @@ export default class TableComponent extends Component {
           beforeTableComponents &&
             beforeTableComponents.map((Component, index) => <Component key={ index } />)
         }
-        <table className="tjs-table">
-          { Head && <Head rows={ rows } cols={ cols } /> }
-          { Body && <Body rows={ rows } cols={ cols } /> }
-          { Foot && <Foot rows={ rows } cols={ cols } /> }
-        </table>
+        <div className="tjs-table-container">
+          <table className="tjs-table">
+            { Head && <Head rows={ rows } cols={ cols } /> }
+            { Body && <Body rows={ rows } cols={ cols } /> }
+            { Foot && <Foot rows={ rows } cols={ cols } /> }
+          </table>
+        </div>
         {
           afterTableComponents &&
             afterTableComponents.map((Component, index) => <Component key={ index } />)
