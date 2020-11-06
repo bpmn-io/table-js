@@ -10,12 +10,17 @@ import {
 } from '../../../components';
 
 import {
+  closest as domClosest,
   query as domQuery
 } from 'min-dom';
 
 import {
   setRange
 } from 'selection-ranges';
+
+const DEFAULT_STYLE = {
+  position: 'absolute'
+};
 
 /**
  * @typedef ContextMenuPosition
@@ -248,13 +253,14 @@ class ContextMenu extends Component {
    * Find best context menu position and re-layout accordingly.
    */
   updatePosition() {
-
     const {
       position,
       offset
     } = this.props;
 
-    const bounds = this.node.getBoundingClientRect();
+    const { node } = this;
+
+    const bounds = node.getBoundingClientRect();
 
     if (!position.width) {
       position.width = 0;
@@ -264,9 +270,8 @@ class ContextMenu extends Component {
       position.height = 0;
     }
 
-    const container = this.renderer.getContainer();
-
-    const containerBounds = container.getBoundingClientRect();
+    const container = this.renderer.getContainer(),
+          containerBounds = container.getBoundingClientRect();
 
     if (containerBounds.width > containerBounds.height) {
       this.node.classList.add('horizontal');
@@ -276,7 +281,7 @@ class ContextMenu extends Component {
       this.node.classList.remove('horizontal');
     }
 
-    const { scrollLeft, scrollTop } = container;
+    const { scrollLeft, scrollTop } = getTableContainerScroll(node);
 
     const style = {};
 
@@ -289,7 +294,9 @@ class ContextMenu extends Component {
     let left, top;
 
     const horizontalAlignment = alignment && alignment[1] || (
-      position.x + (position.width / 2) > containerBounds.width / 2 ? 'left' : 'right'
+      position.x + (position.width / 2) > containerBounds.width / 2
+        ? 'left'
+        : 'right'
     );
 
     if (horizontalAlignment === 'left') {
@@ -314,7 +321,9 @@ class ContextMenu extends Component {
     style.left = left + 'px';
 
     const verticalAlignment = alignment && alignment[0] || (
-      position.y + (position.height / 2) > containerBounds.height / 2 ? 'top' : 'bottom'
+      position.y + (position.height / 2) > containerBounds.height / 2
+        ? 'top'
+        : 'bottom'
     );
 
     if (verticalAlignment === 'top') {
@@ -341,7 +350,7 @@ class ContextMenu extends Component {
     style.overflowY = 'auto';
     style.maxHeight = (containerBounds.height - top + scrollTop) + 'px';
 
-    assign(this.node.style, style);
+    assign(this.node.style, DEFAULT_STYLE, style);
   }
 
 
@@ -408,4 +417,22 @@ function ensureFocus(el) {
       setRange(focusEl, { start: 100000, end: 100000 });
     }
   }
+}
+
+function getTableContainerScroll(node) {
+  const tableContainer = domClosest(node, '.tjs-container');
+
+  if (!tableContainer) {
+    return {
+      scrollTop: 0,
+      scrollLeft: 0
+    };
+  }
+
+  const { scrollLeft, scrollTop } = tableContainer;
+
+  return {
+    scrollTop,
+    scrollLeft
+  };
 }
