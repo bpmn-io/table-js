@@ -17,6 +17,10 @@ import ContextMenuComponent
   from 'src/features/context-menu/components/ContextMenuComponent';
 import { expect } from 'chai';
 
+import { query as domQuery } from 'min-dom';
+
+import { assign } from 'min-dash';
+
 
 function withContext(WithoutContext, context) {
 
@@ -350,65 +354,61 @@ describe('features/context-menu - ContextMenuComponent', function() {
   });
 
 
-  it('should render context menu at position', inject(
-    function(components, contextMenu, eventBus, injector) {
+  describe('position', function() {
 
-      // given
-      const WithContext = withContext(ContextMenuComponent, {
-        injector,
-        eventBus
-      });
-
-      const renderedTree = renderIntoDocument(<WithContext />);
-
-      components.onGetComponent('context-menu', () => () => <div></div>);
-
-      // when
-      contextMenu.open({
-        x: 100,
-        y: 100
-      });
-
-      // then
-      const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
-
-      expect(node).to.exist;
-      expect(node.style.top).to.not.equal('');
-      expect(node.style.left).to.not.equal('');
-    }
-  ));
+    beforeEach(inject(function(eventBus, sheet) {
+      eventBus.fire('elements.changed', { elements: [ sheet.getRoot() ] });
+    }));
 
 
-  it('should render context menu at exact position', inject(
-    function(components, contextMenu, eventBus, injector) {
+    it('should render context menu at position taking scroll into account', inject(
+      function(components, contextMenu) {
 
-      // given
-      const WithContext = withContext(ContextMenuComponent, {
-        injector,
-        eventBus
-      });
+        // given
+        components.onGetComponent('context-menu', () => () => 'FOO');
 
-      const renderedTree = renderIntoDocument(<WithContext />);
+        const table = domQuery('.tjs-table', container);
 
-      components.onGetComponent('context-menu', () => () => <div></div>);
+        assign(table.style, {
+          width: '10000px',
+          height: '10000px'
+        });
 
-      // when
-      container.scrollTop = 100;
-      contextMenu.open({
-        x: 100,
-        y: 0,
-        align: 'bottom-right'
-      });
+        const tableContainer = domQuery('.tjs-container', container);
 
-      // then
-      const node = findRenderedDOMElementWithClass(renderedTree, 'context-menu');
+        assign(tableContainer.style, {
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          overflow: 'scroll'
+        });
 
-      expect(node).to.exist;
-      expect(node.style.top).to.not.equal('');
-      expect(node.style.left).to.not.equal('');
-      expect(/^-/.test(node.style.top), 'style.top should be negative').to.be.true;
-    }
-  ));
+        assign(tableContainer, {
+          scrollTop: 1000,
+          scrollLeft: 1000
+        });
+
+        const containerBounds = container.getBoundingClientRect();
+
+        // when
+        contextMenu.open({
+          x: containerBounds.left + 100,
+          y: containerBounds.top + 100,
+          align: 'bottom-right'
+        });
+
+        // then
+        const node = domQuery('.context-menu', container),
+              nodeBounds = node.getBoundingClientRect();
+
+        expect(parseInt(nodeBounds.top) - 100).to.be.closeTo(containerBounds.top, 1);
+        expect(parseInt(nodeBounds.left) - 100).to.be.closeTo(containerBounds.left, 1);
+      }
+    ));
+
+  });
+
+
 
 
   // skip on Firefox due to inconsistent focus handling,
