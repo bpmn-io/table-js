@@ -305,13 +305,18 @@ class ContextMenu extends Component {
         - bounds.width
         + offset.x
         + scrollLeft;
+
+      node.classList.remove('right');
+      node.classList.add('left');
     } else {
-      left = window.scrollX
-        - containerBounds.left
+      left = -containerBounds.left
         + position.x
         + position.width
         - offset.x
         + scrollLeft;
+
+      node.classList.remove('left');
+      node.classList.add('right');
     }
     left = alignment ? left : clampNumber(
       left,
@@ -332,12 +337,17 @@ class ContextMenu extends Component {
         - bounds.height
         + offset.y
         + scrollTop;
+
+      node.classList.remove('bottom');
+      node.classList.add('top');
     } else {
-      top = window.scrollY
-        - containerBounds.top
+      top = -containerBounds.top
         + position.y
         - offset.y
         + scrollTop;
+
+      node.classList.remove('top');
+      node.classList.add('bottom');
     }
     top = alignment ? top : clampNumber(
       top,
