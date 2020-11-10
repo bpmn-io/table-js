@@ -401,6 +401,9 @@ describe('features/context-menu - ContextMenuComponent', function() {
         const node = domQuery('.context-menu', container),
               nodeBounds = node.getBoundingClientRect();
 
+        expect(node.classList.contains('right')).to.be.true;
+        expect(node.classList.contains('bottom')).to.be.true;
+
         expect(parseInt(nodeBounds.top) - 100).to.be.closeTo(containerBounds.top, 1);
         expect(parseInt(nodeBounds.left) - 100).to.be.closeTo(containerBounds.left, 1);
       }
