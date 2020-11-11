@@ -6,6 +6,15 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 7.0.0-alpha.0
+
+* `FEAT`: wrap table element in a container ([#36](https://github.com/bpmn-io/table-js/pull/36))
+* `FIX`: fix context menu position ([#36](https://github.com/bpmn-io/table-js/pull/36))
+
+### Breaking Change
+
+* table element now wrapped in an additional container which might affect your styles
+
 ## 6.1.0
 
 * `FEAT`: allow to align context menu via `position#align` ([#33](https://github.com/bpmn-io/table-js/pull/33))
