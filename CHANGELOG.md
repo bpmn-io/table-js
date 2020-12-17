@@ -6,6 +6,10 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 7.0.0
+
+* `CHORE`: bump to `diagram-js@7`
+
 ## 7.0.0-alpha.0
 
 * `FEAT`: wrap table element in a container ([#36](https://github.com/bpmn-io/table-js/pull/36))
