@@ -6,7 +6,7 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
-## 7.1.0-alpha.0
+## 7.1.0
 
 * `CHORE`: bump to `diagram-js@7.2`
 * `CHORE`: bump to `inferno@5.6`
