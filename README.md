@@ -7,7 +7,7 @@ A blazing fast library for viewing and editing tables.
 [![Build Status](https://travis-ci.com/bpmn-io/table-js.svg?branch=master)](https://travis-ci.com/bpmn-io/table-js)
 
 
-## Hacking the Project
+## Development
 
 To get the development setup make sure to have [NodeJS](https://nodejs.org/en/download/) installed.
 If your set up, clone the project and execute
