@@ -11,12 +11,21 @@ export default class TableComponent extends Component {
     this._sheet = injector.get('sheet');
     this._changeSupport = injector.get('changeSupport');
     this._components = injector.get('components');
+    this._eventBus = injector.get('eventBus');
+
+    const throttle = injector.get('throttle');
 
     this.onElementsChanged = this.onElementsChanged.bind(this);
+
+    this.onScroll = throttle(this.onScroll.bind(this));
   }
 
   onElementsChanged() {
     this.forceUpdate();
+  }
+
+  onScroll() {
+    this._eventBus.fire('sheet.scroll');
   }
 
   getChildContext() {
@@ -55,7 +64,7 @@ export default class TableComponent extends Component {
           beforeTableComponents &&
             beforeTableComponents.map((Component, index) => <Component key={ index } />)
         }
-        <div className="tjs-table-container">
+        <div className="tjs-table-container" onScroll={ this.onScroll }>
           <table className="tjs-table">
             { Head && <Head rows={ rows } cols={ cols } /> }
             { Body && <Body rows={ rows } cols={ cols } /> }

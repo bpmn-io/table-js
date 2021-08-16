@@ -3,6 +3,7 @@ import ElementRegistry from './ElementRegistry';
 import EventBus from 'diagram-js/lib/core/EventBus';
 import renderModule from '../render';
 import Sheet from './Sheet';
+import Throttle from './Throttle';
 
 export default {
   __depends__: [ renderModule ],
@@ -10,5 +11,6 @@ export default {
   elementFactory: [ 'type', ElementFactory ],
   elementRegistry: [ 'type', ElementRegistry ],
   eventBus: [ 'type', EventBus ],
-  sheet: [ 'type', Sheet ]
+  sheet: [ 'type', Sheet ],
+  throttle: [ 'factory', Throttle ]
 };
