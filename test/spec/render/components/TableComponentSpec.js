@@ -1,3 +1,5 @@
+/* global sinon */
+
 import {
   Component,
   render
@@ -104,6 +106,27 @@ describe('TableComponent', function() {
 
     // when
     renderIntoDocument(<TableComponent injector={ injector } />);
+  }));
+
+
+  it('should fire event on scroll', inject(function(eventBus, injector) {
+
+    // given
+    const renderedTree = renderIntoDocument(<TableComponent injector={ injector } />);
+
+    const sheetScrollSpy = sinon.spy();
+
+    eventBus.on('sheet.scroll', sheetScrollSpy);
+
+    // when
+    const tableContainer =
+      findRenderedDOMElementWithClass(renderedTree, 'tjs-table-container');
+
+    tableContainer.dispatchEvent(new Event('scroll'));
+    tableContainer.dispatchEvent(new Event('scroll'));
+    tableContainer.dispatchEvent(new Event('scroll'));
+
+    expect(sheetScrollSpy).to.have.been.calledOnce;
   }));
 
 });
