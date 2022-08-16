@@ -53,7 +53,7 @@
     "webpack": "^4.35.3"
   },
   "dependencies": {
-    "didi": "^5.2.1",
+    "didi": "^8.0.1",
     "ids": "^1.0.0",
     "min-dash": "^3.5.2",
     "min-dom": "^3.1.3",
