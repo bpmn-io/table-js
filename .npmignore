@@ -1,7 +1,0 @@
-src/*
-test/*
-!lib/*
-.babelrc
-.eslintignore
-.eslintrc
-karma.conf.js
