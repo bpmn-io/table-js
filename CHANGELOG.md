@@ -6,6 +6,12 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 7.3.0
+
+* `DEPS`: bump to `didi@8`
+* `DEPS`: bump to `diagram-js@8` (peer dependency)
+* `DEPS`: bump `min-dom` and `min-dash`
+
 ## 7.2.0
 
 * `FEAT`: fire event on container scroll ([#40](https://github.com/bpmn-io/table-js/pull/40))
