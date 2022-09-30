@@ -537,7 +537,7 @@ function triggerMouseEvent(element, event, clientX, clientY, ctrlKey = false) {
   element.dispatchEvent(e);
 }
 
-function triggerEvent(element, name, eventType, bubbles=false) {
+function triggerEvent(element, name, eventType, bubbles = false) {
   const event = document.createEvent(eventType);
 
   event.initEvent(name, bubbles, true);

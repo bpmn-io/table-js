@@ -91,7 +91,7 @@ export default class InteractionEvents {
         event.stopPropagation();
       }
     }
-  }
+  };
 }
 
 InteractionEvents.$inject = [

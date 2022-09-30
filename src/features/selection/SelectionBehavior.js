@@ -8,7 +8,7 @@ export default class SelectionBehavior {
     this._renderer = renderer;
     this._selection = selection;
 
-    eventBus.on([ 'cell.click', 'cell.contextmenu'], ({ id }) => {
+    eventBus.on([ 'cell.click', 'cell.contextmenu' ], ({ id }) => {
       const element = elementRegistry.get(id);
 
       if (!element) {

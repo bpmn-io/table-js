@@ -67,7 +67,7 @@ export default class ContextMenuComponent extends Component {
       position: position || { x: 0, y: 0 },
       context: context || {}
     });
-  }
+  };
 
   /**
    * Closes context menu and resets state.
@@ -84,11 +84,11 @@ export default class ContextMenuComponent extends Component {
         }
       });
     }
-  }
+  };
 
   triggerClose = () => {
     this.eventBus.fire('contextMenu.close');
-  }
+  };
 
   componentDidMount() {
     this.eventBus.on('contextMenu.open', this.open);
@@ -196,7 +196,7 @@ class ContextMenu extends Component {
    */
   onGlobalMouseDown = (event) => {
     this.checkClose(event.target);
-  }
+  };
 
   /**
    * Handle global key event.
@@ -212,14 +212,14 @@ class ContextMenu extends Component {
 
       this.close();
     }
-  }
+  };
 
   /**
    * Handle global (document) focus changed event.
    */
   onFocusChanged = (event) => {
     this.checkClose(event.target);
-  }
+  };
 
   componentDidMount() {
     document.addEventListener('focusin', this.onFocusChanged);
@@ -247,7 +247,7 @@ class ContextMenu extends Component {
         ensureFocus(node);
       }
     }
-  }
+  };
 
   /**
    * Find best context menu position and re-layout accordingly.
