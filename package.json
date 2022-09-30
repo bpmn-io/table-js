@@ -26,7 +26,7 @@
     "babel-plugin-inferno": "^5.1.0",
     "chai": "^4.3.6",
     "del-cli": "^1.1.0",
-    "diagram-js": "^8.7.1",
+    "diagram-js": "^9.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-bpmn-io": "^0.8.2",
     "eslint-plugin-inferno": "^7.4.0",
@@ -50,17 +50,17 @@
     "webpack": "^5.74.0"
   },
   "dependencies": {
-    "didi": "^8.0.1",
+    "didi": "^9.0.0",
     "ids": "^1.0.0",
-    "min-dash": "^3.8.1",
-    "min-dom": "^3.2.1",
+    "min-dash": "^4.0.0",
+    "min-dom": "^4.0.2",
     "selection-ranges": "^3.0.3"
   },
   "files": [
     "lib"
   ],
   "peerDependencies": {
-    "diagram-js": "4.x || 5.x || 6.x || 7.x || 8.x",
+    "diagram-js": "^9.1.0",
     "inferno": "^5.0.5"
   }
 }
