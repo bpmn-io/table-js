@@ -32,7 +32,7 @@ jobs:
       if: runner.os == 'Linux'
       env:
         COVERAGE: 1
-        TEST_BROWSERS: Firefox,PhantomJS,ChromeHeadless
+        TEST_BROWSERS: Firefox,ChromeHeadless
       run: xvfb-run npm run all
     - name: Build
       if: runner.os != 'Linux'
