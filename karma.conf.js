@@ -1,8 +1,8 @@
 'use strict';
 
 // configures browsers to run test against
-// any of [ 'ChromeHeadless', 'Chrome', 'Firefox', 'IE' ]
-var TEST_BROWSERS = (
+// any of [ 'ChromeHeadless', 'Chrome', 'Firefox' ]
+const TEST_BROWSERS = (
   (process.env.TEST_BROWSERS || 'ChromeHeadless')
     .replace(/^\s+|\s+$/, '')
     .split(/\s*,\s*/g)
@@ -10,23 +10,12 @@ var TEST_BROWSERS = (
 
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
-// workaround https://github.com/GoogleChrome/puppeteer/issues/290
-if (process.platform === 'linux') {
-  TEST_BROWSERS = TEST_BROWSERS.map(function(browser) {
-    if (browser === 'ChromeHeadless') {
-      return 'ChromeHeadless_Linux';
-    } else {
-      return browser;
-    }
-  });
-
-}
-
 
 module.exports = function(karma) {
   karma.set({
 
     frameworks: [
+      'webpack',
       'mocha',
       'sinon-chai'
     ],
@@ -48,17 +37,6 @@ module.exports = function(karma) {
     singleRun: true,
     autoWatch: false,
 
-    customLaunchers: {
-      ChromeHeadless_Linux: {
-        base: 'ChromeHeadless',
-        flags: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox'
-        ],
-        debug: true
-      }
-    },
-
     webpack: {
       mode: 'development',
       module: {
@@ -70,7 +48,7 @@ module.exports = function(karma) {
           },
           {
             test: /\.css|\.dmn$/,
-            use: 'raw-loader'
+            type: 'asset/source'
           }
         ]
       },
