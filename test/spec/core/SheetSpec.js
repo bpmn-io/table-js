@@ -138,9 +138,9 @@ describe('Sheet', function() {
 
       const row = {
         id: 'row',
-        cells: [{
+        cells: [ {
           id: 'cell'
-        }]
+        } ]
       };
 
       // when
@@ -160,16 +160,16 @@ describe('Sheet', function() {
 
       const row1 = {
         id: 'row1',
-        cells: [{
+        cells: [ {
           id: 'cell1'
-        }]
+        } ]
       };
 
       const row2 = {
         id: 'row2',
-        cells: [{
+        cells: [ {
           id: 'cell2'
-        }]
+        } ]
       };
 
       sheet.addRow(row1);
@@ -281,9 +281,9 @@ describe('Sheet', function() {
 
       const col = {
         id: 'col',
-        cells: [{
+        cells: [ {
           id: 'cell'
-        }]
+        } ]
       };
 
       // when
@@ -303,16 +303,16 @@ describe('Sheet', function() {
 
       const col1 = {
         id: 'col1',
-        cells: [{
+        cells: [ {
           id: 'cell1'
-        }]
+        } ]
       };
 
       const col2 = {
         id: 'col2',
-        cells: [{
+        cells: [ {
           id: 'cell2'
-        }]
+        } ]
       };
 
       sheet.addCol(col1);

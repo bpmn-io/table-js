@@ -25,6 +25,7 @@ describe('ChangeSupport', function() {
 
 
   it('should remove listener', inject(function(changeSupport) {
+
     // given
     const listener = () => {};
 
@@ -41,6 +42,7 @@ describe('ChangeSupport', function() {
 
 
   it('should remove all listeners', inject(function(changeSupport) {
+
     // given
     changeSupport.onElementsChanged('foo', () => {});
     changeSupport.onElementsChanged('foo', () => {});
@@ -70,9 +72,9 @@ describe('ChangeSupport', function() {
 
       // when
       eventBus.fire('elements.changed', {
-        elements: [{
+        elements: [ {
           id: 'foo'
-        }]
+        } ]
       });
 
       // then
@@ -84,9 +86,9 @@ describe('ChangeSupport', function() {
 
       // when
       eventBus.fire('elements.changed', {
-        elements: [{
+        elements: [ {
           id: 'bar'
-        }]
+        } ]
       });
 
       // then

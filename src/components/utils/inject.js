@@ -26,7 +26,7 @@ export function injectType(Type, component) {
 
       component[name] = value;
     }
-  }];
+  } ];
 
   injector.invoke(setupFn);
 }

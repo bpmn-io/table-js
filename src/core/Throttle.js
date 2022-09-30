@@ -5,7 +5,7 @@ import { throttle } from 'min-dash';
  *
  * @param {number|boolean} [config=true]
  */
-export default function ThrottleFactory(config=true) {
+export default function ThrottleFactory(config = true) {
 
   const timeout = typeof config === 'number' ? config : config ? 300 : 0;
 

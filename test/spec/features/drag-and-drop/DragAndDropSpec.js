@@ -3,6 +3,10 @@ import {
   queryAll as domQueryAll
 } from 'min-dom';
 
+import {
+  has
+} from 'min-dash';
+
 import TestContainer from 'mocha-test-container-support';
 
 /* global sinon */
@@ -18,7 +22,7 @@ function triggerEvent(element, type, data = {}) {
   event.initEvent(type, true, true);
 
   for (const key in data) {
-    if (data.hasOwnProperty(key)) {
+    if (has(data, key)) {
       event[key] = data[key];
     }
   }

@@ -100,6 +100,7 @@ export default class DragAndDrop {
         allowed = this._emit('dragAndDrop.dragEnter', event);
 
         if (allowed !== false) {
+
           // new targetEl
           this._dragContext.targetEl = cellEl;
         }
@@ -110,7 +111,7 @@ export default class DragAndDrop {
     }
 
     event.dataTransfer.dropEffect = allowed !== false ? 'move' : 'none';
-  }
+  };
 
   handleDrop = (event) => {
 
@@ -145,7 +146,7 @@ export default class DragAndDrop {
     // browser behavior / drag end handling via
     // event.preventDefault();
     this.handleDragEnd(event);
-  }
+  };
 
   handleDragEnd = (event) => {
 
@@ -156,7 +157,7 @@ export default class DragAndDrop {
     this._emit('dragAndDrop.dragEnd', event);
 
     this._dragContext = null;
-  }
+  };
 
 }
 

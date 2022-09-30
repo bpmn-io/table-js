@@ -1,12 +1,12 @@
 {
   "extends": [
-    "plugin:bpmn-io/es6",
+    "plugin:bpmn-io/browser",
     "plugin:bpmn-io/jsx"
   ],
-  "env": {
-    "browser": true
-  },
   "rules": {
     "max-len": [ 2, { "code": 90 } ]
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022
   }
 }
