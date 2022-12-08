@@ -25,7 +25,7 @@
     "babel-loader": "^8.2.5",
     "babel-plugin-inferno": "^5.1.0",
     "chai": "^4.3.6",
-    "del-cli": "^1.1.0",
+    "del-cli": "^5.0.0",
     "diagram-js": "^11.3.0",
     "eslint": "^8.24.0",
     "eslint-plugin-bpmn-io": "^0.16.0",
