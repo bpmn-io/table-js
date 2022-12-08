@@ -6,6 +6,10 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 8.0.1
+
+* `DEPS`: bump to `diagram-js@11.3.0` (peer dependency)
+
 ## 8.0.0
 
 _Library target changed to ES2018, cf. [blog post](https://bpmn.io/blog/posts/2022-migration-to-es2018.html)._
