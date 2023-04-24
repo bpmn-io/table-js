@@ -26,7 +26,7 @@
     "babel-plugin-inferno": "^5.1.0",
     "chai": "^4.3.6",
     "del-cli": "^5.0.0",
-    "diagram-js": "^11.4.1",
+    "diagram-js": "^12.0.1",
     "eslint": "^8.24.0",
     "eslint-plugin-bpmn-io": "^1.0.0",
     "eslint-plugin-inferno": "^7.31.8",
@@ -60,7 +60,7 @@
     "lib"
   ],
   "peerDependencies": {
-    "diagram-js": "^11.3.0",
+    "diagram-js": "^11.3.0 || ^12",
     "inferno": "^5.0.5"
   }
 }
