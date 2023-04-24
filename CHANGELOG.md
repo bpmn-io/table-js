@@ -6,6 +6,10 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+## 8.0.2
+
+* `DEPS`: support `diagram-js@12`
+
 ## 8.0.1
 
 * `DEPS`: bump to `diagram-js@11.3.0` (peer dependency)
