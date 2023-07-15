@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "didi": "^9.0.0",
-    "ids": "^1.0.0",
+    "ids": "^2.0.0",
     "min-dash": "^4.0.0",
     "min-dom": "^4.0.3",
     "selection-ranges": "^3.0.3"
