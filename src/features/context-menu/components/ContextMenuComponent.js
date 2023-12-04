@@ -420,10 +420,10 @@ function ensureFocus(el) {
     // inputs
     if (focusEl.selectionStart && focusEl.type === 'text') {
       focusEl.selectionStart = 100000;
-    } else
+    }
 
     // content editable elements
-    if ('contentEditable' in focusEl) {
+    else if ('contentEditable' in focusEl) {
       setRange(focusEl, { start: 100000, end: 100000 });
     }
   }
