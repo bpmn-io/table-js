@@ -37,8 +37,6 @@
     "karma-firefox-launcher": "^2.1.2",
     "karma-ie-launcher": "^1.0.0",
     "karma-mocha": "^2.0.1",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-safari-launcher": "^1.0.0",
     "karma-sinon-chai": "^2.0.2",
     "karma-webpack": "^5.0.0",
     "mocha": "^10.2.0",
