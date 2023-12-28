@@ -27,7 +27,7 @@
     "@babel/preset-env": "^7.19.3",
     "babel-loader": "^9.0.0",
     "babel-plugin-inferno": "^5.1.0",
-    "chai": "^4.3.10",
+    "chai": "^5.0.0",
     "del-cli": "^5.0.0",
     "diagram-js": "^13.0.0",
     "eslint": "^8.55.0",
