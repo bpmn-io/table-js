@@ -16,7 +16,7 @@ export default [
   ...bpmnIoPlugin.configs.node.map((config) => {
     return {
       ...config,
-      files: [ '*.js', '*.mjs', 'test/suite.js' ]
+      files: [ '*.js', '*.mjs' ]
     };
   }),
   ...bpmnIoPlugin.configs.mocha.map((config) => {
