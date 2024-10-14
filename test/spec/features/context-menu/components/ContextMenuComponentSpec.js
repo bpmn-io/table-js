@@ -419,7 +419,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
   (
     isFirefox() ? it.skip : it
   )('should set position before the context menu is focused', function(done) {
-    const test = inject(
+    inject(
       function(components, contextMenu, eventBus, injector) {
 
         // given
@@ -457,9 +457,7 @@ describe('features/context-menu - ContextMenuComponent', function() {
           }
         }
       }
-    );
-
-    test();
+    )();
   });
 
 
