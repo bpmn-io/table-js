@@ -60,7 +60,7 @@
     "lib"
   ],
   "peerDependencies": {
-    "diagram-js": "^15.0.0",
+    "diagram-js": "^11.3.0 || ^12 || ^13 || ^14 || ^15",
     "inferno": "^5.0.5"
   }
 }
