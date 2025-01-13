@@ -24,6 +24,8 @@ jobs:
     - name: Install legacy diagram-js
       if: matrix.diagram-js-version != ''
       run: npm install --no-save diagram-js@${{ matrix.diagram-js-version }}
+    - name: Project setup
+      uses: bpmn-io/actions/setup@latest
     - name: Build
       if: runner.os == 'Linux'
       env:
