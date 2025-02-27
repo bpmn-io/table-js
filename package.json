@@ -25,7 +25,7 @@
     "@babel/core": "^7.19.3",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/preset-env": "^7.19.3",
-    "babel-loader": "^9.0.0",
+    "babel-loader": "^10.0.0",
     "babel-plugin-inferno": "^5.1.0",
     "chai": "^4.3.10",
     "del-cli": "^6.0.0",
