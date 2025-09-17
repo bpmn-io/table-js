@@ -8,6 +8,7 @@ ___Note:__ Yet to be released changes appear here._
 
 * `DEPS`: update to `selection-ranges@4.0.3`
 * `DEPS`: update to `min-dash@4.2.3`
+* `DEPS`: update to `ids@1.0.5`
 
 ## 9.2.0
 
