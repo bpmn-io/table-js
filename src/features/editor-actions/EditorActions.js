@@ -55,7 +55,7 @@ export default class EditorActions {
    * @param  {String} action
    * @param  {Object} opts
    *
-   * @return {Unknown} Returns what the registered listener returns
+   * @return {unknown} Returns what the registered listener returns
    */
   trigger(action, opts) {
     if (!this._actions[action]) {
