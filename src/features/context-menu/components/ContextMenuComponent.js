@@ -54,8 +54,10 @@ export default class ContextMenuComponent extends Component {
    * positioning parameter into account. Position can also contain indicator
    * in which direction to open context menu.
    *
-   * @param {ContextMenuPosition} position
-   * @param {Object} [context]
+   * @param { {
+   *   position: ContextMenuPosition,
+   *   context: any
+   * } } options
    */
   open = ({ position, context }) => {
 
