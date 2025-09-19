@@ -2,7 +2,7 @@
   "name": "table-js",
   "version": "9.2.0",
   "scripts": {
-    "all": "run-s lint test build",
+    "all": "run-s lint test build generate-types",
     "dev": "karma start --no-single-run --auto-watch --log-level debug",
     "lint": "eslint .",
     "test": "karma start",
