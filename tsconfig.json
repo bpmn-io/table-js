@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "ES2018"
+    ],
+    "strict": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "./src/**/*.d.ts",
+    "./src/**/*.spec.ts",
+    "./src/**/*.spec.tsx"
+  ]
+}

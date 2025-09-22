@@ -2,11 +2,14 @@
   "name": "table-js",
   "version": "9.2.0",
   "scripts": {
-    "all": "run-s lint test build",
+    "all": "run-s lint test build generate-types",
     "dev": "karma start --no-single-run --auto-watch --log-level debug",
     "lint": "eslint .",
     "test": "karma start",
     "build": "del-cli lib && babel -s -d lib src",
+    "generate-types": "run-s generate-types:*",
+    "generate-types:generate": "del-cli \"{src,lib}/**/*.{d.ts,d.ts.map}\" && npx bio-dts --jsx -r src --outDir src && cpx \"src/**/*.{d.ts,d.ts.map}\" lib",
+    "generate-types:test": "tsc --noEmit --noImplicitAny",
     "auto-build": "babel -s -d lib src --watch",
     "prepublishOnly": "run-s build"
   },
@@ -27,7 +30,9 @@
     "@babel/preset-env": "^7.28.3",
     "babel-loader": "^10.0.0",
     "babel-plugin-inferno": "^5.1.0",
+    "bio-dts": "^0.14.0",
     "chai": "^4.5.0",
+    "cpx2": "^8.0.0",
     "del-cli": "^7.0.0",
     "diagram-js": "^15.3.0",
     "eslint": "^9.35.0",
@@ -47,6 +52,7 @@
     "puppeteer": "^24.21.0",
     "sinon": "^17.0.1",
     "sinon-chai": "^3.7.0",
+    "typescript": "^5.9.2",
     "webpack": "^5.101.3"
   },
   "dependencies": {

@@ -2,6 +2,10 @@ import compose from './compose';
 
 import { injectType } from './inject';
 
+/**
+ * @typedef { import('inferno').Component } Component
+ */
+
 
 /**
  * A Component and injection aware mixin mechanism.
