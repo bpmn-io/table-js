@@ -7,7 +7,7 @@ jobs:
       matrix:
         os: [ macos-latest, ubuntu-latest, windows-latest ]
         node-version: [ 20 ]
-        diagram-js-version: [ '11', '' ]
+        diagram-js-version: [ '' ]
 
     runs-on: ${{ matrix.os }}
 

@@ -10,9 +10,18 @@ import {
   SelectionAware
 } from './mixins';
 
-
+/**
+ * @template [P={}]
+ * @template [S={}]
+ *
+ * @extends Component<P, S>
+ */
 export default class BaseCell extends Component {
 
+  /**
+   * @param {P} props
+   * @param {any} context
+   */
   constructor(props, context) {
     super(props, context);
 
