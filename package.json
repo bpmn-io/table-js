@@ -52,7 +52,7 @@
   "dependencies": {
     "didi": "^11.0.0",
     "ids": "^1.0.5",
-    "min-dash": "^4.2.3",
+    "min-dash": "^5.0.0",
     "min-dom": "^4.0.3",
     "selection-ranges": "^4.0.3"
   },
