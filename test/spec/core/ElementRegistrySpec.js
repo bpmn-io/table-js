@@ -1,6 +1,8 @@
-import { inject, bootstrap } from 'test/TestHelper';
+import { expect } from 'chai';
 
-/* global sinon */
+import * as sinon from 'sinon';
+
+import { inject, bootstrap } from 'test/TestHelper';
 
 
 describe('ElementRegistry', function() {

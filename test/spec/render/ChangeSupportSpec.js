@@ -1,6 +1,8 @@
-import { bootstrap, inject } from 'test/TestHelper';
+import { expect } from 'chai';
 
-/* global sinon */
+import * as sinon from 'sinon';
+
+import { bootstrap, inject } from 'test/TestHelper';
 
 describe('ChangeSupport', function() {
 

@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 import { query as domQuery } from 'min-dom';
 
 import { inject, bootstrap } from 'test/TestHelper';
