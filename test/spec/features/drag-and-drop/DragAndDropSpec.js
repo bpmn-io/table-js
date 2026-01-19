@@ -1,3 +1,7 @@
+import { expect } from 'chai';
+
+import * as sinon from 'sinon';
+
 import {
   domify,
   queryAll as domQueryAll
@@ -8,8 +12,6 @@ import {
 } from 'min-dash';
 
 import TestContainer from 'mocha-test-container-support';
-
-/* global sinon */
 
 import { bootstrap, inject } from 'test/TestHelper';
 

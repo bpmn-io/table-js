@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 import { create } from 'src/model';
 
 describe('model', function() {

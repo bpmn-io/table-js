@@ -1,8 +1,10 @@
+import { expect } from 'chai';
+
+import * as sinon from 'sinon';
+
 import {
   queryAll as domQueryAll
 } from 'min-dom';
-
-/* global sinon */
 
 import { inject, bootstrap } from 'test/TestHelper';
 

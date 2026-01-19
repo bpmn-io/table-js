@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 import { bootstrap, inject } from 'test/TestHelper';
 
 describe('Components', function() {
