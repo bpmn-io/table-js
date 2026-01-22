@@ -6,12 +6,16 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
-## 9.3.0
+## 9.4.0
 
 * `DEPS`: update to `selection-ranges@4.1.1`
-* `DEPS`: update to `min-dash@5.0.0`
 * `DEPS`: update to `min-dom@5.2.0`
 * `CHORE`: remove unused `ids` dependency
+
+## 9.3.0
+
+* `DEPS`: update to `min-dash@5.0.0`
+* `DEPS`: update to `didi@11`
 
 ## 9.2.0
 
