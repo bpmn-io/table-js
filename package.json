@@ -53,7 +53,7 @@
     "didi": "^11.0.0",
     "min-dash": "^5.0.0",
     "min-dom": "^5.2.0",
-    "selection-ranges": "^4.0.3"
+    "selection-ranges": "^4.1.1"
   },
   "files": [
     "lib"
