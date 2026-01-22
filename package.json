@@ -1,6 +1,6 @@
 {
   "name": "table-js",
-  "version": "9.3.0",
+  "version": "9.4.0",
   "scripts": {
     "all": "run-s lint test build",
     "dev": "karma start --no-single-run --auto-watch --log-level debug",
