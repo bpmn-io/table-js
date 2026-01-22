@@ -1,13 +1,16 @@
 name: CI
 on: [ push, pull_request ]
 jobs:
-  Build:
+
+  build_browsers:
 
     strategy:
+      fail-fast: false
       matrix:
-        os: [ macos-latest, ubuntu-latest, windows-latest ]
-        node-version: [ 24 ]
+        os: [ ubuntu-latest ]
+        browser: [ Firefox, ChromeHeadless ]
         diagram-js-version: [ '11', '' ]
+
 
     runs-on: ${{ matrix.os }}
 
@@ -17,23 +20,43 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v6
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 24
         cache: 'npm'
     - name: Install dependencies
       run: npm ci
     - name: Install legacy diagram-js
       if: matrix.diagram-js-version != ''
       run: npm install --no-save diagram-js@${{ matrix.diagram-js-version }}
-    - name: Project setup
+    - name: Setup project
       uses: bpmn-io/actions/setup@latest
     - name: Build
-      if: runner.os == 'Linux'
       env:
-        COVERAGE: 1
-        TEST_BROWSERS: Firefox,ChromeHeadless
+        TEST_BROWSERS: ${{ matrix.browser }}
       run: xvfb-run npm run all
+
+  build_os:
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ macos-latest, windows-latest ]
+        browser: [ ChromeHeadless ]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+    - name: Use Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: 24
+        cache: 'npm'
+    - name: Install dependencies
+      run: npm ci
+    - name: Setup project
+      uses: bpmn-io/actions/setup@latest
     - name: Build
-      if: runner.os != 'Linux'
       env:
-        TEST_BROWSERS: ChromeHeadless
+        TEST_BROWSERS: ${{ matrix.browser }}
       run: npm run all
