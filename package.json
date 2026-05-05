@@ -42,7 +42,7 @@
     "mocha": "^11.7.2",
     "mocha-test-container-support": "^0.2.0",
     "npm-run-all2": "^8.0.4",
-    "puppeteer": "^24.21.0",
+    "puppeteer": "^24.42.0",
     "sinon": "^21.0.0",
     "sinon-chai": "^4.0.0",
     "webpack": "^5.101.3"
