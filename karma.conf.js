@@ -8,10 +8,10 @@ const TEST_BROWSERS = (
     .split(/\s*,\s*/g)
 );
 
-process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 
-module.exports = function(karma) {
+module.exports = async function(karma) {
+  process.env.CHROME_BIN = await require('puppeteer').executablePath();
   karma.set({
 
     frameworks: [
