@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 
-import { inject, bootstrap } from 'test/TestHelper';
+import { inject, bootstrap } from 'table-js/test/TestHelper.js';
 
-import ModelingModule from 'src/features/modeling';
-import TestRulesModule from './test-rules';
+import ModelingModule from 'table-js/lib/features/modeling';
+import TestRulesModule from './test-rules/index.js';
 
-import { Row, Col } from 'src/model';
+import { Row, Col } from 'table-js/lib/model';
 
 
 describe('modeling rules', function() {

@@ -1,6 +1,6 @@
-import compose from './compose';
+import compose from './compose.js';
 
-import { injectType } from './inject';
+import { injectType } from './inject.js';
 
 
 /**

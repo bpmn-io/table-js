@@ -1,16 +1,16 @@
 export {
   default as classNames
-} from './classNames';
+} from './classNames.js';
 
 export {
   inject,
   injectType,
-} from './inject';
+} from './inject.js';
 
 export {
   default as compose
-} from './compose';
+} from './compose.js';
 
 export {
   default as mixin
-} from './mixin';
+} from './mixin.js';

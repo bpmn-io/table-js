@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import { query as domQuery } from 'min-dom';
 
-import { bootstrap, inject } from 'test/TestHelper';
+import { bootstrap, inject } from 'table-js/test/TestHelper.js';
 
 import TestContainer from 'mocha-test-container-support';
 

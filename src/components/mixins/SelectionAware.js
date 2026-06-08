@@ -1,6 +1,6 @@
 import {
   classNames
-} from '../utils';
+} from '../utils/index.js';
 
 
 /**

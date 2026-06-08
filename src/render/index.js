@@ -1,6 +1,6 @@
-import ChangeSupport from './ChangeSupport';
-import Components from './Components';
-import Renderer from './Renderer';
+import ChangeSupport from './ChangeSupport.js';
+import Components from './Components.js';
+import Renderer from './Renderer.js';
 
 /**
  * @type { import('didi').ModuleDeclaration }

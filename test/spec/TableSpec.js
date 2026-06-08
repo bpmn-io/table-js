@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 
-import Table from 'src/Table';
+import Table from 'table-js/lib/Table.js';
 
 import { domify, remove as domRemove } from 'min-dom';
 
-import DefaultExport from 'src';
+import DefaultExport from 'table-js';
 
 
 describe('Table', function() {

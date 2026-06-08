@@ -1,1 +1,1 @@
-export { default as SelectionAware } from './SelectionAware';
+export { default as SelectionAware } from './SelectionAware.js';

@@ -1,5 +1,5 @@
-import Selection from '../selection';
-import EditorActions from './EditorActions';
+import Selection from '../selection/index.js';
+import EditorActions from './EditorActions.js';
 
 /**
  * @type { import('didi').ModuleDeclaration }

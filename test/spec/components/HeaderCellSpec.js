@@ -7,7 +7,7 @@ import {
 import {
   HeaderCell,
   DiContainer
-} from 'src/components';
+} from 'table-js/lib/components';
 
 import {
   findRenderedDOMElementWithClass
@@ -19,9 +19,9 @@ import {
 
 import {
   createInjector
-} from 'test/util';
+} from 'table-js/test/util/index.js';
 
-import EventBus from 'diagram-js/lib/core/EventBus';
+import EventBus from 'diagram-js/lib/core/EventBus.js';
 
 
 describe('components/HeaderCell', function() {

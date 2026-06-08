@@ -3,9 +3,9 @@ import {
   isArray
 } from 'min-dash';
 
-import { Row, Col } from 'src/model';
+import { Row, Col } from 'table-js/lib/model';
 
-import RuleProvider from 'diagram-js/lib/features/rules/RuleProvider';
+import RuleProvider from 'diagram-js/lib/features/rules/RuleProvider.js';
 
 export default class ModelingRules extends RuleProvider {
   constructor(eventBus, sheet) {

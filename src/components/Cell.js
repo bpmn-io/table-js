@@ -1,4 +1,4 @@
-import BaseCell from './BaseCell';
+import BaseCell from './BaseCell.js';
 
 
 export default class HeaderCell extends BaseCell {

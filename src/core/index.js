@@ -1,9 +1,9 @@
-import ElementFactory from './ElementFactory';
-import ElementRegistry from './ElementRegistry';
-import EventBus from 'diagram-js/lib/core/EventBus';
-import renderModule from '../render';
-import Sheet from './Sheet';
-import Throttle from './Throttle';
+import ElementFactory from './ElementFactory.js';
+import ElementRegistry from './ElementRegistry.js';
+import EventBus from 'diagram-js/lib/core/EventBus.js';
+import renderModule from '../render/index.js';
+import Sheet from './Sheet.js';
+import Throttle from './Throttle.js';
 
 /**
  * @type { import('didi').ModuleDeclaration }

@@ -1,5 +1,5 @@
-import CommandStack from 'diagram-js/lib/command/CommandStack';
-import Modeling from './Modeling';
+import CommandStack from 'diagram-js/lib/command/CommandStack.js';
+import Modeling from './Modeling.js';
 
 /**
  * @type { import('didi').ModuleDeclaration }

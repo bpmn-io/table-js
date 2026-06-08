@@ -1,6 +1,6 @@
 import { render } from 'inferno';
 
-import TableComponent from './components/TableComponent';
+import TableComponent from './components/TableComponent.js';
 
 export default class Renderer {
 

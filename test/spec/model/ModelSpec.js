@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { create } from 'src/model';
+import { create } from 'table-js/lib/model';
 
 describe('model', function() {
 

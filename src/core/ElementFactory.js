@@ -1,4 +1,4 @@
-import { create } from '../model';
+import { create } from '../model/index.js';
 
 export default class ElementFactory {
   constructor() {

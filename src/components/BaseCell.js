@@ -4,11 +4,11 @@ import {
   classNames,
   inject,
   mixin
-} from './utils';
+} from './utils/index.js';
 
 import {
   SelectionAware
-} from './mixins';
+} from './mixins/index.js';
 
 
 export default class BaseCell extends Component {

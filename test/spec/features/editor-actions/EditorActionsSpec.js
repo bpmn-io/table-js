@@ -2,10 +2,10 @@ import { expect } from 'chai';
 
 import * as sinon from 'sinon';
 
-import { inject, bootstrap } from 'test/TestHelper';
+import { inject, bootstrap } from 'table-js/test/TestHelper.js';
 
-import EditorActionsModule from 'src/features/editor-actions';
-import ModelingModule from 'src/features/modeling';
+import EditorActionsModule from 'table-js/lib/features/editor-actions';
+import ModelingModule from 'table-js/lib/features/modeling';
 
 
 describe('EditorActions', function() {

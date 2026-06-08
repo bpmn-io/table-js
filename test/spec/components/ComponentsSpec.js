@@ -7,7 +7,7 @@ import {
   DiContainer,
   inject,
   mixin
-} from 'src/components';
+} from 'table-js/lib/components';
 
 import {
   Component,
@@ -16,7 +16,7 @@ import {
 
 import {
   createInjector
-} from 'test/util';
+} from 'table-js/test/util/index.js';
 
 
 describe('components', function() {

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { inject, bootstrap } from 'test/TestHelper';
+import { inject, bootstrap } from 'table-js/test/TestHelper.js';
 
 
 describe('ElementFactory', function() {

@@ -10,11 +10,11 @@ import {
   findRenderedDOMElementWithClass
 } from 'inferno-test-utils';
 
-import { inject, bootstrap } from 'test/TestHelper';
+import { inject, bootstrap } from 'table-js/test/TestHelper.js';
 
-import ContextMenuModule from 'src/features/context-menu';
+import ContextMenuModule from 'table-js/lib/features/context-menu';
 import ContextMenuComponent
-  from 'src/features/context-menu/components/ContextMenuComponent';
+  from 'table-js/lib/features/context-menu/components/ContextMenuComponent.js';
 import { expect } from 'chai';
 
 import { query as domQuery } from 'min-dom';

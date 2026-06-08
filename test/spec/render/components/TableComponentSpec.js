@@ -13,9 +13,9 @@ import {
   findRenderedDOMElementWithClass
 } from 'inferno-test-utils';
 
-import { inject, bootstrap } from 'test/TestHelper';
+import { inject, bootstrap } from 'table-js/test/TestHelper.js';
 
-import TableComponent from 'src/render/components/TableComponent';
+import TableComponent from 'table-js/lib/render/components/TableComponent.js';
 
 
 describe('TableComponent', function() {

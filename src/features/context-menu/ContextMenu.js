@@ -1,4 +1,4 @@
-import ContextMenuComponent from './components/ContextMenuComponent';
+import ContextMenuComponent from './components/ContextMenuComponent.js';
 
 export default class ContextMenu {
   constructor(components, eventBus, renderer) {

@@ -7,7 +7,7 @@ import {
 
 import {
   inject
-} from '../../../components';
+} from '../../../components/index.js';
 
 import {
   closest as domClosest,

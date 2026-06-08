@@ -2,9 +2,9 @@ import { expect } from 'chai';
 
 import { query as domQuery } from 'min-dom';
 
-import { inject, bootstrap } from 'test/TestHelper';
+import { inject, bootstrap } from 'table-js/test/TestHelper.js';
 
-import ContextMenuModule from 'src/features/context-menu';
+import ContextMenuModule from 'table-js/lib/features/context-menu';
 
 import TestContainer from 'mocha-test-container-support';
 

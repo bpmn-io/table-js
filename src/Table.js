@@ -1,6 +1,6 @@
 import { Injector } from 'didi';
 
-import core from './core';
+import core from './core/index.js';
 
 
 export default class Table {

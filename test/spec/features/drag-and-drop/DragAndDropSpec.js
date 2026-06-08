@@ -13,10 +13,10 @@ import {
 
 import TestContainer from 'mocha-test-container-support';
 
-import { bootstrap, inject } from 'test/TestHelper';
+import { bootstrap, inject } from 'table-js/test/TestHelper.js';
 
-import DragAndDropModule from 'src/features/drag-and-drop';
-import ModelingModule from 'src/features/modeling';
+import DragAndDropModule from 'table-js/lib/features/drag-and-drop';
+import ModelingModule from 'table-js/lib/features/modeling';
 
 function triggerEvent(element, type, data = {}) {
   const event = document.createEvent('Event');

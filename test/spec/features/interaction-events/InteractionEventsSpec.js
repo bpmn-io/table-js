@@ -6,11 +6,11 @@ import {
   queryAll as domQueryAll
 } from 'min-dom';
 
-import { inject, bootstrap } from 'test/TestHelper';
+import { inject, bootstrap } from 'table-js/test/TestHelper.js';
 
 import TestContainer from 'mocha-test-container-support';
 
-import InterActionEventsModule from 'src/features/interaction-events';
+import InterActionEventsModule from 'table-js/lib/features/interaction-events';
 
 function triggerMouseEvent(node, event, clientX = 0, clientY = 0) {
   const e = document.createEvent('MouseEvent');

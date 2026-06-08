@@ -2,11 +2,11 @@ import { expect } from 'chai';
 
 import * as sinon from 'sinon';
 
-import { inject, bootstrap } from 'test/TestHelper';
+import { inject, bootstrap } from 'table-js/test/TestHelper.js';
 
-import CommandInterceptor from 'diagram-js/lib/command/CommandInterceptor';
+import CommandInterceptor from 'diagram-js/lib/command/CommandInterceptor.js';
 
-import ModelingModule from 'src/features/modeling';
+import ModelingModule from 'table-js/lib/features/modeling';
 
 describe('modeling - EditCell', function() {
 

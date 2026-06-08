@@ -1,6 +1,6 @@
-import { inject, bootstrap } from 'test/TestHelper';
+import { inject, bootstrap } from 'table-js/test/TestHelper.js';
 
-import ModelingModule from 'src/features/modeling';
+import ModelingModule from 'table-js/lib/features/modeling';
 
 
 describe('modeling - performance', function() {

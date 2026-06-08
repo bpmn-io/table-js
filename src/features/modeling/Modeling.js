@@ -1,14 +1,14 @@
 import { forEach } from 'min-dash';
 
-import { Base } from '../../model';
+import { Base } from '../../model/index.js';
 
-import AddRowHandler from './cmd/AddRowHandler';
-import RemoveRowHandler from './cmd/RemoveRowHandler';
-import MoveRowHandler from './cmd/MoveRowHandler';
-import AddColHandler from './cmd/AddColHandler';
-import RemoveColHandler from './cmd/RemoveColHandler';
-import MoveColHandler from './cmd/MoveColHandler';
-import EditCellHandler from './cmd/EditCellHandler';
+import AddRowHandler from './cmd/AddRowHandler.js';
+import RemoveRowHandler from './cmd/RemoveRowHandler.js';
+import MoveRowHandler from './cmd/MoveRowHandler.js';
+import AddColHandler from './cmd/AddColHandler.js';
+import RemoveColHandler from './cmd/RemoveColHandler.js';
+import MoveColHandler from './cmd/MoveColHandler.js';
+import EditCellHandler from './cmd/EditCellHandler.js';
 
 
 /**

@@ -3,9 +3,9 @@ import { expect } from 'chai';
 import {
   inject,
   bootstrap
-} from 'test/TestHelper';
+} from 'table-js/test/TestHelper.js';
 
-import SelectionModule from 'src/features/selection';
+import SelectionModule from 'table-js/lib/features/selection';
 
 
 describe('SelectionBehavior', function() {

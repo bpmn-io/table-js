@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import * as sinon from 'sinon';
 
-import { inject, bootstrap } from 'test/TestHelper';
+import { inject, bootstrap } from 'table-js/test/TestHelper.js';
 
 
 describe('Sheet', function() {

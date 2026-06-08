@@ -1,4 +1,4 @@
-import DragAndDrop from './DragAndDrop';
+import DragAndDrop from './DragAndDrop.js';
 
 /**
  * @type { import('didi').ModuleDeclaration }

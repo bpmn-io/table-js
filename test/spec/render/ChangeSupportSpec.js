@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import * as sinon from 'sinon';
 
-import { bootstrap, inject } from 'test/TestHelper';
+import { bootstrap, inject } from 'table-js/test/TestHelper.js';
 
 describe('ChangeSupport', function() {
 

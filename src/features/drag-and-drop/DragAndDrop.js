@@ -1,4 +1,4 @@
-import { Row, Col } from '../../model';
+import { Row, Col } from '../../model/index.js';
 
 import {
   closest as domClosest,
