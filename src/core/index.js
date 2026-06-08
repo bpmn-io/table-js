@@ -5,6 +5,9 @@ import renderModule from '../render';
 import Sheet from './Sheet';
 import Throttle from './Throttle';
 
+/**
+ * @type { import('didi').ModuleDeclaration }
+ */
 export default {
   __depends__: [ renderModule ],
   __init__: [ 'elementFactory', 'sheet' ],
