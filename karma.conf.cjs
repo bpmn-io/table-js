@@ -50,7 +50,7 @@ module.exports = async function(karma) {
             use: 'babel-loader'
           },
           {
-            test: /\.css|\.dmn$/,
+            test: /\.css$/,
             type: 'asset/source'
           }
         ]
@@ -61,10 +61,6 @@ module.exports = async function(karma) {
           'browser',
           'module',
           'main'
-        ],
-        modules: [
-          'node_modules',
-          __dirname
         ]
       },
       devtool: 'eval-source-map'
