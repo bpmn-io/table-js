@@ -6,6 +6,8 @@ All notable changes to [table-js](https://github.com/bpmn-io/table-js) are docum
 
 ___Note:__ Yet to be released changes appear here._
 
+* `DEPS`: update to `min-dom@5.3.0`
+
 ## 9.4.0
 
 * `DEPS`: update to `selection-ranges@4.1.1`
