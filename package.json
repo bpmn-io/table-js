@@ -10,6 +10,24 @@
     "auto-build": "babel -s -d lib src --watch",
     "prepublishOnly": "run-s build"
   },
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./lib/core": "./lib/core/index.js",
+    "./lib/render": "./lib/render/index.js",
+    "./lib/components": "./lib/components/index.js",
+    "./lib/model": "./lib/model/index.js",
+    "./lib/features/context-menu": "./lib/features/context-menu/index.js",
+    "./lib/features/drag-and-drop": "./lib/features/drag-and-drop/index.js",
+    "./lib/features/editor-actions": "./lib/features/editor-actions/index.js",
+    "./lib/features/interaction-events": "./lib/features/interaction-events/index.js",
+    "./lib/features/modeling": "./lib/features/modeling/index.js",
+    "./lib/features/rules": "./lib/features/rules/index.js",
+    "./lib/features/selection": "./lib/features/selection/index.js",
+    "./lib/*": "./lib/*",
+    "./test/*": "./test/*",
+    "./package.json": "./package.json"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bpmn-io/table-js"
