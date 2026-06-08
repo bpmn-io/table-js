@@ -3,9 +3,9 @@
   "version": "9.4.0",
   "scripts": {
     "all": "run-s lint test build",
-    "dev": "karma start --no-single-run --auto-watch --log-level debug",
+    "dev": "karma start karma.conf.cjs --no-single-run --auto-watch --log-level debug",
     "lint": "eslint .",
-    "test": "karma start",
+    "test": "karma start karma.conf.cjs",
     "build": "del-cli lib && babel -s -d lib src",
     "auto-build": "babel -s -d lib src --watch",
     "prepublishOnly": "run-s build"
