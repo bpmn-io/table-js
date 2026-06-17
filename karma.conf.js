@@ -10,8 +10,7 @@ const TEST_BROWSERS = (
 
 
 
-module.exports = async function(karma) {
-  process.env.CHROME_BIN = await require('puppeteer').executablePath();
+module.exports = function(karma) {
   karma.set({
 
     frameworks: [
