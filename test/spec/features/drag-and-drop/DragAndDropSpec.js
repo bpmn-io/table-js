@@ -241,6 +241,47 @@ describe('DragAndDrop', function() {
     ));
 
 
+    it('should move row even if an ancestor of the table stops propagation', inject(
+      function(elementRegistry, eventBus, sheet) {
+
+        // given — an embedding page may listen for its own drag-and-drop
+        // (e.g. to open a dropped file) and stop propagation of events it
+        // does not otherwise care about; this must not break dragging
+        // inside the table, as long as its listeners are scoped to the
+        // table's own container rather than to `document`
+        eventBus.on('dragAndDrop.drop', () => row2);
+
+        const stopPropagation = (event) => event.stopPropagation();
+
+        testContainer.parentNode.addEventListener('dragover', stopPropagation);
+        testContainer.parentNode.addEventListener('drop', stopPropagation);
+
+        try {
+
+          // when
+          triggerEvent(cell1, 'dragstart', {
+            dataTransfer: {}
+          });
+
+          triggerEvent(cell2, 'dragover', {
+            dataTransfer: {}
+          });
+
+          triggerEvent(cell2, 'drop');
+
+          // then
+          expectRows([
+            row2,
+            row1
+          ]);
+        } finally {
+          testContainer.parentNode.removeEventListener('dragover', stopPropagation);
+          testContainer.parentNode.removeEventListener('drop', stopPropagation);
+        }
+      }
+    ));
+
+
     it('should NOT move row if no target', inject(
       function(elementRegistry, sheet) {
 
