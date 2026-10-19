@@ -24,14 +24,23 @@ export default class DragAndDrop {
   }
 
   _bindListeners() {
-    domEvent.bind(document, 'dragover', this.handleDragOver);
-    domEvent.bind(document, 'drop', this.handleDrop);
+    const container = this._renderer.getContainer();
+
+    domEvent.bind(container, 'dragover', this.handleDragOver);
+    domEvent.bind(container, 'drop', this.handleDrop);
+
+    // bound globally: dragend fires on the drag source, which stays inside
+    // the container for the whole gesture, but we bind it globally so
+    // clean-up is guaranteed even if the drag ends unexpectedly (e.g. the
+    // browser cancels it, or it is released outside the viewport)
     domEvent.bind(document, 'dragend', this.handleDragEnd);
   }
 
   _unbindListeners() {
-    domEvent.unbind(document, 'dragover', this.handleDragOver);
-    domEvent.unbind(document, 'drop', this.handleDrop);
+    const container = this._renderer.getContainer();
+
+    domEvent.unbind(container, 'dragover', this.handleDragOver);
+    domEvent.unbind(container, 'drop', this.handleDrop);
     domEvent.unbind(document, 'dragend', this.handleDragEnd);
   }
 
